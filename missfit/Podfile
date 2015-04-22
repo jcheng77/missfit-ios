@@ -1,0 +1,15 @@
+# Uncomment this line to define a global platform for your project
+platform :ios, '7.0'
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'missfit' do
+  pod 'JVFloatingDrawer', :path => "../"
+  pod 'AFNetworking', '~> 2.0'
+  pod 'CocoaLumberjack'
+  pod 'KVNProgress'
+end
+
+target 'missfitTests' do
+
+end
+
