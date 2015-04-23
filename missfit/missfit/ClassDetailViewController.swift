@@ -57,7 +57,7 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
         case ClassDetailCellIndex.ClassDetailImageCell.rawValue:
             return MissFitUtils.shortestScreenWidth() * classCoverImageAspectRatio
         case ClassDetailCellIndex.ClassDetailBookCell.rawValue:
-            return 44.0
+            return UITableViewAutomaticDimension
         case ClassDetailCellIndex.ClassDetailInfoCell.rawValue:
             return UITableViewAutomaticDimension
         default:

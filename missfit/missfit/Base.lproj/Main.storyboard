@@ -724,16 +724,23 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我要预约" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQk-eK-dzs">
-                                                    <rect key="frame" x="260" y="9" width="80" height="24"/>
+                                                    <rect key="frame" x="260" y="11" width="80" height="22"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="EQk-eK-dzs" firstAttribute="top" secondItem="5le-FQ-B2q" secondAttribute="topMargin" constant="3" id="LgS-5L-qAd"/>
                                                 <constraint firstAttribute="centerY" secondItem="EQk-eK-dzs" secondAttribute="centerY" constant="0.25" id="OTy-Jc-WLi"/>
                                                 <constraint firstAttribute="centerX" secondItem="EQk-eK-dzs" secondAttribute="centerX" id="af9-yL-VdA"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="EQk-eK-dzs" secondAttribute="bottom" constant="3" id="oFQ-Gi-TjJ"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="OTy-Jc-WLi"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.96862745100000003" green="0.4941176471" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
