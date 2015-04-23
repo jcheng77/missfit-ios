@@ -21,6 +21,7 @@
 		C33CF10C1AE78C8100B35BF8 /* ClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33CF10B1AE78C8100B35BF8 /* ClassTableViewCell.swift */; };
 		C34B9F631ADFE8A900911821 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B9F621ADFE8A900911821 /* LoginViewController.swift */; };
 		C35A8A311AE3F0B800AB974C /* MissFitTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A8A301AE3F0B800AB974C /* MissFitTheme.swift */; };
+		C36AF2D81AE941C600FF8E0C /* ResetPasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36AF2D71AE941C600FF8E0C /* ResetPasscodeViewController.swift */; };
 		C37CCB8E1AE7D95D00384C7E /* UINavigationItem+ChevronBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CCB8D1AE7D95D00384C7E /* UINavigationItem+ChevronBackButton.swift */; };
 		C37CCB901AE7E9BE00384C7E /* ClassDetailImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CCB8F1AE7E9BE00384C7E /* ClassDetailImageTableViewCell.swift */; };
 		C37CCB921AE7E9D400384C7E /* ClassDetailBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CCB911AE7E9D400384C7E /* ClassDetailBookTableViewCell.swift */; };
@@ -68,6 +69,7 @@
 		C33CF10B1AE78C8100B35BF8 /* ClassTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTableViewCell.swift; sourceTree = "<group>"; };
 		C34B9F621ADFE8A900911821 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C35A8A301AE3F0B800AB974C /* MissFitTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitTheme.swift; sourceTree = "<group>"; };
+		C36AF2D71AE941C600FF8E0C /* ResetPasscodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasscodeViewController.swift; sourceTree = "<group>"; };
 		C37CCB8D1AE7D95D00384C7E /* UINavigationItem+ChevronBackButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+ChevronBackButton.swift"; sourceTree = "<group>"; };
 		C37CCB8F1AE7E9BE00384C7E /* ClassDetailImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailImageTableViewCell.swift; sourceTree = "<group>"; };
 		C37CCB911AE7E9D400384C7E /* ClassDetailBookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailBookTableViewCell.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				C37CCB911AE7E9D400384C7E /* ClassDetailBookTableViewCell.swift */,
 				C37CCB931AE7E9FB00384C7E /* ClassDetailInfoTableViewCell.swift */,
 				C310D5C81ADE9E3600A70054 /* RegisterViewController.swift */,
+				C36AF2D71AE941C600FF8E0C /* ResetPasscodeViewController.swift */,
 				C34B9F621ADFE8A900911821 /* LoginViewController.swift */,
 				C310D5951ADC0E2800A70054 /* Main.storyboard */,
 				C310D5981ADC0E2800A70054 /* Images.xcassets */,
@@ -374,6 +377,7 @@
 				C3BA87EF1AE29EF4009D7A56 /* AllTeachersViewController.swift in Sources */,
 				C37CCB941AE7E9FB00384C7E /* ClassDetailInfoTableViewCell.swift in Sources */,
 				C37CCB921AE7E9D400384C7E /* ClassDetailBookTableViewCell.swift in Sources */,
+				C36AF2D81AE941C600FF8E0C /* ResetPasscodeViewController.swift in Sources */,
 				C310D5941ADC0E2800A70054 /* HomeViewController.swift in Sources */,
 				C3F6F2E11AE4CB4F00BAD118 /* MissFitLocation.swift in Sources */,
 				C3F6F2DF1AE4CA7500BAD118 /* MissFitTeacher.swift in Sources */,
@@ -522,6 +526,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = missfit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "missfit/missfit-Bridging-Header.h";
@@ -536,6 +541,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = missfit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "missfit/missfit-Bridging-Header.h";

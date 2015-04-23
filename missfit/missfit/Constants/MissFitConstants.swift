@@ -14,6 +14,8 @@ let MissFitVerifyCodeURI: String = "codes?mobile="
 
 let MissFitRegisterURI: String = "users"
 
+let MissFitResetURI: String = "changePassword"
+
 let MissFitLoginURI: String = "login"
 
 let MissFitTeachersURI: String = "teachers"

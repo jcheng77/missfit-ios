@@ -53,16 +53,7 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        switch indexPath.row {
-        case ClassDetailCellIndex.ClassDetailImageCell.rawValue:
-            return MissFitUtils.shortestScreenWidth() * classCoverImageAspectRatio
-        case ClassDetailCellIndex.ClassDetailBookCell.rawValue:
-            return UITableViewAutomaticDimension
-        case ClassDetailCellIndex.ClassDetailInfoCell.rawValue:
-            return UITableViewAutomaticDimension
-        default:
-            return 0
-        }
+        return UITableViewAutomaticDimension
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
