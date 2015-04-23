@@ -737,7 +737,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.96862745100000003" green="0.4941176471" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClassDetailInfoTableViewCell" rowHeight="133" id="24A-wf-EhU" customClass="ClassDetailInfoTableViewCell" customModule="missfit" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClassDetailInfoTableViewCell" rowHeight="247" id="24A-wf-EhU" customClass="ClassDetailInfoTableViewCell" customModule="missfit" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="24A-wf-EhU" id="zdA-oO-H3u">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -748,8 +748,14 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3o-s5-mbr">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3o-s5-mbr">
                                                     <rect key="frame" x="36" y="37" width="528" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jxL-mM-A6g">
+                                                    <rect key="frame" x="36" y="103" width="528" height="128"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -760,18 +766,13 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jxL-mM-A6g">
-                                                    <rect key="frame" x="36" y="103" width="528" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="c6g-Rn-SsR" firstAttribute="top" secondItem="S3o-s5-mbr" secondAttribute="bottom" constant="20" id="748-vT-onV"/>
                                                 <constraint firstItem="jxL-mM-A6g" firstAttribute="trailing" secondItem="S3o-s5-mbr" secondAttribute="trailing" id="9pv-cl-XDH"/>
                                                 <constraint firstAttribute="centerX" secondItem="c6g-Rn-SsR" secondAttribute="centerX" id="BFq-IY-KBk"/>
                                                 <constraint firstAttribute="centerX" secondItem="feC-uI-UJH" secondAttribute="centerX" id="Me2-eR-Ajb"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="jxL-mM-A6g" secondAttribute="bottom" constant="8" id="Q7J-fV-53c"/>
                                                 <constraint firstItem="S3o-s5-mbr" firstAttribute="top" secondItem="feC-uI-UJH" secondAttribute="bottom" constant="8.5" id="RNW-ww-tp8"/>
                                                 <constraint firstItem="feC-uI-UJH" firstAttribute="top" secondItem="zdA-oO-H3u" secondAttribute="topMargin" id="c66-wI-eUQ"/>
                                                 <constraint firstItem="jxL-mM-A6g" firstAttribute="leading" secondItem="S3o-s5-mbr" secondAttribute="leading" id="gcI-j1-43o"/>

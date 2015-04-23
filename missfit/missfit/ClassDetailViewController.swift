@@ -59,7 +59,7 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
         case ClassDetailCellIndex.ClassDetailBookCell.rawValue:
             return 44.0
         case ClassDetailCellIndex.ClassDetailInfoCell.rawValue:
-            return 88.0
+            return UITableViewAutomaticDimension
         default:
             return 0
         }
