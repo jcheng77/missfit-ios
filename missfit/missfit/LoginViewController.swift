@@ -59,7 +59,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func forgotPasscodeButtonClicked(sender: AnyObject) {
-        var resetPasscodeViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ResetPasscodeViewController") as UIViewController
+        var resetPasscodeViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ForgotPasscodeViewController") as UIViewController
         self.presentViewController(UINavigationController(rootViewController: resetPasscodeViewController), animated: true, completion: nil)
     }
     
