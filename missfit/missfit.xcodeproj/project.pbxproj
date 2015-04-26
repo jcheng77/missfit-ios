@@ -26,7 +26,12 @@
 		C37CCB901AE7E9BE00384C7E /* ClassDetailImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CCB8F1AE7E9BE00384C7E /* ClassDetailImageTableViewCell.swift */; };
 		C37CCB921AE7E9D400384C7E /* ClassDetailBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CCB911AE7E9D400384C7E /* ClassDetailBookTableViewCell.swift */; };
 		C37CCB941AE7E9FB00384C7E /* ClassDetailInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CCB931AE7E9FB00384C7E /* ClassDetailInfoTableViewCell.swift */; };
+		C39DB0CA1AEBC9F000C91E5A /* MissFitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39DB0C91AEBC9F000C91E5A /* MissFitUser.swift */; };
 		C3BA87EF1AE29EF4009D7A56 /* AllTeachersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BA87EE1AE29EF4009D7A56 /* AllTeachersViewController.swift */; };
+		C3C2025E1AEC92CF00F3E30C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C2025D1AEC92CF00F3E30C /* SettingsViewController.swift */; };
+		C3C202601AEC941600F3E30C /* SettingsNormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C2025F1AEC941600F3E30C /* SettingsNormalTableViewCell.swift */; };
+		C3C202621AEC948900F3E30C /* SettingsDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C202611AEC948900F3E30C /* SettingsDetailTableViewCell.swift */; };
+		C3C202641AEC96AD00F3E30C /* SettingsActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C202631AEC96AD00F3E30C /* SettingsActionTableViewCell.swift */; };
 		C3C7BD521ADEAF4700755CE3 /* MissFitConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C7BD511ADEAF4700755CE3 /* MissFitConstants.swift */; };
 		C3C7BD6B1ADFAB1300755CE3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C7BD6A1ADFAB1300755CE3 /* SwiftyJSON.swift */; };
 		C3F6F2DA1AE4A84000BAD118 /* TeacherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F6F2D91AE4A84000BAD118 /* TeacherTableViewCell.swift */; };
@@ -74,7 +79,12 @@
 		C37CCB8F1AE7E9BE00384C7E /* ClassDetailImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailImageTableViewCell.swift; sourceTree = "<group>"; };
 		C37CCB911AE7E9D400384C7E /* ClassDetailBookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailBookTableViewCell.swift; sourceTree = "<group>"; };
 		C37CCB931AE7E9FB00384C7E /* ClassDetailInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailInfoTableViewCell.swift; sourceTree = "<group>"; };
+		C39DB0C91AEBC9F000C91E5A /* MissFitUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitUser.swift; sourceTree = "<group>"; };
 		C3BA87EE1AE29EF4009D7A56 /* AllTeachersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTeachersViewController.swift; sourceTree = "<group>"; };
+		C3C2025D1AEC92CF00F3E30C /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		C3C2025F1AEC941600F3E30C /* SettingsNormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsNormalTableViewCell.swift; sourceTree = "<group>"; };
+		C3C202611AEC948900F3E30C /* SettingsDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDetailTableViewCell.swift; sourceTree = "<group>"; };
+		C3C202631AEC96AD00F3E30C /* SettingsActionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsActionTableViewCell.swift; sourceTree = "<group>"; };
 		C3C7BD511ADEAF4700755CE3 /* MissFitConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitConstants.swift; sourceTree = "<group>"; };
 		C3C7BD531ADEB74900755CE3 /* missfit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "missfit-Bridging-Header.h"; sourceTree = "<group>"; };
 		C3C7BD6A1ADFAB1300755CE3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
@@ -158,6 +168,10 @@
 				C310D5C81ADE9E3600A70054 /* RegisterViewController.swift */,
 				C36AF3101AEA221100FF8E0C /* ForgotPasscodeViewController.swift */,
 				C34B9F621ADFE8A900911821 /* LoginViewController.swift */,
+				C3C2025D1AEC92CF00F3E30C /* SettingsViewController.swift */,
+				C3C2025F1AEC941600F3E30C /* SettingsNormalTableViewCell.swift */,
+				C3C202611AEC948900F3E30C /* SettingsDetailTableViewCell.swift */,
+				C3C202631AEC96AD00F3E30C /* SettingsActionTableViewCell.swift */,
 				C310D5951ADC0E2800A70054 /* Main.storyboard */,
 				C310D5981ADC0E2800A70054 /* Images.xcassets */,
 				C310D59A1ADC0E2800A70054 /* LaunchScreen.xib */,
@@ -226,6 +240,7 @@
 				C3F6F2E01AE4CB4F00BAD118 /* MissFitLocation.swift */,
 				C33CF1071AE78A7F00B35BF8 /* MissFitClass.swift */,
 				C33CF1091AE78AB900B35BF8 /* MissFitClassSchedule.swift */,
+				C39DB0C91AEBC9F000C91E5A /* MissFitUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -377,10 +392,12 @@
 				C3BA87EF1AE29EF4009D7A56 /* AllTeachersViewController.swift in Sources */,
 				C37CCB941AE7E9FB00384C7E /* ClassDetailInfoTableViewCell.swift in Sources */,
 				C37CCB921AE7E9D400384C7E /* ClassDetailBookTableViewCell.swift in Sources */,
+				C3C202601AEC941600F3E30C /* SettingsNormalTableViewCell.swift in Sources */,
 				C36AF3111AEA221100FF8E0C /* ForgotPasscodeViewController.swift in Sources */,
 				C310D5941ADC0E2800A70054 /* HomeViewController.swift in Sources */,
 				C3F6F2E11AE4CB4F00BAD118 /* MissFitLocation.swift in Sources */,
 				C3F6F2DF1AE4CA7500BAD118 /* MissFitTeacher.swift in Sources */,
+				C3C202641AEC96AD00F3E30C /* SettingsActionTableViewCell.swift in Sources */,
 				C310D5C91ADE9E3600A70054 /* RegisterViewController.swift in Sources */,
 				C3F6F2DA1AE4A84000BAD118 /* TeacherTableViewCell.swift in Sources */,
 				C35A8A311AE3F0B800AB974C /* MissFitTheme.swift in Sources */,
@@ -394,11 +411,14 @@
 				C33CF1081AE78A7F00B35BF8 /* MissFitClass.swift in Sources */,
 				C310D5C51ADD670E00A70054 /* AllClassesViewController.swift in Sources */,
 				C33CF10A1AE78AB900B35BF8 /* MissFitClassSchedule.swift in Sources */,
+				C39DB0CA1AEBC9F000C91E5A /* MissFitUser.swift in Sources */,
 				C37CCB8E1AE7D95D00384C7E /* UINavigationItem+ChevronBackButton.swift in Sources */,
+				C3C202621AEC948900F3E30C /* SettingsDetailTableViewCell.swift in Sources */,
 				C3C7BD6B1ADFAB1300755CE3 /* SwiftyJSON.swift in Sources */,
 				C3C7BD521ADEAF4700755CE3 /* MissFitConstants.swift in Sources */,
 				C3F6F2ED1AE54E5200BAD118 /* ClassDetailViewController.swift in Sources */,
 				C3F6F2E41AE4E7DB00BAD118 /* MissFitUtils.swift in Sources */,
+				C3C2025E1AEC92CF00F3E30C /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,11 +29,10 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func myClassesButtonClicked(sender: AnyObject) {
-        var isUserLogin = false
-        if isUserLogin {
+        if MissFitUser.user.isLogin {
         } else {
-            var loginViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as UIViewController
-            self.presentViewController(UINavigationController(rootViewController: loginViewController), animated: true, completion: nil)
+            var loginController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as UIViewController
+            presentViewController(UINavigationController(rootViewController: loginController), animated: true, completion: nil)
         }
     }
 
@@ -41,5 +40,16 @@ class HomeViewController: UIViewController {
         let allTeachersController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("AllTeachersViewController") as AllTeachersViewController
         presentViewController(UINavigationController(rootViewController: allTeachersController), animated: true, completion: nil)
     }
+    
+    @IBAction func settingsButtonClicked(sender: AnyObject) {
+        if MissFitUser.user.isLogin {
+            var settingsController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SettingsViewController") as UIViewController
+            presentViewController(UINavigationController(rootViewController: settingsController), animated: true, completion: nil)
+        } else {
+            var loginController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as UIViewController
+            presentViewController(UINavigationController(rootViewController: loginController), animated: true, completion: nil)
+        }
+    }
+    
 }
 

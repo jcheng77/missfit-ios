@@ -18,7 +18,25 @@ let MissFitResetURI: String = "changePassword"
 
 let MissFitLoginURI: String = "login"
 
+let MissFitLogoutURI: String = "logout"
+
 let MissFitTeachersURI: String = "teachers"
 
 let MissFitClassesURI: String = "classes"
+
+// MissFit user related:
+
+let MissFitUserInfo: String = "MissFitUserInfo"
+
+let MissFitUserId: String = "MissFitUserId"
+
+let MissFitUserPhoneNumber: String = "MissFitUserPhoneNumber"
+
+let MissFitUserToken: String = "MissFitUserToken"
+
+let MissFitUserNickName: String = "MissFitUserNickName"
+
+let MissFitUserPasscode: String = "MissFitUserPasscode"
+
+let MissFitUserAvatarUrl: String = "MissFitUserAvatarUrl"
 

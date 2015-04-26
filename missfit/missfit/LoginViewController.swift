@@ -34,7 +34,9 @@ class LoginViewController: UIViewController {
                 manager.POST(endpoint, parameters: parameters, success: { (operation, responseObject) -> Void in
                     KVNProgress.showSuccessWithStatus("登录成功")
                     //登录成功
-                    println("response:\(responseObject)")
+                    let json = JSON(responseObject)
+                    MissFitUser.user.login(json["data"]["userId"].stringValue, userPhoneNumber: phoneNumber, userToken: json["data"]["authToken"].stringValue, userPasscode: passcode)
+                    self.dismissViewControllerAnimated(true, completion: nil)
                     }, failure: { (operation, error) -> Void in
                         //登录失败
                         if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
