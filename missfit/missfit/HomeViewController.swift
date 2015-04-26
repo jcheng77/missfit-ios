@@ -31,7 +31,7 @@ class HomeViewController: UIViewController {
     @IBAction func myClassesButtonClicked(sender: AnyObject) {
         if MissFitUser.user.isLogin {
         } else {
-            var loginController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as UIViewController
+            let loginController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as UIViewController
             presentViewController(UINavigationController(rootViewController: loginController), animated: true, completion: nil)
         }
     }
@@ -43,10 +43,10 @@ class HomeViewController: UIViewController {
     
     @IBAction func settingsButtonClicked(sender: AnyObject) {
         if MissFitUser.user.isLogin {
-            var settingsController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SettingsViewController") as UIViewController
+            let settingsController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SettingsViewController") as UIViewController
             presentViewController(UINavigationController(rootViewController: settingsController), animated: true, completion: nil)
         } else {
-            var loginController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as UIViewController
+            let loginController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as UIViewController
             presentViewController(UINavigationController(rootViewController: loginController), animated: true, completion: nil)
         }
     }

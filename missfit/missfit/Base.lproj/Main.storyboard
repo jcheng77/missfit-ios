@@ -714,7 +714,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qm0-Zq-Qhz">
-                                                    <rect key="frame" x="112" y="37" width="391" height="17"/>
+                                                    <rect key="frame" x="92.5" y="37" width="410.5" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="JWP-L2-iiD"/>
                                                     </constraints>
@@ -728,7 +728,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="商圈" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYg-hf-5OW">
-                                                    <rect key="frame" x="112" y="62" width="391" height="18"/>
+                                                    <rect key="frame" x="92.5" y="62" width="410.5" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="CwM-7d-ekh"/>
                                                     </constraints>
@@ -750,7 +750,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="阴瑜伽" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSS-VN-I9f">
-                                                    <rect key="frame" x="112" y="8" width="51" height="20.5"/>
+                                                    <rect key="frame" x="92.5" y="8" width="51" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" red="0.96862745100000003" green="0.4941176471" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -779,7 +779,7 @@
                                                 <constraint firstItem="pYg-hf-5OW" firstAttribute="top" secondItem="Qm0-Zq-Qhz" secondAttribute="bottom" constant="8" id="QmF-En-VxU"/>
                                                 <constraint firstItem="Qm0-Zq-Qhz" firstAttribute="height" secondItem="Wrw-NY-lx6" secondAttribute="height" id="Svp-PK-0S1"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="90F-u6-ZFK" secondAttribute="trailing" constant="31" id="Z01-1A-Dbq"/>
-                                                <constraint firstItem="uSS-VN-I9f" firstAttribute="leading" secondItem="VYS-yE-6tX" secondAttribute="trailing" constant="44" id="ZoY-lU-a5a"/>
+                                                <constraint firstItem="uSS-VN-I9f" firstAttribute="leading" secondItem="VYS-yE-6tX" secondAttribute="trailing" constant="24" id="ZoY-lU-a5a"/>
                                                 <constraint firstItem="Wrw-NY-lx6" firstAttribute="leading" secondItem="VYS-yE-6tX" secondAttribute="leading" id="c5E-Ue-OTs"/>
                                                 <constraint firstItem="Qm0-Zq-Qhz" firstAttribute="leading" secondItem="uSS-VN-I9f" secondAttribute="leading" id="ck5-ri-tLq"/>
                                                 <constraint firstItem="pYg-hf-5OW" firstAttribute="leading" secondItem="uSS-VN-I9f" secondAttribute="leading" id="eYD-Ey-slx"/>
@@ -939,22 +939,27 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EBD-v8-kYd" id="5le-FQ-B2q">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我要预约" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQk-eK-dzs">
-                                                    <rect key="frame" x="260" y="11" width="80" height="22"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sJg-ZF-nqz">
+                                                    <rect key="frame" x="8" y="5" width="584" height="33"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <state key="normal" title="我要预约">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="bookButtonClicked:" destination="N8O-fK-Qk9" eventType="touchUpInside" id="Oli-FZ-h9r"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="EQk-eK-dzs" firstAttribute="top" secondItem="5le-FQ-B2q" secondAttribute="topMargin" constant="3" id="LgS-5L-qAd"/>
-                                                <constraint firstAttribute="centerY" secondItem="EQk-eK-dzs" secondAttribute="centerY" constant="0.25" id="OTy-Jc-WLi"/>
-                                                <constraint firstAttribute="centerX" secondItem="EQk-eK-dzs" secondAttribute="centerX" id="af9-yL-VdA"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="EQk-eK-dzs" secondAttribute="bottom" constant="3" id="oFQ-Gi-TjJ"/>
+                                                <constraint firstAttribute="centerY" secondItem="sJg-ZF-nqz" secondAttribute="centerY" constant="0.5" id="Qe8-dc-X1C"/>
+                                                <constraint firstAttribute="centerX" secondItem="sJg-ZF-nqz" secondAttribute="centerX" id="RtY-tj-AxH"/>
+                                                <constraint firstItem="sJg-ZF-nqz" firstAttribute="leading" secondItem="5le-FQ-B2q" secondAttribute="leadingMargin" id="my7-Hp-Sdq"/>
+                                                <constraint firstItem="sJg-ZF-nqz" firstAttribute="trailing" secondItem="5le-FQ-B2q" secondAttribute="trailingMargin" id="u8B-Vz-Tlb"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="OTy-Jc-WLi"/>
+                                                    <exclude reference="RtY-tj-AxH"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
