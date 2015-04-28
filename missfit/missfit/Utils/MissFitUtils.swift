@@ -20,4 +20,10 @@ public class MissFitUtils {
             return screenHeight
         }
     }
+    
+    public class func formatDate(date: NSDate) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd"
+        return dateFormatter.stringFromDate(date)
+    }
 }

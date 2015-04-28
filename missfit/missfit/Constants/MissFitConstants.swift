@@ -24,7 +24,9 @@ let MissFitTeachersURI: String = "teachers"
 
 let MissFitClassesURI: String = "classes"
 
-let MissFitClassesBookingURI: String = "/booking"
+let MissFitClassesDateURI: String = "?date="
+
+let MissFitClassesBookingURI: String = "/bookings"
 
 // MissFit user related:
 
