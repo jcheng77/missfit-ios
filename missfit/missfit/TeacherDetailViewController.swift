@@ -9,7 +9,8 @@
 import UIKit
 
 class TeacherDetailViewController: UIViewController {
-
+    var teacherInfo: MissFitTeacher?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

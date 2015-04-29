@@ -201,9 +201,14 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
     func updateDatesButton() {
         for var i = 0; i < currentWeekViews.count; i++ {
             if selectedDateIndice.datesPageIndex == 1 {
-                currentWeekViews[i].viewWithTag(kDateBackgroundViewTag)?.backgroundColor = UIColor.whiteColor()
-                (currentWeekViews[i].viewWithTag(kWeekDayLabelTag) as? UILabel)?.textColor = MissFitTheme.theme.colorDarkText
-                (currentWeekViews[i].viewWithTag(kDayLabelTag) as? UILabel)?.textColor = MissFitTheme.theme.colorDarkText
+                currentWeekViews[i].viewWithTag(kDateBackgroundViewTag)?.backgroundColor = UIColor.clearColor()
+                if todayDateIndice.dateIndex == i {
+                    (currentWeekViews[i].viewWithTag(kWeekDayLabelTag) as? UILabel)?.textColor = MissFitTheme.theme.colorPink
+                    (currentWeekViews[i].viewWithTag(kDayLabelTag) as? UILabel)?.textColor = MissFitTheme.theme.colorPink
+                } else {
+                    (currentWeekViews[i].viewWithTag(kWeekDayLabelTag) as? UILabel)?.textColor = MissFitTheme.theme.colorDarkText
+                    (currentWeekViews[i].viewWithTag(kDayLabelTag) as? UILabel)?.textColor = MissFitTheme.theme.colorDarkText
+                }
 
             } else {
                 if selectedDateIndice.dateIndex == i {
@@ -211,11 +216,11 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
                     (currentWeekViews[i].viewWithTag(kWeekDayLabelTag) as? UILabel)?.textColor = UIColor.whiteColor()
                     (currentWeekViews[i].viewWithTag(kDayLabelTag) as? UILabel)?.textColor = UIColor.whiteColor()
                 } else if todayDateIndice.dateIndex == i && selectedDateIndice.dateIndex != todayDateIndice.dateIndex {
-                    currentWeekViews[i].viewWithTag(kDateBackgroundViewTag)?.backgroundColor = UIColor.whiteColor()
+                    currentWeekViews[i].viewWithTag(kDateBackgroundViewTag)?.backgroundColor = UIColor.clearColor()
                     (currentWeekViews[i].viewWithTag(kWeekDayLabelTag) as? UILabel)?.textColor = MissFitTheme.theme.colorPink
                     (currentWeekViews[i].viewWithTag(kDayLabelTag) as? UILabel)?.textColor = MissFitTheme.theme.colorPink
                 } else {
-                    currentWeekViews[i].viewWithTag(kDateBackgroundViewTag)?.backgroundColor = UIColor.whiteColor()
+                    currentWeekViews[i].viewWithTag(kDateBackgroundViewTag)?.backgroundColor = UIColor.clearColor()
                     (currentWeekViews[i].viewWithTag(kWeekDayLabelTag) as? UILabel)?.textColor = MissFitTheme.theme.colorDarkText
                     (currentWeekViews[i].viewWithTag(kDayLabelTag) as? UILabel)?.textColor = MissFitTheme.theme.colorDarkText
                 }
@@ -224,7 +229,7 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
         
         for var i = 0; i < nextWeekViews.count; i++ {
             if selectedDateIndice.datesPageIndex == 0 {
-                nextWeekViews[i].viewWithTag(kDateBackgroundViewTag)?.backgroundColor = UIColor.whiteColor()
+                nextWeekViews[i].viewWithTag(kDateBackgroundViewTag)?.backgroundColor = UIColor.clearColor()
                 (nextWeekViews[i].viewWithTag(kWeekDayLabelTag) as? UILabel)?.textColor = MissFitTheme.theme.colorDarkText
                 (nextWeekViews[i].viewWithTag(kDayLabelTag) as? UILabel)?.textColor = MissFitTheme.theme.colorDarkText
                 
@@ -234,7 +239,7 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
                     (nextWeekViews[i].viewWithTag(kWeekDayLabelTag) as? UILabel)?.textColor = UIColor.whiteColor()
                     (nextWeekViews[i].viewWithTag(kDayLabelTag) as? UILabel)?.textColor = UIColor.whiteColor()
                 } else {
-                    nextWeekViews[i].viewWithTag(kDateBackgroundViewTag)?.backgroundColor = UIColor.whiteColor()
+                    nextWeekViews[i].viewWithTag(kDateBackgroundViewTag)?.backgroundColor = UIColor.clearColor()
                     (nextWeekViews[i].viewWithTag(kWeekDayLabelTag) as? UILabel)?.textColor = MissFitTheme.theme.colorDarkText
                     (nextWeekViews[i].viewWithTag(kDayLabelTag) as? UILabel)?.textColor = MissFitTheme.theme.colorDarkText
                 }

@@ -45,7 +45,8 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
         
         KVNProgress.show()
         manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
-            KVNProgress.showSuccessWithStatus("获取老师列表成功！")
+//            KVNProgress.showSuccessWithStatus("获取老师列表成功！")
+            KVNProgress.dismiss()
             // Parse data
             self.parseResponseObject(responseObject as NSDictionary)
             self.tableView.reloadData()
@@ -78,6 +79,13 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 70.0 + MissFitUtils.shortestScreenWidth() * teacherCoverImageAspectRatio
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let teacherInfo = teachers[indexPath.row]
+        let teacherDetailController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TeacherDetailViewController") as TeacherDetailViewController
+        teacherDetailController.teacherInfo = teacherInfo
+        navigationController?.pushViewController(teacherDetailController, animated: true)
     }
 
 }
