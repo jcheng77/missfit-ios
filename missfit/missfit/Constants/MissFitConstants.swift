@@ -28,6 +28,9 @@ let MissFitClassesDateURI: String = "?date="
 
 let MissFitClassesBookingURI: String = "/bookings"
 
+let MissFitMyClassesURI: String = "bookings/class"
+
+
 // MissFit user related:
 
 let MissFitUserInfo: String = "MissFitUserInfo"
@@ -43,4 +46,3 @@ let MissFitUserNickName: String = "MissFitUserNickName"
 let MissFitUserPasscode: String = "MissFitUserPasscode"
 
 let MissFitUserAvatarUrl: String = "MissFitUserAvatarUrl"
-

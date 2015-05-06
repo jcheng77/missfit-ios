@@ -30,6 +30,8 @@ class HomeViewController: UIViewController {
 
     @IBAction func myClassesButtonClicked(sender: AnyObject) {
         if MissFitUser.user.isLogin {
+            let myClassesController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MyClassesViewController") as MyClassesViewController
+            presentViewController(UINavigationController(rootViewController: myClassesController), animated: true, completion: nil)
         } else {
             let loginController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as UIViewController
             presentViewController(UINavigationController(rootViewController: loginController), animated: true, completion: nil)

@@ -77,6 +77,7 @@ class RegisterViewController: UIViewController {
                     var parameters = ["username": phoneNumber, "password": passcode, "code": code, "profile": ["mobile": phoneNumber]]
                     KVNProgress.show()
                     manager.POST(endpoint, parameters: parameters, success: { (operation, responseObject) -> Void in
+                        self.dismissViewControllerAnimated(true, completion: nil)
                         KVNProgress.showSuccessWithStatus("恭喜您注册成功！")
                         //注册成功
                     }, failure: { (operation, error) -> Void in

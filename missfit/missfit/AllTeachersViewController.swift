@@ -82,6 +82,7 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let teacherInfo = teachers[indexPath.row]
         let teacherDetailController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TeacherDetailViewController") as TeacherDetailViewController
         teacherDetailController.teacherInfo = teacherInfo

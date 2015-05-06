@@ -13,13 +13,17 @@ class MissFitTeacher {
     var name: String
     var info: String?
     var manifesto: String?
-    var classScopes: [String]?
+    var classScopes: [String] = [String]()
     var address: String?
     var teachModes: [String] = [String]()
     var coverPicUrl: String?
     var pics: [String] = [String]()
     var avatarUrl: String?
     var idVerified: Bool = false
+    var price: String?
+    var area: String?
+    var district: String?
+    var teacherCertification: MissFitTeacherCertification?
     
     init(json: JSON) {
         teacherId = json["_id"].stringValue
@@ -45,5 +49,32 @@ class MissFitTeacher {
         
         self.avatarUrl = json["touxiang"].string
         self.idVerified = json["verified"].boolValue
+        
+        self.price = json["price"].stringValue
+        self.area = json["area"].string
+        self.district = json["district"].string
+        self.teacherCertification = MissFitTeacherCertification(json: json["certified"])
+    }
+    
+    func classScopesString() -> String {
+        var scopesString = ""
+        for scope in classScopes {
+            scopesString += "、\(scope)"
+        }
+        let startIndex = advance(scopesString.startIndex, 1)
+        scopesString = scopesString.substringFromIndex(startIndex)
+        println("scopesString:\(scopesString)")
+        return scopesString
+    }
+    
+    func teachModesString() -> String {
+        var modesString = ""
+        for mode in teachModes {
+            modesString += "、\(mode)"
+        }
+        let startIndex = advance(modesString.startIndex, 1)
+        modesString = modesString.substringFromIndex(startIndex)
+        println("modesString:\(modesString)")
+        return modesString
     }
 }
