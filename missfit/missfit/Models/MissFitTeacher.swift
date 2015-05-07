@@ -24,6 +24,7 @@ class MissFitTeacher {
     var area: String?
     var district: String?
     var teacherCertification: MissFitTeacherCertification?
+    var distance: String?
     
     init(json: JSON) {
         teacherId = json["_id"].stringValue
@@ -54,6 +55,9 @@ class MissFitTeacher {
         self.area = json["area"].string
         self.district = json["district"].string
         self.teacherCertification = MissFitTeacherCertification(json: json["certified"])
+        if json["distance"] != nil {
+            self.distance = json["distance"].stringValue
+        }
     }
     
     func classScopesString() -> String {

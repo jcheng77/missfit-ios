@@ -26,6 +26,12 @@ class TeacherTableViewCell: UITableViewCell {
         super.awakeFromNib()
         teacherAvatar.layer.masksToBounds = true
         teacherAvatar.layer.cornerRadius = teacherAvatar.bounds.size.width / 2
+        chartsIcon.hidden = true
+        charts.hidden = true
+        commentsIcon.hidden = true
+        comments.hidden = true
+        likesIcon.hidden = true
+        likes.hidden = true
     }
     
     func setData(teacher: MissFitTeacher) {
@@ -40,5 +46,12 @@ class TeacherTableViewCell: UITableViewCell {
         verifiedIcon.hidden = !teacher.idVerified
         address.text = teacher.address
         teacherName.text = teacher.name
+        
+        if let distanceString = teacher.distance {
+            distance.text = distanceString + " km"
+            distance.hidden = false
+        } else {
+            distance.hidden = true
+        }
     }
 }

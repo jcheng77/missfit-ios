@@ -30,6 +30,8 @@ let MissFitClassesBookingURI: String = "/bookings"
 
 let MissFitMyClassesURI: String = "bookings/class"
 
+let MissFitTeachersLocationURI: String = "?location="
+
 
 // MissFit user related:
 
