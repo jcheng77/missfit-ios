@@ -13,6 +13,7 @@ class ClassDetailImageTableViewCell: UITableViewCell {
     @IBOutlet weak var classImage: UIImageView!
     @IBOutlet weak var locationName: UILabel!
     @IBOutlet weak var className: UILabel!
+    @IBOutlet weak var address: UILabel!
     @IBOutlet weak var classDate: UILabel!
     @IBOutlet weak var classTime: UILabel!
     override func awakeFromNib() {
@@ -31,6 +32,7 @@ class ClassDetailImageTableViewCell: UITableViewCell {
         classDate.text = missfitClass.schedule.date
         classTime.text = missfitClass.schedule.startTime
         locationName.text = missfitClass.location.name
+        address.text = missfitClass.location.address
         if let classImageUrl = missfitClass.location.picUrl {
             classImage.setImageWithURL(NSURL(string: classImageUrl))
         }
