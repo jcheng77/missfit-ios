@@ -228,9 +228,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" translatesAutoresizingMaskIntoConstraints="NO" id="dFj-g8-oWL">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="599.5"/>
                             </imageView>
-                            <view alpha="0.49999999999999994" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFo-Rq-bpU">
+                            <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFo-Rq-bpU">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.96862745100000003" green="0.4941176471" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fgn-FO-b74">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="85.5"/>
