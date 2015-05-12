@@ -25,6 +25,14 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @IBAction func orderButtonClicked(sender: AnyObject) {
+        if MissFitUser.user.isLogin {
+            let teacherBookingController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TeacherBookingViewController") as TeacherBookingViewController
+            teacherBookingController.teacherInfo = teacherInfo
+            navigationController?.pushViewController(teacherBookingController, animated: true)
+        } else {
+            let loginController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as UIViewController
+            self.presentViewController(UINavigationController(rootViewController: loginController), animated: true, completion: nil)
+        }
     }
     
     override func viewDidLoad() {

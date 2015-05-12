@@ -29,6 +29,7 @@
 		C35BAB5D1AF8E1320085C9C5 /* MyClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35BAB5C1AF8E1320085C9C5 /* MyClassesViewController.swift */; };
 		C35BAB5F1AF8E6130085C9C5 /* MyClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35BAB5E1AF8E6130085C9C5 /* MyClassTableViewCell.swift */; };
 		C35BAB611AF905A00085C9C5 /* MissFitTeacherCertification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35BAB601AF905A00085C9C5 /* MissFitTeacherCertification.swift */; };
+		C36A84CC1B010972007294A5 /* TeacherBookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A84CB1B010972007294A5 /* TeacherBookingViewController.swift */; };
 		C36AF3111AEA221100FF8E0C /* ForgotPasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36AF3101AEA221100FF8E0C /* ForgotPasscodeViewController.swift */; };
 		C37CCB8E1AE7D95D00384C7E /* UINavigationItem+ChevronBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CCB8D1AE7D95D00384C7E /* UINavigationItem+ChevronBackButton.swift */; };
 		C37CCB901AE7E9BE00384C7E /* ClassDetailImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CCB8F1AE7E9BE00384C7E /* ClassDetailImageTableViewCell.swift */; };
@@ -90,6 +91,7 @@
 		C35BAB5C1AF8E1320085C9C5 /* MyClassesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClassesViewController.swift; sourceTree = "<group>"; };
 		C35BAB5E1AF8E6130085C9C5 /* MyClassTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClassTableViewCell.swift; sourceTree = "<group>"; };
 		C35BAB601AF905A00085C9C5 /* MissFitTeacherCertification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitTeacherCertification.swift; sourceTree = "<group>"; };
+		C36A84CB1B010972007294A5 /* TeacherBookingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherBookingViewController.swift; sourceTree = "<group>"; };
 		C36AF3101AEA221100FF8E0C /* ForgotPasscodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasscodeViewController.swift; sourceTree = "<group>"; };
 		C37CCB8D1AE7D95D00384C7E /* UINavigationItem+ChevronBackButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+ChevronBackButton.swift"; sourceTree = "<group>"; };
 		C37CCB8F1AE7E9BE00384C7E /* ClassDetailImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailImageTableViewCell.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				C3392A421AF1CB70004DB947 /* TeacherManifestoTableViewCell.swift */,
 				C3392A441AF1CB8C004DB947 /* TeacherCertificationsTableViewCell.swift */,
 				C3392A461AF1CB9D004DB947 /* TeacherActionsTableViewCell.swift */,
+				C36A84CB1B010972007294A5 /* TeacherBookingViewController.swift */,
 				C3F6F2EA1AE54DF300BAD118 /* LocationDetailViewController.swift */,
 				C3F6F2EC1AE54E5200BAD118 /* ClassDetailViewController.swift */,
 				C37CCB8F1AE7E9BE00384C7E /* ClassDetailImageTableViewCell.swift */,
@@ -417,6 +420,7 @@
 				C3BA87EF1AE29EF4009D7A56 /* AllTeachersViewController.swift in Sources */,
 				C37CCB941AE7E9FB00384C7E /* ClassDetailInfoTableViewCell.swift in Sources */,
 				C37CCB921AE7E9D400384C7E /* ClassDetailBookTableViewCell.swift in Sources */,
+				C36A84CC1B010972007294A5 /* TeacherBookingViewController.swift in Sources */,
 				C3C202601AEC941600F3E30C /* SettingsNormalTableViewCell.swift in Sources */,
 				C3392A411AF1CB3A004DB947 /* TeacherInfoTableViewCell.swift in Sources */,
 				C36AF3111AEA221100FF8E0C /* ForgotPasscodeViewController.swift in Sources */,

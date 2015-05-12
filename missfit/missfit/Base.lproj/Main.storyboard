@@ -162,7 +162,7 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                                     <inset key="imageEdgeInsets" minX="-28" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    <state key="normal" title="400-616-3926" image="phone-certified">
+                                                    <state key="normal" title="400-032-0092" image="phone-certified">
                                                         <color key="titleColor" red="0.63137254899999995" green="0.63137254899999995" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -1669,6 +1669,124 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ctS-yB-eFN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2433" y="776"/>
+        </scene>
+        <!--预约信息-->
+        <scene sceneID="tUh-x5-cte">
+            <objects>
+                <viewController storyboardIdentifier="TeacherBookingViewController" id="3F1-wB-YXB" customClass="TeacherBookingViewController" customModule="missfit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fjz-Eu-oZV"/>
+                        <viewControllerLayoutGuide type="bottom" id="OSH-Xc-3lD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1WU-Kp-ycd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请填写您的预约信息，我们将尽快与您取得联系，谢谢！" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oH-EM-FdA">
+                                <rect key="frame" x="16" y="72" width="568" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evJ-7X-ut1">
+                                <rect key="frame" x="16" y="268" width="568" height="40"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.4941176471" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="GGh-6A-7Qn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <state key="normal" title="提交">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitButtonClicked:" destination="3F1-wB-YXB" eventType="touchUpInside" id="gpl-Rx-FrP"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="请输入您的姓名或公司名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4pw-wB-ab6">
+                                <rect key="frame" x="16" y="142" width="568" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="r5x-ek-40d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="请输入您需要上门服务的地址" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a8U-KG-CuZ">
+                                <rect key="frame" x="16" y="184" width="568" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="7Qf-8A-kUd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="yUM-SV-pyr">
+                                <rect key="frame" x="0.0" y="438" width="600" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="453110283.39329398">
+                                    <!--2015-05-12 07:58:03 +0000-->
+                                </date>
+                            </datePicker>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="请输入您需要上门服务的时间" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w0N-Yl-E6N">
+                                <rect key="frame" x="16" y="226" width="568" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="hfe-J2-1PL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="请输入您的手机号码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qfD-uv-J4f">
+                                <rect key="frame" x="16" y="100" width="568" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="Za9-K2-xsl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="yUM-SV-pyr" secondAttribute="trailing" constant="-16" id="0IT-sC-weU"/>
+                            <constraint firstItem="qfD-uv-J4f" firstAttribute="trailing" secondItem="1WU-Kp-ycd" secondAttribute="trailingMargin" id="2Fx-0x-nCu"/>
+                            <constraint firstItem="4pw-wB-ab6" firstAttribute="top" secondItem="qfD-uv-J4f" secondAttribute="bottom" constant="8" id="3GV-W5-Msc"/>
+                            <constraint firstItem="w0N-Yl-E6N" firstAttribute="top" secondItem="a8U-KG-CuZ" secondAttribute="bottom" constant="8" id="599-Xw-RZF"/>
+                            <constraint firstItem="6oH-EM-FdA" firstAttribute="top" secondItem="Fjz-Eu-oZV" secondAttribute="bottom" constant="8" id="6Q3-Yh-5eC"/>
+                            <constraint firstItem="qfD-uv-J4f" firstAttribute="top" secondItem="6oH-EM-FdA" secondAttribute="bottom" constant="8" id="A9v-8R-RMt"/>
+                            <constraint firstItem="a8U-KG-CuZ" firstAttribute="top" secondItem="4pw-wB-ab6" secondAttribute="bottom" constant="8" id="BLb-X4-zlY"/>
+                            <constraint firstItem="4pw-wB-ab6" firstAttribute="trailing" secondItem="1WU-Kp-ycd" secondAttribute="trailingMargin" id="Ed1-kG-pG1"/>
+                            <constraint firstItem="evJ-7X-ut1" firstAttribute="top" secondItem="w0N-Yl-E6N" secondAttribute="bottom" constant="8" id="FNK-sJ-67S"/>
+                            <constraint firstItem="evJ-7X-ut1" firstAttribute="leading" secondItem="1WU-Kp-ycd" secondAttribute="leadingMargin" id="HSe-D9-VZ8"/>
+                            <constraint firstItem="4pw-wB-ab6" firstAttribute="leading" secondItem="1WU-Kp-ycd" secondAttribute="leadingMargin" id="Mit-wQ-NN8"/>
+                            <constraint firstItem="evJ-7X-ut1" firstAttribute="trailing" secondItem="1WU-Kp-ycd" secondAttribute="trailingMargin" id="MpC-IT-lQx"/>
+                            <constraint firstItem="a8U-KG-CuZ" firstAttribute="trailing" secondItem="1WU-Kp-ycd" secondAttribute="trailingMargin" id="Odu-EU-z9O"/>
+                            <constraint firstItem="qfD-uv-J4f" firstAttribute="leading" secondItem="1WU-Kp-ycd" secondAttribute="leadingMargin" id="VCs-aD-gC3"/>
+                            <constraint firstItem="6oH-EM-FdA" firstAttribute="leading" secondItem="1WU-Kp-ycd" secondAttribute="leadingMargin" id="YfD-86-hwz"/>
+                            <constraint firstItem="yUM-SV-pyr" firstAttribute="leading" secondItem="1WU-Kp-ycd" secondAttribute="leadingMargin" constant="-16" id="j1b-s8-q90"/>
+                            <constraint firstItem="6oH-EM-FdA" firstAttribute="trailing" secondItem="1WU-Kp-ycd" secondAttribute="trailingMargin" id="kVh-XD-KXW"/>
+                            <constraint firstItem="OSH-Xc-3lD" firstAttribute="top" secondItem="yUM-SV-pyr" secondAttribute="bottom" id="oGb-2g-rXO"/>
+                            <constraint firstItem="w0N-Yl-E6N" firstAttribute="leading" secondItem="1WU-Kp-ycd" secondAttribute="leadingMargin" id="oZR-E9-hgB"/>
+                            <constraint firstItem="w0N-Yl-E6N" firstAttribute="trailing" secondItem="1WU-Kp-ycd" secondAttribute="trailingMargin" id="ppg-Yg-pmP"/>
+                            <constraint firstItem="a8U-KG-CuZ" firstAttribute="leading" secondItem="1WU-Kp-ycd" secondAttribute="leadingMargin" id="wjo-oC-Jde"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="预约信息" id="lAh-IL-nri">
+                        <barButtonItem key="leftBarButtonItem" image="backBarBtnBg" id="IOC-Ru-kl6">
+                            <connections>
+                                <action selector="backButtonClicked:" destination="3F1-wB-YXB" id="Xgj-jh-xGZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="address" destination="a8U-KG-CuZ" id="YfB-mW-782"/>
+                        <outlet property="date" destination="w0N-Yl-E6N" id="Xfe-aq-54T"/>
+                        <outlet property="datePicker" destination="yUM-SV-pyr" id="2a0-5i-4RH"/>
+                        <outlet property="name" destination="4pw-wB-ab6" id="9lS-qG-xmc"/>
+                        <outlet property="phone" destination="qfD-uv-J4f" id="iUH-61-Wls"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cmr-aU-VDj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3084" y="776"/>
         </scene>
         <!--我的课程-->
         <scene sceneID="2ST-wp-k3Q">
