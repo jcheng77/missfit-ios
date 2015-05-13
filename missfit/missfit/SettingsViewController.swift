@@ -25,7 +25,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         var endpoint: String = MissFitBaseURL + MissFitLogoutURI
         
         KVNProgress.show()
-        manager.requestSerializer = AFHTTPRequestSerializer()
         manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
         manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
         manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
@@ -110,6 +109,14 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         header.contentView.backgroundColor = MissFitTheme.theme.colorHeaderBackground
         header.textLabel.textColor = MissFitTheme.theme.colorDarkText
         header.textLabel.font = UIFont.systemFontOfSize(14)
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if sectionsInfo[indexPath.section]["key"] as String == "关于我们" {
+            if (sectionsInfo[indexPath.section]["value"]! as [String])[indexPath.row] == "服务条款" {
+                
+            }
+        }
     }
 
 }

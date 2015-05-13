@@ -28,6 +28,7 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: Selector("locationNotFound"), userInfo: nil, repeats: false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,21 +48,25 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
+    func locationNotFound() {
+        // 暂时没获取到位置信息
+        if currentLocation == nil && allowUseLocation {
+            self.refreshData()
+        }
+    }
+    
     func refreshData() {
         teachers = []
         var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
         var endpoint: String = MissFitBaseURL + MissFitTeachersURI
         
-        if allowUseLocation {
+        if allowUseLocation && currentLocation != nil {
             endpoint = endpoint + MissFitTeachersLocationURI + "\(currentLocation!.coordinate.longitude),\(currentLocation!.coordinate.latitude)"
-            println("endpoint:\(endpoint)")
         }
         
         KVNProgress.show()
         manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
-//            KVNProgress.showSuccessWithStatus("获取老师列表成功！")
             KVNProgress.dismiss()
-            println("responseObject:\(responseObject)")
             // Parse data
             self.parseResponseObject(responseObject as NSDictionary)
             self.tableView.reloadData()
@@ -105,11 +110,10 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == .AuthorizedWhenInUse {
-//            allowUseLocation = true
+        if status == .AuthorizedWhenInUse || status == .AuthorizedAlways {
+            allowUseLocation = true
         } else {
             // TODO: ask the user to allow the permission
-            println("Open the location permission in the settings.")
             refreshData()
         }
     }
@@ -121,7 +125,6 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if currentLocation == nil {
             currentLocation = locations.last as? CLLocation
-            println("didUpdateToLocation:\(currentLocation)")
             locationManager.stopUpdatingLocation()
             allowUseLocation = true
             refreshData()

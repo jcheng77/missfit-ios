@@ -8,44 +8,128 @@
 
 import UIKit
 
+enum MyClassCategory {
+    case Class
+    case Teacher
+}
+
 class MyClassesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
 
-    var classes = [MissFitClass]()
-    
+    var classes: [MissFitClass]?
+    var bookingTeachers: [MissFitBookingTeacher]?
+    var currentCategory = MyClassCategory.Class
     @IBAction func backButtonClicked(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func parseResponseObject(responseObject: NSDictionary) {
+    func toggleSelection(sender: AnyObject) {
+        let segmentedControl = sender as UISegmentedControl
+        if segmentedControl.selectedSegmentIndex == 0 {
+            currentCategory = MyClassCategory.Class
+        } else {
+            currentCategory = MyClassCategory.Teacher
+        }
+        
+        tableView.reloadData()
+        
+        if classes == nil || bookingTeachers == nil {
+            fetchData(currentCategory)
+        }
+    }
+    
+    func parseClassResponseObject(responseObject: NSDictionary) {
         let json = JSON(responseObject)
         for (key: String, subJson: JSON) in json {
             if key == "data" {
                 for (index: String, thirdJson: JSON) in subJson {
                     let missfitClass: MissFitClass = MissFitClass(json: thirdJson)
-                    classes.append(missfitClass)
+                    classes!.append(missfitClass)
                 }
             }
         }
     }
     
-    func fetchData() {
-        classes.removeAll(keepCapacity: false)
+    func parseTeacherResponseObject(responseObject: NSDictionary) {
+        let json = JSON(responseObject)
+        for (key: String, subJson: JSON) in json {
+            if key == "data" {
+                for (index: String, thirdJson: JSON) in subJson {
+                    let missfitBookingTeacher: MissFitBookingTeacher = MissFitBookingTeacher(json: thirdJson)
+                    bookingTeachers!.append(missfitBookingTeacher)
+                }
+            }
+        }
+    }
+    
+    func fetchData(category: MyClassCategory) {
+        if category == MyClassCategory.Class {
+            if classes == nil {
+                classes = [MissFitClass]()
+            }
+            classes!.removeAll(keepCapacity: false)
+            var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+            var endpoint: String = MissFitBaseURL + MissFitMyClassesURI
+            KVNProgress.show()
+            manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
+            manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
+            manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
+                //            KVNProgress.showSuccessWithStatus("获取课程列表成功！")
+                KVNProgress.dismiss()
+                // Parse data
+                self.parseClassResponseObject(responseObject as NSDictionary)
+                self.tableView.reloadData()
+                }) { (operation, error) -> Void in
+                    if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
+                        // Need to get the status and message
+                        let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as NSData)
+                        let message: String? = json["message"].string
+                        KVNProgress.showErrorWithStatus(message?)
+                    } else {
+                        KVNProgress.showErrorWithStatus("获取我的课程列表失败")
+                    }
+            }
+        } else {
+            if bookingTeachers == nil {
+                bookingTeachers = [MissFitBookingTeacher]()
+            }
+            bookingTeachers!.removeAll(keepCapacity: false)
+            var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+            var endpoint: String = MissFitBaseURL + MissFitMyTeachersURI
+            KVNProgress.show()
+            manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
+            manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
+            manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
+                KVNProgress.dismiss()
+                // Parse data
+                self.parseTeacherResponseObject(responseObject as NSDictionary)
+                self.tableView.reloadData()
+                }) { (operation, error) -> Void in
+                    if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
+                        // Need to get the status and message
+                        let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as NSData)
+                        let message: String? = json["message"].string
+                        KVNProgress.showErrorWithStatus(message?)
+                    } else {
+                        KVNProgress.showErrorWithStatus("获取老师预约列表失败")
+                    }
+            }
+        }
+    }
+    
+    func loadTeachers() {
         var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-        var endpoint: String = MissFitBaseURL + MissFitMyClassesURI
-        KVNProgress.show()
-        manager.requestSerializer = AFHTTPRequestSerializer()
+        var endpoint: String = MissFitBaseURL + MissFitMyTeachersURI
+//        KVNProgress.show()
         manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
         manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
         println("userId:\(MissFitUser.user.userId)")
         println("token:\(MissFitUser.user.token)")
         manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
             //            KVNProgress.showSuccessWithStatus("获取课程列表成功！")
-            KVNProgress.dismiss()
+//            KVNProgress.dismiss()
             // Parse data
-            self.parseResponseObject(responseObject as NSDictionary)
-            self.tableView.reloadData()
-            println("responseData:\(responseObject)")
+            println("responseObject:\(responseObject)")
             }) { (operation, error) -> Void in
                 if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
                     // Need to get the status and message
@@ -62,9 +146,18 @@ class MyClassesViewController: UIViewController, UITableViewDataSource, UITableV
         
     }
     
+    func initSegments() {
+        let optionsArray = ["我的课程", "老师预约"]
+        let optionsToggle = UISegmentedControl(items: optionsArray)
+        optionsToggle.addTarget(self, action: Selector("toggleSelection:"), forControlEvents: UIControlEvents.ValueChanged)
+        optionsToggle.selectedSegmentIndex = 0
+        self.navigationItem.titleView = optionsToggle
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchData()
+        initSegments()
+        fetchData(currentCategory)
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,13 +166,31 @@ class MyClassesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return classes.count
+        if currentCategory == MyClassCategory.Class {
+            if classes == nil {
+                return 0
+            } else {
+                return classes!.count
+            }
+        } else {
+            if bookingTeachers == nil {
+                return 0
+            } else {
+                return bookingTeachers!.count
+            }
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MyClassTableViewCell", forIndexPath: indexPath) as MyClassTableViewCell
-        cell.setData(classes[indexPath.row])
-        return cell
+        if currentCategory == MyClassCategory.Class {
+            let cell = tableView.dequeueReusableCellWithIdentifier("MyClassTableViewCell", forIndexPath: indexPath) as MyClassTableViewCell
+            cell.setData(classes![indexPath.row])
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("MyTeacherTableViewCell", forIndexPath: indexPath) as MyTeacherTableViewCell
+            cell.setData(bookingTeachers![indexPath.row])
+            return cell
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -88,9 +199,11 @@ class MyClassesViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let classDetailController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ClassDetailViewController") as ClassDetailViewController
-        classDetailController.missfitClass = classes[indexPath.row]
-        navigationController?.pushViewController(classDetailController, animated: true)
+        if currentCategory == MyClassCategory.Class {
+            let classDetailController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ClassDetailViewController") as ClassDetailViewController
+            classDetailController.missfitClass = classes![indexPath.row]
+            navigationController?.pushViewController(classDetailController, animated: true)
+        }
     }
 
 }

@@ -16,9 +16,18 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
     let kRowNumber = 3
     let classCoverImageAspectRatio: CGFloat = 488.0 / 640.0
     var missfitClass: MissFitClass?
+    var scene: WXScene = WXSceneSession
+    @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if WXApi.isWXAppInstalled() && WXApi.isWXAppSupportApi() {
+            // do nothing
+        } else {
+            navigationItem.rightBarButtonItem = nil
+        }
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100.0
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,6 +39,50 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
         navigationController?.popViewControllerAnimated(true)
     }
     
+    @IBAction func actionButtonClicked(sender: AnyObject) {
+        let sheet = UIAlertController(title: "推荐好友", message: nil, preferredStyle: .ActionSheet)
+        let wxFriendAction = UIAlertAction(title: "微信好友", style: .Default) { (action: UIAlertAction!) -> Void in
+            self.scene = WXSceneSession
+            self.sendClassInfo()
+        }
+        
+        let wxTimelineAction = UIAlertAction(title: "微信朋友圈", style: .Default) { (action: UIAlertAction!) -> Void in
+            self.scene = WXSceneTimeline
+            self.sendClassInfo()
+        }
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .Cancel) { (action: UIAlertAction!) -> Void in
+            // Do nothing
+        }
+        
+        sheet.addAction(wxFriendAction)
+        sheet.addAction(wxTimelineAction)
+        sheet.addAction(cancelAction)
+        
+        presentViewController(sheet, animated: true, completion: nil)
+
+    }
+    
+    func sendClassInfo() {
+        let message = WXMediaMessage()
+        message.title = "美人瑜 - " + self.missfitClass!.name
+        message.description = "你身边的瑜伽健身教练"
+        message.setThumbImage(UIImage(named: "logo"))
+
+        let ext = WXWebpageObject()
+        ext.webpageUrl = MissFitSharingClassURI + self.missfitClass!.classId
+        
+        message.mediaObject = ext;
+        message.mediaTagName = "WECHAT_TAG_JUMP_SHOWRANK"
+        
+        
+        let req = SendMessageToWXReq()
+        req.bText = false
+        req.message = message
+        req.scene = Int32(self.scene.value)
+        WXApi.sendReq(req)
+    }
+    
     @IBAction func bookButtonClicked(sender: AnyObject) {
         let alert: UIAlertController = UIAlertController(title: "提示", message: "你确定要预约本次课程吗？", preferredStyle: .Alert)
         let confirmAction = UIAlertAction(title: "确定", style: .Default) { (action: UIAlertAction!) -> Void in
@@ -38,7 +91,6 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
                 var endpoint: String = MissFitBaseURL + MissFitClassesURI + "/" + self.missfitClass!.classId + MissFitClassesBookingURI
                 
                 KVNProgress.show()
-                manager.requestSerializer = AFHTTPRequestSerializer()
                 manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
                 manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
                 manager.POST(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
@@ -90,10 +142,6 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
         default:
             return UITableViewCell()
         }
-    }
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
     }
 
 }

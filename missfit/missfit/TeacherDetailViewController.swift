@@ -16,9 +16,53 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
     var kTeacherCertificationsCellIndex = 3
     var kTeacherActionsCellIndex = 4
     @IBOutlet weak var tableView: UITableView!
+    var scene: WXScene = WXSceneSession
     
     @IBAction func backButtonClicked(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func actionButtonClicked(sender: AnyObject) {
+        let sheet = UIAlertController(title: "推荐好友", message: nil, preferredStyle: .ActionSheet)
+        let wxFriendAction = UIAlertAction(title: "微信好友", style: .Default) { (action: UIAlertAction!) -> Void in
+            self.scene = WXSceneSession
+            self.sendTeacherInfo()
+        }
+        
+        let wxTimelineAction = UIAlertAction(title: "微信朋友圈", style: .Default) { (action: UIAlertAction!) -> Void in
+            self.scene = WXSceneTimeline
+            self.sendTeacherInfo()
+        }
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .Cancel) { (action: UIAlertAction!) -> Void in
+            // Do nothing
+        }
+        
+        sheet.addAction(wxFriendAction)
+        sheet.addAction(wxTimelineAction)
+        sheet.addAction(cancelAction)
+        
+        presentViewController(sheet, animated: true, completion: nil)
+    }
+    
+    func sendTeacherInfo() {
+        let message = WXMediaMessage()
+        message.title = "美人瑜 - " + self.teacherInfo!.name
+        message.description = "你身边的瑜伽健身教练"
+        message.setThumbImage(UIImage(named: "logo"))
+        
+        let ext = WXWebpageObject()
+        ext.webpageUrl = MissFitSharingTeacherURI + self.teacherInfo!.teacherId
+        
+        message.mediaObject = ext;
+        message.mediaTagName = "WECHAT_TAG_JUMP_SHOWRANK"
+        
+        
+        let req = SendMessageToWXReq()
+        req.bText = false
+        req.message = message
+        req.scene = Int32(self.scene.value)
+        WXApi.sendReq(req)
     }
     
     @IBAction func classesButtonClicked(sender: AnyObject) {
@@ -37,6 +81,13 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if WXApi.isWXAppInstalled() && WXApi.isWXAppSupportApi() {
+            // do nothing
+        } else {
+            navigationItem.rightBarButtonItem = nil
+        }
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100.0
         if !teacherInfo!.teacherCertification!.isCertified {
             kTeacherCertificationsCellIndex = -1
             kTeacherActionsCellIndex = 3
@@ -103,9 +154,5 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
         } else {
             return UITableViewCell()
         }
-    }
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
     }
 }

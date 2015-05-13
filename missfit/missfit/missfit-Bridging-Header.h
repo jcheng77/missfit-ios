@@ -5,3 +5,4 @@
 #import <KVNProgress/KVNProgress.h>
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "UIImageView+AFNetworking.h"
+#import "WXApi.h"

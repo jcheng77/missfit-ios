@@ -16,6 +16,13 @@
 		C310D5A81ADC0E2800A70054 /* missfitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C310D5A71ADC0E2800A70054 /* missfitTests.swift */; };
 		C310D5C51ADD670E00A70054 /* AllClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C310D5C41ADD670E00A70054 /* AllClassesViewController.swift */; };
 		C310D5C91ADE9E3600A70054 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C310D5C81ADE9E3600A70054 /* RegisterViewController.swift */; };
+		C31152091B024EB900FBF0CD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31152081B024EB900FBF0CD /* SystemConfiguration.framework */; };
+		C311520B1B024EC100FBF0CD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C311520A1B024EC100FBF0CD /* libz.dylib */; };
+		C311520D1B024ECB00FBF0CD /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C311520C1B024ECB00FBF0CD /* libsqlite3.0.dylib */; };
+		C311520F1B024F3700FBF0CD /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C311520E1B024F3700FBF0CD /* libc++.dylib */; };
+		C31152111B027EFC00FBF0CD /* MyTeacherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31152101B027EFC00FBF0CD /* MyTeacherTableViewCell.swift */; };
+		C313B0BA1B028615009FE2E4 /* MissFitBookingTeacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313B0B91B028615009FE2E4 /* MissFitBookingTeacher.swift */; };
+		C313B0BC1B02CB78009FE2E4 /* MissFitBookingTeacherDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313B0BB1B02CB78009FE2E4 /* MissFitBookingTeacherDetail.swift */; };
 		C3392A3F1AF1CB01004DB947 /* TeacherImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3392A3E1AF1CB01004DB947 /* TeacherImageTableViewCell.swift */; };
 		C3392A411AF1CB3A004DB947 /* TeacherInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3392A401AF1CB3A004DB947 /* TeacherInfoTableViewCell.swift */; };
 		C3392A431AF1CB70004DB947 /* TeacherManifestoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3392A421AF1CB70004DB947 /* TeacherManifestoTableViewCell.swift */; };
@@ -25,6 +32,7 @@
 		C33CF10A1AE78AB900B35BF8 /* MissFitClassSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33CF1091AE78AB900B35BF8 /* MissFitClassSchedule.swift */; };
 		C33CF10C1AE78C8100B35BF8 /* ClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33CF10B1AE78C8100B35BF8 /* ClassTableViewCell.swift */; };
 		C34B9F631ADFE8A900911821 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B9F621ADFE8A900911821 /* LoginViewController.swift */; };
+		C351CC5A1B02423F00B61900 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C351CC561B02423F00B61900 /* libWeChatSDK.a */; };
 		C35A8A311AE3F0B800AB974C /* MissFitTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A8A301AE3F0B800AB974C /* MissFitTheme.swift */; };
 		C35BAB5D1AF8E1320085C9C5 /* MyClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35BAB5C1AF8E1320085C9C5 /* MyClassesViewController.swift */; };
 		C35BAB5F1AF8E6130085C9C5 /* MyClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35BAB5E1AF8E6130085C9C5 /* MyClassTableViewCell.swift */; };
@@ -78,6 +86,13 @@
 		C310D5A71ADC0E2800A70054 /* missfitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = missfitTests.swift; sourceTree = "<group>"; };
 		C310D5C41ADD670E00A70054 /* AllClassesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllClassesViewController.swift; sourceTree = "<group>"; };
 		C310D5C81ADE9E3600A70054 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		C31152081B024EB900FBF0CD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C311520A1B024EC100FBF0CD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		C311520C1B024ECB00FBF0CD /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		C311520E1B024F3700FBF0CD /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		C31152101B027EFC00FBF0CD /* MyTeacherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTeacherTableViewCell.swift; sourceTree = "<group>"; };
+		C313B0B91B028615009FE2E4 /* MissFitBookingTeacher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitBookingTeacher.swift; sourceTree = "<group>"; };
+		C313B0BB1B02CB78009FE2E4 /* MissFitBookingTeacherDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitBookingTeacherDetail.swift; sourceTree = "<group>"; };
 		C3392A3E1AF1CB01004DB947 /* TeacherImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherImageTableViewCell.swift; sourceTree = "<group>"; };
 		C3392A401AF1CB3A004DB947 /* TeacherInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherInfoTableViewCell.swift; sourceTree = "<group>"; };
 		C3392A421AF1CB70004DB947 /* TeacherManifestoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherManifestoTableViewCell.swift; sourceTree = "<group>"; };
@@ -87,6 +102,9 @@
 		C33CF1091AE78AB900B35BF8 /* MissFitClassSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitClassSchedule.swift; sourceTree = "<group>"; };
 		C33CF10B1AE78C8100B35BF8 /* ClassTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTableViewCell.swift; sourceTree = "<group>"; };
 		C34B9F621ADFE8A900911821 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C351CC561B02423F00B61900 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		C351CC581B02423F00B61900 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		C351CC591B02423F00B61900 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		C35A8A301AE3F0B800AB974C /* MissFitTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitTheme.swift; sourceTree = "<group>"; };
 		C35BAB5C1AF8E1320085C9C5 /* MyClassesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClassesViewController.swift; sourceTree = "<group>"; };
 		C35BAB5E1AF8E6130085C9C5 /* MyClassTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClassTableViewCell.swift; sourceTree = "<group>"; };
@@ -122,6 +140,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C311520F1B024F3700FBF0CD /* libc++.dylib in Frameworks */,
+				C311520D1B024ECB00FBF0CD /* libsqlite3.0.dylib in Frameworks */,
+				C311520B1B024EC100FBF0CD /* libz.dylib in Frameworks */,
+				C31152091B024EB900FBF0CD /* SystemConfiguration.framework in Frameworks */,
+				C351CC5A1B02423F00B61900 /* libWeChatSDK.a in Frameworks */,
 				CEC30D075A8648C356B13DD9 /* libPods-missfit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +162,10 @@
 		B232B95DD7FEA203F5D54300 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C311520E1B024F3700FBF0CD /* libc++.dylib */,
+				C311520C1B024ECB00FBF0CD /* libsqlite3.0.dylib */,
+				C311520A1B024EC100FBF0CD /* libz.dylib */,
+				C31152081B024EB900FBF0CD /* SystemConfiguration.framework */,
 				ED55CC9B48190B5B14C9735A /* libPods-missfit.a */,
 			);
 			name = Frameworks;
@@ -198,6 +225,7 @@
 				C3C202631AEC96AD00F3E30C /* SettingsActionTableViewCell.swift */,
 				C35BAB5C1AF8E1320085C9C5 /* MyClassesViewController.swift */,
 				C35BAB5E1AF8E6130085C9C5 /* MyClassTableViewCell.swift */,
+				C31152101B027EFC00FBF0CD /* MyTeacherTableViewCell.swift */,
 				C310D5951ADC0E2800A70054 /* Main.storyboard */,
 				C310D5981ADC0E2800A70054 /* Images.xcassets */,
 				C310D59A1ADC0E2800A70054 /* LaunchScreen.xib */,
@@ -233,6 +261,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C351CC551B02423F00B61900 /* WeChatSDK_1.5 */ = {
+			isa = PBXGroup;
+			children = (
+				C351CC561B02423F00B61900 /* libWeChatSDK.a */,
+				C351CC581B02423F00B61900 /* WXApi.h */,
+				C351CC591B02423F00B61900 /* WXApiObject.h */,
+			);
+			path = WeChatSDK_1.5;
+			sourceTree = "<group>";
+		};
 		C35A8A2F1AE3F09C00AB974C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,6 +292,7 @@
 		C3C7BD691ADFAB1300755CE3 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				C351CC551B02423F00B61900 /* WeChatSDK_1.5 */,
 				C3C7BD6A1ADFAB1300755CE3 /* SwiftyJSON.swift */,
 			);
 			path = Vendor;
@@ -265,6 +304,8 @@
 				C3F6F2DE1AE4CA7500BAD118 /* MissFitTeacher.swift */,
 				C3F6F2E01AE4CB4F00BAD118 /* MissFitLocation.swift */,
 				C33CF1071AE78A7F00B35BF8 /* MissFitClass.swift */,
+				C313B0B91B028615009FE2E4 /* MissFitBookingTeacher.swift */,
+				C313B0BB1B02CB78009FE2E4 /* MissFitBookingTeacherDetail.swift */,
 				C33CF1091AE78AB900B35BF8 /* MissFitClassSchedule.swift */,
 				C35BAB601AF905A00085C9C5 /* MissFitTeacherCertification.swift */,
 				C39DB0C91AEBC9F000C91E5A /* MissFitUser.swift */,
@@ -437,6 +478,7 @@
 				C37CCB901AE7E9BE00384C7E /* ClassDetailImageTableViewCell.swift in Sources */,
 				C3F6F2EB1AE54DF300BAD118 /* LocationDetailViewController.swift in Sources */,
 				C3F6F2E91AE54DA700BAD118 /* TeacherDetailViewController.swift in Sources */,
+				C31152111B027EFC00FBF0CD /* MyTeacherTableViewCell.swift in Sources */,
 				C310D5921ADC0E2800A70054 /* missfit.xcdatamodeld in Sources */,
 				C34B9F631ADFE8A900911821 /* LoginViewController.swift in Sources */,
 				C3392A3F1AF1CB01004DB947 /* TeacherImageTableViewCell.swift in Sources */,
@@ -446,12 +488,14 @@
 				C3392A471AF1CB9D004DB947 /* TeacherActionsTableViewCell.swift in Sources */,
 				C33CF10A1AE78AB900B35BF8 /* MissFitClassSchedule.swift in Sources */,
 				C39DB0CA1AEBC9F000C91E5A /* MissFitUser.swift in Sources */,
+				C313B0BA1B028615009FE2E4 /* MissFitBookingTeacher.swift in Sources */,
 				C37CCB8E1AE7D95D00384C7E /* UINavigationItem+ChevronBackButton.swift in Sources */,
 				C35BAB611AF905A00085C9C5 /* MissFitTeacherCertification.swift in Sources */,
 				C3C202621AEC948900F3E30C /* SettingsDetailTableViewCell.swift in Sources */,
 				C3392A431AF1CB70004DB947 /* TeacherManifestoTableViewCell.swift in Sources */,
 				C35BAB5F1AF8E6130085C9C5 /* MyClassTableViewCell.swift in Sources */,
 				C3C7BD6B1ADFAB1300755CE3 /* SwiftyJSON.swift in Sources */,
+				C313B0BC1B02CB78009FE2E4 /* MissFitBookingTeacherDetail.swift in Sources */,
 				C3C7BD521ADEAF4700755CE3 /* MissFitConstants.swift in Sources */,
 				C3F6F2ED1AE54E5200BAD118 /* ClassDetailViewController.swift in Sources */,
 				C3F6F2E41AE4E7DB00BAD118 /* MissFitUtils.swift in Sources */,
@@ -587,6 +631,10 @@
 				INFOPLIST_FILE = missfit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/missfit/Vendor/WeChatSDK_1.5",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "missfit/missfit-Bridging-Header.h";
@@ -606,6 +654,10 @@
 				INFOPLIST_FILE = missfit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/missfit/Vendor/WeChatSDK_1.5",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "missfit/missfit-Bridging-Header.h";

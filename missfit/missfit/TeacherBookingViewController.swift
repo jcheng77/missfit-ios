@@ -38,10 +38,9 @@ class TeacherBookingViewController: UIViewController {
                     } else {
                         var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
                         var endpoint: String = MissFitBaseURL + MissFitTeachersURI + "/" + self.teacherInfo!.teacherId + MissFitClassesBookingURI
-                        var parameters = ["detail": ["date": dateString, "name": nameString, "phone": phoneNumber]]
+                        var parameters = ["details": ["date": dateString, "name": nameString, "phone": phoneNumber]]
                         
                         KVNProgress.show()
-                        manager.requestSerializer = AFHTTPRequestSerializer()
                         manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
                         manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
                         manager.POST(endpoint, parameters: parameters, success: { (operation, responseObject) -> Void in
