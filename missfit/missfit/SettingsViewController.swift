@@ -9,6 +9,7 @@
 import UIKit
 
 class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var tableView: UITableView!
     let sectionsInfo = [["key": "个人信息", "value": ["电话"]], /*"所在城市", "账户信息", */["key": "关于我们", "value": ["服务条款"]]]
 
     @IBAction func backButtonClicked(sender: AnyObject) {
@@ -46,6 +47,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 44.0
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,10 +99,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
-    
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30.0
     }
@@ -112,9 +111,12 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
         if sectionsInfo[indexPath.section]["key"] as String == "关于我们" {
-            if (sectionsInfo[indexPath.section]["value"]! as [String])[indexPath.row] == "服务条款" {
-                
+            let stringArray = sectionsInfo[indexPath.section]["value"]! as [String]
+            if indexPath.row < stringArray.count && stringArray[indexPath.row] == "服务条款" {
+                let touController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TermsOfUseViewController") as TermsOfUseViewController
+                navigationController?.pushViewController(touController, animated: true)
             }
         }
     }

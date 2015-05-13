@@ -19,11 +19,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pka-eB-n08">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pka-eB-n08">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingsNormalTableViewCell" id="TEz-4e-Eph" customClass="SettingsNormalTableViewCell" customModule="missfit" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingsNormalTableViewCell" id="TEz-4e-Eph" customClass="SettingsNormalTableViewCell" customModule="missfit" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TEz-4e-Eph" id="AU1-Fj-oYh">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -135,7 +135,7 @@
                                             <outlet property="detail" destination="yAf-Xk-oEv" id="zKp-U1-BwT"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingsActionTableViewCell" rowHeight="107" id="YDW-i9-fjX" customClass="SettingsActionTableViewCell" customModule="missfit" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingsActionTableViewCell" rowHeight="107" id="YDW-i9-fjX" customClass="SettingsActionTableViewCell" customModule="missfit" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YDW-i9-fjX" id="b4x-hL-tMo">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -208,6 +208,9 @@
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="pka-eB-n08" id="nVp-Tv-pVO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SHO-ak-q38" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -684,6 +687,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="knQ-Fp-GCk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="979" y="1025"/>
+        </scene>
+        <!--服务条款-->
+        <scene sceneID="s2J-3n-Wgn">
+            <objects>
+                <viewController storyboardIdentifier="TermsOfUseViewController" id="Pp5-zR-xu2" customClass="TermsOfUseViewController" customModule="missfit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eFB-zE-Vj2"/>
+                        <viewControllerLayoutGuide type="bottom" id="AVa-OL-IEW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wsA-Qb-Xq1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6WU-wv-Zsr">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6WU-wv-Zsr" firstAttribute="top" secondItem="eFB-zE-Vj2" secondAttribute="bottom" constant="-64" id="6n0-MI-1gY"/>
+                            <constraint firstItem="6WU-wv-Zsr" firstAttribute="leading" secondItem="wsA-Qb-Xq1" secondAttribute="leading" id="UCU-Y3-aAe"/>
+                            <constraint firstItem="AVa-OL-IEW" firstAttribute="top" secondItem="6WU-wv-Zsr" secondAttribute="bottom" id="d4l-hQ-Apb"/>
+                            <constraint firstItem="6WU-wv-Zsr" firstAttribute="trailing" secondItem="wsA-Qb-Xq1" secondAttribute="trailing" id="y4k-xQ-t19"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="服务条款" id="KUf-yj-POF">
+                        <barButtonItem key="leftBarButtonItem" image="backBarBtnBg" id="lPu-tH-fvW">
+                            <connections>
+                                <action selector="backButtonClicked:" destination="Pp5-zR-xu2" id="p2b-9I-5oM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="webView" destination="6WU-wv-Zsr" id="MRP-fP-Pug"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="flw-XJ-WLh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1640" y="-844"/>
         </scene>
         <!--找课程-->
         <scene sceneID="5Fl-ox-VpN">
@@ -1961,7 +2006,7 @@
                                             <outlet property="teacherName" destination="nKs-76-MJN" id="ub8-OH-JoK"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyTeacherTableViewCell" rowHeight="94" id="zq2-Ww-LeR" customClass="MyTeacherTableViewCell" customModule="missfit" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyTeacherTableViewCell" rowHeight="94" id="zq2-Ww-LeR" customClass="MyTeacherTableViewCell" customModule="missfit" customModuleProvider="target">
                                         <rect key="frame" x="2" y="64" width="600" height="94"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zq2-Ww-LeR" id="cev-dR-KIg">
