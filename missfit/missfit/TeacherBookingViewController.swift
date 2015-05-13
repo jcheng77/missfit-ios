@@ -15,6 +15,7 @@ class TeacherBookingViewController: UIViewController {
     @IBOutlet weak var address: UITextField!
     @IBOutlet weak var date: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var submitButton: UIButton!
    
     @IBAction func submitButtonClicked(sender: AnyObject) {
         // Validate the text fields.
@@ -38,9 +39,10 @@ class TeacherBookingViewController: UIViewController {
                     } else {
                         var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
                         var endpoint: String = MissFitBaseURL + MissFitTeachersURI + "/" + self.teacherInfo!.teacherId + MissFitClassesBookingURI
-                        var parameters = ["details": ["date": dateString, "name": nameString, "phone": phoneNumber]]
+                        var parameters = ["details": ["date": dateString, "name": nameString, "phone": phoneNumber, "address": addressString]]
                         
                         KVNProgress.show()
+                        self.hideKeyboard(self)
                         manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
                         manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
                         manager.POST(endpoint, parameters: parameters, success: { (operation, responseObject) -> Void in
@@ -69,10 +71,39 @@ class TeacherBookingViewController: UIViewController {
         navigationController?.popViewControllerAnimated(true)
     }
     
+    @IBAction func hideKeyboard(sender: AnyObject) {
+        phone.resignFirstResponder()
+        name.resignFirstResponder()
+        address.resignFirstResponder()
+        date.resignFirstResponder()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.datePicker.removeFromSuperview()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
         //TODO: use the date picker to select the date
 //        self.date.inputView = self.datePicker
+    }
+    
+    func keyboardWillShow(notifiction: NSNotification) {
+        var keyboardEndFrame: CGRect = CGRectZero
+        (notifiction.userInfo! as NSDictionary).valueForKey(UIKeyboardFrameEndUserInfoKey)!.getValue(&keyboardEndFrame)
+        let keyboardHeight: CGFloat = keyboardEndFrame.size.height
+        let buttonBottomPointY = submitButton.frame.origin.y + submitButton.frame.size.height
+        let keyboardTopPointY = self.view.frame.size.height - keyboardHeight
+        let offsetY = keyboardTopPointY - buttonBottomPointY
+        let oldFrame = self.view.frame
+        self.view.frame = CGRectMake(oldFrame.origin.x, min(offsetY, 0.0), oldFrame.size.width, oldFrame.size.height)
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        let oldFrame = self.view.frame
+        self.view.frame = CGRectMake(oldFrame.origin.x, 0, oldFrame.size.width, oldFrame.size.height)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 }

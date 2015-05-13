@@ -1825,6 +1825,7 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="yUM-SV-pyr" secondAttribute="trailing" constant="-16" id="0IT-sC-weU"/>
                             <constraint firstItem="qfD-uv-J4f" firstAttribute="trailing" secondItem="1WU-Kp-ycd" secondAttribute="trailingMargin" id="2Fx-0x-nCu"/>
@@ -1848,6 +1849,10 @@
                             <constraint firstItem="w0N-Yl-E6N" firstAttribute="trailing" secondItem="1WU-Kp-ycd" secondAttribute="trailingMargin" id="ppg-Yg-pmP"/>
                             <constraint firstItem="a8U-KG-CuZ" firstAttribute="leading" secondItem="1WU-Kp-ycd" secondAttribute="leadingMargin" id="wjo-oC-Jde"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="H6k-ts-d60" appends="YES" id="m58-AP-Q8D"/>
+                            <outletCollection property="gestureRecognizers" destination="LYG-IO-6pe" appends="YES" id="cCe-xa-zgu"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="预约信息" id="lAh-IL-nri">
                         <barButtonItem key="leftBarButtonItem" image="backBarBtnBg" id="IOC-Ru-kl6">
@@ -1864,9 +1869,20 @@
                         <outlet property="datePicker" destination="yUM-SV-pyr" id="2a0-5i-4RH"/>
                         <outlet property="name" destination="4pw-wB-ab6" id="9lS-qG-xmc"/>
                         <outlet property="phone" destination="qfD-uv-J4f" id="iUH-61-Wls"/>
+                        <outlet property="submitButton" destination="evJ-7X-ut1" id="axe-T3-Roy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cmr-aU-VDj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="H6k-ts-d60">
+                    <connections>
+                        <action selector="hideKeyboard:" destination="3F1-wB-YXB" id="ssz-do-Aha"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="LYG-IO-6pe">
+                    <connections>
+                        <action selector="hideKeyboard:" destination="3F1-wB-YXB" id="jVy-EK-EHN"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3084" y="776"/>
         </scene>

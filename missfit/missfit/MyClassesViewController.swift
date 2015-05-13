@@ -117,31 +117,6 @@ class MyClassesViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    func loadTeachers() {
-        var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-        var endpoint: String = MissFitBaseURL + MissFitMyTeachersURI
-//        KVNProgress.show()
-        manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
-        manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
-        println("userId:\(MissFitUser.user.userId)")
-        println("token:\(MissFitUser.user.token)")
-        manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
-            //            KVNProgress.showSuccessWithStatus("获取课程列表成功！")
-//            KVNProgress.dismiss()
-            // Parse data
-            println("responseObject:\(responseObject)")
-            }) { (operation, error) -> Void in
-                if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
-                    // Need to get the status and message
-                    let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as NSData)
-                    let message: String? = json["message"].string
-                    KVNProgress.showErrorWithStatus(message?)
-                } else {
-                    KVNProgress.showErrorWithStatus("获取我的课程列表失败")
-                }
-        }
-    }
-    
     func loadMoreData(page: Int) {
         
     }
