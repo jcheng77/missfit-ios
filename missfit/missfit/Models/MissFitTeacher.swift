@@ -67,7 +67,6 @@ class MissFitTeacher {
         }
         let startIndex = advance(scopesString.startIndex, 1)
         scopesString = scopesString.substringFromIndex(startIndex)
-        println("scopesString:\(scopesString)")
         return scopesString
     }
     
@@ -78,7 +77,6 @@ class MissFitTeacher {
         }
         let startIndex = advance(modesString.startIndex, 1)
         modesString = modesString.substringFromIndex(startIndex)
-        println("modesString:\(modesString)")
         return modesString
     }
 }

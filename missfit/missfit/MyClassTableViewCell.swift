@@ -15,7 +15,6 @@ class MyClassTableViewCell: ClassTableViewCell {
         let dateString = missfitClass.schedule.date
         let startIndex = advance(dateString.startIndex, 5)
         startDate.text = dateString.substringFromIndex(startIndex)
-        println("startDate:\(startDate)")
         startTime.text = missfitClass.schedule.startTime
         name.text = missfitClass.name
         duration.text = String("\(missfitClass.schedule.duration)分钟")
