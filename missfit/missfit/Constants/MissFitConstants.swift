@@ -38,7 +38,7 @@ let MissFitSharingClassURI: String = "http://missfit.boluo.me/classes/"
 
 let MissFitSharingTeacherURI: String = "http://missfit.boluo.me/teachers/"
 
-let MissFitTermsOfUseURI: String = "http://missfit-static.boluo.com/termsofuse.html"
+let MissFitTermsOfUseURI: String = "http://missfit-static.boluo.me/termsofuse.html"
 
 
 
