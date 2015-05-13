@@ -110,7 +110,7 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == .AuthorizedWhenInUse || status == .AuthorizedAlways {
+        if status == CLAuthorizationStatus.AuthorizedWhenInUse || status == CLAuthorizationStatus.AuthorizedAlways {
             allowUseLocation = true
         } else {
             // TODO: ask the user to allow the permission
