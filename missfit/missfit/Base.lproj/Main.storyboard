@@ -415,7 +415,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="QLD-Qv-n4o" secondAttribute="centerX" id="0Uq-dI-7JX"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="GFo-Rq-bpU" secondAttribute="bottom" id="76j-tt-IyD"/>
@@ -427,10 +426,10 @@
                             <constraint firstItem="dFj-g8-oWL" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="SaZ-sy-H0P"/>
                             <constraint firstItem="QLD-Qv-n4o" firstAttribute="top" secondItem="Fgn-FO-b74" secondAttribute="bottom" id="UUb-7V-4pU"/>
                             <constraint firstItem="Fgn-FO-b74" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="W2E-sU-ekQ"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dFj-g8-oWL" secondAttribute="bottom" constant="0.5" id="WAD-gN-cqv"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dFj-g8-oWL" secondAttribute="bottom" id="WAD-gN-cqv"/>
                             <constraint firstItem="GFo-Rq-bpU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="top" constant="-20" id="XZN-Ba-iZn"/>
                             <constraint firstItem="GFo-Rq-bpU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Xp8-GA-gw7"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eF9-Yc-OpL" secondAttribute="bottom" id="ZQY-Rc-HKe"/>
+                            <constraint firstItem="eF9-Yc-OpL" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="ZQY-Rc-HKe"/>
                             <constraint firstAttribute="centerX" secondItem="Fgn-FO-b74" secondAttribute="centerX" id="bLd-Yv-uYI"/>
                             <constraint firstItem="eF9-Yc-OpL" firstAttribute="top" secondItem="HpI-CD-hiU" secondAttribute="bottom" id="df0-Ri-ego"/>
                             <constraint firstItem="dFj-g8-oWL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dl1-lE-616"/>

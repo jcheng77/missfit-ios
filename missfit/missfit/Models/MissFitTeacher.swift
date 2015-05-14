@@ -36,7 +36,7 @@ class MissFitTeacher {
             classesScope.append(classType.string!)
         }
         classScopes = classesScope
-        address = json["location"].string
+        address = json["address"].string
         
         for (teachModeIndex: String, teachMode: JSON) in json["teachModes"] {
             teachModes.append(teachMode.string!)
