@@ -1811,11 +1811,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="yUM-SV-pyr">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="yUM-SV-pyr">
                                 <rect key="frame" x="0.0" y="438" width="600" height="162"/>
                                 <date key="date" timeIntervalSinceReferenceDate="453110283.39329398">
                                     <!--2015-05-12 07:58:03 +0000-->
                                 </date>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-31582800">
+                                    <!--2000-01-01 11:00:00 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
+                                    <!--2037-12-31 11:00:00 +0000-->
+                                </date>
+                                <locale key="locale" localeIdentifier="zh_CN"/>
+                                <connections>
+                                    <action selector="expectedDateChanged:" destination="3F1-wB-YXB" eventType="valueChanged" id="JCl-HP-L2P"/>
+                                </connections>
                             </datePicker>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="请输入您需要上门服务的时间" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w0N-Yl-E6N">
                                 <rect key="frame" x="16" y="226" width="568" height="34"/>

@@ -16,6 +16,11 @@ class TeacherBookingViewController: UIViewController {
     @IBOutlet weak var date: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var submitButton: UIButton!
+    
+    
+    @IBAction func expectedDateChanged(sender: UIDatePicker) {
+        date.text = MissFitUtils.formatDate(sender.date)
+    }
    
     @IBAction func submitButtonClicked(sender: AnyObject) {
         // Validate the text fields.
@@ -84,7 +89,9 @@ class TeacherBookingViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
         //TODO: use the date picker to select the date
-//        self.date.inputView = self.datePicker
+        self.date.inputView = self.datePicker
+        // Won't work when set the color in storyboard
+        self.datePicker.backgroundColor = UIColor.whiteColor()
     }
     
     func keyboardWillShow(notifiction: NSNotification) {
@@ -96,6 +103,9 @@ class TeacherBookingViewController: UIViewController {
         let offsetY = keyboardTopPointY - buttonBottomPointY
         let oldFrame = self.view.frame
         self.view.frame = CGRectMake(oldFrame.origin.x, min(offsetY, 0.0), oldFrame.size.width, oldFrame.size.height)
+        if date.isFirstResponder() && date.text == "" {
+            date.text = MissFitUtils.formatDate(NSDate())
+        }
     }
     
     func keyboardWillHide(notification: NSNotification) {
