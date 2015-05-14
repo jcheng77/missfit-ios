@@ -26,4 +26,5 @@ class MissFitTheme {
     var colorSilver: UIColor = UIColor(red: 230.0 / 255.0, green: 232.0 / 255.0, blue: 250.0 / 255.0, alpha: 1.0)
     var colorHeaderBackground = UIColor(red: 239.0 / 255.0, green: 239.0 / 255.0, blue: 244.0 / 255.0, alpha: 1.0)
     var colorDarkText = UIColor(red: 33.0 / 255.0, green: 33.0 / 255.0, blue: 33.0 / 255.0, alpha: 1.0)
+    var colorSeperator = UIColor(red: 200.0 / 255.0, green: 199.0 / 255.0, blue: 204.0 / 255.0, alpha: 1.0)
 }

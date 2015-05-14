@@ -17,12 +17,16 @@ class ClassTableViewCell: UITableViewCell {
     @IBOutlet weak var area: UILabel!
     @IBOutlet weak var teacherAvatar: UIImageView!
     @IBOutlet weak var teacherName: UILabel!
+    @IBOutlet weak var line: UIView!
+    @IBOutlet weak var lineHeightConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         teacherAvatar.layer.masksToBounds = true
         teacherAvatar.layer.cornerRadius = teacherAvatar.bounds.size.width / 2
+        line.backgroundColor = MissFitTheme.theme.colorSeperator
+        lineHeightConstraint.constant = 1.0 / UIScreen.mainScreen().scale
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

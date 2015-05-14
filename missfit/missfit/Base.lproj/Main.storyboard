@@ -917,6 +917,8 @@
                                             <outlet property="address" destination="Qm0-Zq-Qhz" id="tzS-qJ-Md6"/>
                                             <outlet property="area" destination="pYg-hf-5OW" id="jjI-eG-MXL"/>
                                             <outlet property="duration" destination="Wrw-NY-lx6" id="kVe-ln-qxY"/>
+                                            <outlet property="line" destination="MTA-Ha-NCF" id="ys8-LF-2rb"/>
+                                            <outlet property="lineHeightConstraint" destination="KMr-Hw-Yq7" id="imF-AQ-m0i"/>
                                             <outlet property="name" destination="uSS-VN-I9f" id="4UM-zs-2Sl"/>
                                             <outlet property="startTime" destination="VYS-yE-6tX" id="GMD-AQ-kKy"/>
                                             <outlet property="teacherAvatar" destination="90F-u6-ZFK" id="qHV-6F-sjn"/>
@@ -1600,6 +1602,8 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="line" destination="hax-Gw-UGB" id="gTi-KF-q3I"/>
+                                            <outlet property="lineHeightConstraint" destination="R6T-xe-fuv" id="qrQ-jR-lI3"/>
                                             <outlet property="manifesto" destination="mg6-Hu-tkH" id="uqx-Ah-shn"/>
                                         </connections>
                                     </tableViewCell>
@@ -1673,6 +1677,8 @@
                                             <outlet property="certifiedType2" destination="nyp-UV-vxK" id="wdq-wP-QmM"/>
                                             <outlet property="certifiedTypeIcon1" destination="hHT-N5-Txc" id="3zc-OQ-NEk"/>
                                             <outlet property="certifiedTypeIcon2" destination="6wR-MO-dK9" id="uGa-57-o5y"/>
+                                            <outlet property="line" destination="Sog-zb-Svh" id="ZbU-Y3-nO3"/>
+                                            <outlet property="lineHeightConstraint" destination="tdh-Hh-hHA" id="pMB-JO-MTc"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TeacherActionsTableViewCell" rowHeight="84" id="KfJ-59-OMW" customClass="TeacherActionsTableViewCell" customModule="missfit" customModuleProvider="target">
@@ -2034,6 +2040,8 @@
                                             <outlet property="address" destination="fbo-Gt-UT0" id="riX-zV-l0G"/>
                                             <outlet property="area" destination="ThN-In-S8N" id="xnu-3H-4JT"/>
                                             <outlet property="duration" destination="u5j-te-Vh9" id="47W-gC-UbW"/>
+                                            <outlet property="line" destination="DNX-Hu-Lew" id="rjZ-wT-Pvx"/>
+                                            <outlet property="lineHeightConstraint" destination="Uen-Yv-8Xe" id="53L-i1-d7T"/>
                                             <outlet property="name" destination="xdL-7V-SiP" id="S25-2Q-qtc"/>
                                             <outlet property="startDate" destination="eAh-rx-ouW" id="VAw-ag-pSN"/>
                                             <outlet property="startTime" destination="e85-m1-dx3" id="1eo-Ol-jBx"/>
@@ -2127,6 +2135,8 @@
                                         <connections>
                                             <outlet property="address" destination="Y9u-t5-tgY" id="mTG-q3-1Gh"/>
                                             <outlet property="date" destination="kWg-bP-y4K" id="G2h-Tf-wcP"/>
+                                            <outlet property="line" destination="BC8-Mu-Iey" id="Ywv-cK-WMc"/>
+                                            <outlet property="lineHeightConstraint" destination="qwj-BG-NQb" id="oyH-Ac-mnP"/>
                                             <outlet property="teacherAvatar" destination="cFd-bD-rSj" id="Pat-kd-VE2"/>
                                             <outlet property="teacherName" destination="Yz2-Zv-CJ2" id="uKl-hw-rT8"/>
                                         </connections>
