@@ -68,14 +68,14 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
         manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
             KVNProgress.dismiss()
             // Parse data
-            self.parseResponseObject(responseObject as NSDictionary)
+            self.parseResponseObject(responseObject as! NSDictionary)
             self.tableView.reloadData()
         }) { (operation, error) -> Void in
             if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
                 // Need to get the status and message
-                let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as NSData)
+                let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as! NSData)
                 let message: String? = json["message"].string
-                KVNProgress.showErrorWithStatus(message?)
+                KVNProgress.showErrorWithStatus(message)
             } else {
                 KVNProgress.showErrorWithStatus("获取老师列表失败")
             }
@@ -91,7 +91,7 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TeacherTableViewCell", forIndexPath: indexPath) as TeacherTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("TeacherTableViewCell", forIndexPath: indexPath) as! TeacherTableViewCell
         
         cell.setData(teachers[indexPath.row])
         return cell
@@ -104,7 +104,7 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let teacherInfo = teachers[indexPath.row]
-        let teacherDetailController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TeacherDetailViewController") as TeacherDetailViewController
+        let teacherDetailController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TeacherDetailViewController") as! TeacherDetailViewController
         teacherDetailController.teacherInfo = teacherInfo
         navigationController?.pushViewController(teacherDetailController, animated: true)
     }

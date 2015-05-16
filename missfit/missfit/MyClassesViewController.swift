@@ -24,7 +24,7 @@ class MyClassesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func toggleSelection(sender: AnyObject) {
-        let segmentedControl = sender as UISegmentedControl
+        let segmentedControl = sender as! UISegmentedControl
         if segmentedControl.selectedSegmentIndex == 0 {
             currentCategory = MyClassCategory.Class
         } else {
@@ -77,14 +77,14 @@ class MyClassesViewController: UIViewController, UITableViewDataSource, UITableV
                 //            KVNProgress.showSuccessWithStatus("获取课程列表成功！")
                 KVNProgress.dismiss()
                 // Parse data
-                self.parseClassResponseObject(responseObject as NSDictionary)
+                self.parseClassResponseObject(responseObject as! NSDictionary)
                 self.tableView.reloadData()
                 }) { (operation, error) -> Void in
                     if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
                         // Need to get the status and message
-                        let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as NSData)
+                        let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as! NSData)
                         let message: String? = json["message"].string
-                        KVNProgress.showErrorWithStatus(message?)
+                        KVNProgress.showErrorWithStatus(message)
                     } else {
                         KVNProgress.showErrorWithStatus("获取我的课程列表失败")
                     }
@@ -102,14 +102,14 @@ class MyClassesViewController: UIViewController, UITableViewDataSource, UITableV
             manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
                 KVNProgress.dismiss()
                 // Parse data
-                self.parseTeacherResponseObject(responseObject as NSDictionary)
+                self.parseTeacherResponseObject(responseObject as! NSDictionary)
                 self.tableView.reloadData()
                 }) { (operation, error) -> Void in
                     if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
                         // Need to get the status and message
-                        let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as NSData)
+                        let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as! NSData)
                         let message: String? = json["message"].string
-                        KVNProgress.showErrorWithStatus(message?)
+                        KVNProgress.showErrorWithStatus(message)
                     } else {
                         KVNProgress.showErrorWithStatus("获取老师预约列表失败")
                     }
@@ -158,11 +158,11 @@ class MyClassesViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if currentCategory == MyClassCategory.Class {
-            let cell = tableView.dequeueReusableCellWithIdentifier("MyClassTableViewCell", forIndexPath: indexPath) as MyClassTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("MyClassTableViewCell", forIndexPath: indexPath) as! MyClassTableViewCell
             cell.setData(classes![indexPath.row])
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("MyTeacherTableViewCell", forIndexPath: indexPath) as MyTeacherTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("MyTeacherTableViewCell", forIndexPath: indexPath) as! MyTeacherTableViewCell
             cell.setData(bookingTeachers![indexPath.row])
             return cell
         }
@@ -175,7 +175,7 @@ class MyClassesViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if currentCategory == MyClassCategory.Class {
-            let classDetailController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ClassDetailViewController") as ClassDetailViewController
+            let classDetailController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ClassDetailViewController") as! ClassDetailViewController
             classDetailController.missfitClass = classes![indexPath.row]
             navigationController?.pushViewController(classDetailController, animated: true)
         }

@@ -13,10 +13,14 @@ class SettingsNormalTableViewCell: UITableViewCell {
     @IBOutlet weak var key: UILabel!
     @IBOutlet weak var value: UILabel!
     @IBOutlet weak var seperator: UIView!
+    @IBOutlet weak var line: UIView!
+    @IBOutlet weak var lineHeightConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        line.backgroundColor = MissFitTheme.theme.colorSeperator
+        lineHeightConstraint.constant = 1.0 / UIScreen.mainScreen().scale
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

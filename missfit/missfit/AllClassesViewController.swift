@@ -97,8 +97,8 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
     func createDatesButtons() {
         if !buttonsCreated {
             let currentDate = NSDate()
-            let gregorianCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
-            var components = gregorianCalendar?.components(.YearCalendarUnit | .MonthCalendarUnit | .DayCalendarUnit | .WeekdayCalendarUnit | .WeekOfYearCalendarUnit, fromDate: currentDate)
+            let gregorianCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+            var components = gregorianCalendar?.components(.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay | .CalendarUnitWeekday | .CalendarUnitWeekOfYear, fromDate: currentDate)
             // Default the selected date is today
             selectedDateIndice = (0, components!.weekday - 1)
             todayDateIndice = selectedDateIndice
@@ -118,7 +118,7 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
                 dt.weekday = i
                 var date = gregorianCalendar?.dateFromComponents(dt)
                 currentWeekDates.append(date!)
-                var dayComponents = gregorianCalendar?.components(.DayCalendarUnit, fromDate: date!)
+                var dayComponents = gregorianCalendar?.components(.CalendarUnitDay, fromDate: date!)
                 
                 let dateView = UIView(frame: CGRectMake((CGFloat)(i - 1) * width, 0, width, height))
                 let tapGesture = UITapGestureRecognizer(target: self, action: Selector("currentWeekButtonClicked:"))
@@ -151,7 +151,7 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
             }
             
             let nextweek = NSDate(timeInterval: 7 * 24 * 3600, sinceDate: currentDate)
-            components = gregorianCalendar?.components(.YearCalendarUnit | .MonthCalendarUnit | .DayCalendarUnit | .WeekdayCalendarUnit | .WeekOfYearCalendarUnit, fromDate: nextweek)
+            components = gregorianCalendar?.components(.CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay | .CalendarUnitWeekday | .CalendarUnitWeekOfYear, fromDate: nextweek)
             
             dt.weekOfYear = components!.weekOfYear
             dt.month = components!.month
@@ -161,7 +161,7 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
                 dt.weekday = i
                 var date = gregorianCalendar?.dateFromComponents(dt)
                 nextWeekDates.append(date!)
-                var dayComponents = gregorianCalendar?.components(.DayCalendarUnit, fromDate: date!)
+                var dayComponents = gregorianCalendar?.components(.CalendarUnitDay, fromDate: date!)
                 let dateView = UIView(frame: CGRectMake((CGFloat)(i - 1) * width, 0, width, height))
                 let tapGesture = UITapGestureRecognizer(target: self, action: Selector("nextWeekButtonClicked:"))
                 dateView.addGestureRecognizer(tapGesture)
@@ -269,14 +269,14 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
 //            KVNProgress.showSuccessWithStatus("获取课程列表成功！")
             KVNProgress.dismiss()
             // Parse data
-            self.parseResponseObject(responseObject as NSDictionary)
+            self.parseResponseObject(responseObject as! NSDictionary)
             self.tableView.reloadData()
             }) { (operation, error) -> Void in
                 if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
                     // Need to get the status and message
-                    let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as NSData)
+                    let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as! NSData)
                     let message: String? = json["message"].string
-                    KVNProgress.showErrorWithStatus(message?)
+                    KVNProgress.showErrorWithStatus(message)
                 } else {
                     KVNProgress.showErrorWithStatus("获取课程列表失败")
                 }
@@ -292,7 +292,7 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ClassTableViewCell", forIndexPath: indexPath) as ClassTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ClassTableViewCell", forIndexPath: indexPath) as! ClassTableViewCell
         
         cell.setData(classes[indexPath.row])
         return cell
@@ -304,7 +304,7 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let classDetailController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ClassDetailViewController") as ClassDetailViewController
+        let classDetailController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ClassDetailViewController") as! ClassDetailViewController
         classDetailController.missfitClass = classes[indexPath.row]
         navigationController?.pushViewController(classDetailController, animated: true)
     }

@@ -70,11 +70,11 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBAction func orderButtonClicked(sender: AnyObject) {
         if MissFitUser.user.isLogin {
-            let teacherBookingController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TeacherBookingViewController") as TeacherBookingViewController
+            let teacherBookingController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TeacherBookingViewController") as! TeacherBookingViewController
             teacherBookingController.teacherInfo = teacherInfo
             navigationController?.pushViewController(teacherBookingController, animated: true)
         } else {
-            let loginController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as UIViewController
+            let loginController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as! UIViewController
             self.presentViewController(UINavigationController(rootViewController: loginController), animated: true, completion: nil)
         }
     }
@@ -106,13 +106,13 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row == kTeacherImageCellIndex {
-            let cell = tableView.dequeueReusableCellWithIdentifier("TeacherImageTableViewCell", forIndexPath: indexPath) as TeacherImageTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("TeacherImageTableViewCell", forIndexPath: indexPath) as! TeacherImageTableViewCell
             if let picUrl = teacherInfo?.coverPicUrl {
                 cell.teacherImage?.setImageWithURL(NSURL(string: picUrl))
             }
             return cell
         } else if indexPath.row == kTeacherInfoCellIndex {
-            let cell = tableView.dequeueReusableCellWithIdentifier("TeacherInfoTableViewCell", forIndexPath: indexPath) as TeacherInfoTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("TeacherInfoTableViewCell", forIndexPath: indexPath) as! TeacherInfoTableViewCell
             cell.name.text = teacherInfo?.name
             cell.verifiedIcon.hidden = !teacherInfo!.idVerified
             cell.teachScopes.text = teacherInfo?.classScopesString()
@@ -126,11 +126,11 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
             }
             return cell
         } else if indexPath.row == kTeacherManifestoCellIndex {
-            let cell = tableView.dequeueReusableCellWithIdentifier("TeacherManifestoTableViewCell", forIndexPath: indexPath) as TeacherManifestoTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("TeacherManifestoTableViewCell", forIndexPath: indexPath) as! TeacherManifestoTableViewCell
             cell.manifesto.text = teacherInfo?.manifesto
             return cell
         } else if indexPath.row == kTeacherCertificationsCellIndex {
-            let cell = tableView.dequeueReusableCellWithIdentifier("TeacherCertificationsTableViewCell", forIndexPath: indexPath) as TeacherCertificationsTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("TeacherCertificationsTableViewCell", forIndexPath: indexPath) as! TeacherCertificationsTableViewCell
             if teacherInfo!.teacherCertification!.isIdCertified {
                 cell.certifiedType1.text = "身份验证"
                 cell.certifiedTypeIcon1.image = UIImage(named: "credit-card-certified")
@@ -149,7 +149,7 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
             }
             return cell
         } else if indexPath.row == kTeacherActionsCellIndex {
-            let cell = tableView.dequeueReusableCellWithIdentifier("TeacherActionsTableViewCell", forIndexPath: indexPath) as TeacherActionsTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("TeacherActionsTableViewCell", forIndexPath: indexPath) as! TeacherActionsTableViewCell
             return cell
         } else {
             return UITableViewCell()

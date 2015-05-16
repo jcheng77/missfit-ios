@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonClicked(sender: AnyObject) {
         var regex: NSRegularExpression = NSRegularExpression(pattern: "(\\d{11})", options: NSRegularExpressionOptions.CaseInsensitive, error: nil)!
-        let result = regex.firstMatchInString(self.phoneNumberTextField.text!, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, self.phoneNumberTextField.text!.utf16Count))
+        let result = regex.firstMatchInString(self.phoneNumberTextField.text!, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, count(self.phoneNumberTextField.text!.utf16)))
         
         if result != nil && !NSEqualRanges(result!.range, NSMakeRange(NSNotFound, 0)) {
             let phoneNumber: String = (self.phoneNumberTextField.text! as NSString).substringWithRange(result!.rangeAtIndex(1))
@@ -41,9 +41,9 @@ class LoginViewController: UIViewController {
                         //登录失败
                         if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
                             // Need to get the status and message
-                            let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as NSData)
+                            let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as! NSData)
                             let message: String? = json["message"].string
-                            KVNProgress.showErrorWithStatus(message?)
+                            KVNProgress.showErrorWithStatus(message)
                         } else {
                             KVNProgress.showErrorWithStatus("登录失败")
                         }
@@ -56,12 +56,12 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func registerButtonClicked(sender: AnyObject) {
-        var registerViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("RegisterViewController") as UIViewController
+        var registerViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("RegisterViewController") as! UIViewController
         self.presentViewController(UINavigationController(rootViewController: registerViewController), animated: true, completion: nil)
     }
     
     @IBAction func forgotPasscodeButtonClicked(sender: AnyObject) {
-        var resetPasscodeViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ForgotPasscodeViewController") as UIViewController
+        var resetPasscodeViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ForgotPasscodeViewController") as! UIViewController
         self.presentViewController(UINavigationController(rootViewController: resetPasscodeViewController), animated: true, completion: nil)
     }
     

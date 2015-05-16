@@ -99,16 +99,16 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
                     }) { (operation, error) -> Void in
                         if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
                             // Need to get the status and message
-                            let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as NSData)
+                            let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as! NSData)
                             let message: String? = json["message"].string
-                            KVNProgress.showErrorWithStatus(message?)
+                            KVNProgress.showErrorWithStatus(message)
                         } else {
                             KVNProgress.showErrorWithStatus("预约失败")
                         }
                 }
 
             } else {
-                let loginController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as UIViewController
+                let loginController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as! UIViewController
                 self.presentViewController(UINavigationController(rootViewController: loginController), animated: true, completion: nil)
             }
         }
@@ -129,14 +129,14 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.row {
         case ClassDetailCellIndex.ClassDetailImageCell.rawValue:
-            let cell = tableView.dequeueReusableCellWithIdentifier("ClassDetailImageTableViewCell", forIndexPath: indexPath) as ClassDetailImageTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("ClassDetailImageTableViewCell", forIndexPath: indexPath) as! ClassDetailImageTableViewCell
             cell.setData(missfitClass!)
             return cell
         case ClassDetailCellIndex.ClassDetailBookCell.rawValue:
-            let cell = tableView.dequeueReusableCellWithIdentifier("ClassDetailBookTableViewCell", forIndexPath: indexPath) as ClassDetailBookTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("ClassDetailBookTableViewCell", forIndexPath: indexPath) as! ClassDetailBookTableViewCell
             return cell
         case ClassDetailCellIndex.ClassDetailInfoCell.rawValue:
-            let cell = tableView.dequeueReusableCellWithIdentifier("ClassDetailInfoTableViewCell", forIndexPath: indexPath) as ClassDetailInfoTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("ClassDetailInfoTableViewCell", forIndexPath: indexPath) as! ClassDetailInfoTableViewCell
             cell.setData(missfitClass!)
             return cell
         default:

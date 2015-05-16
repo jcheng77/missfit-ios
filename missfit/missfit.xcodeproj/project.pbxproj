@@ -40,7 +40,6 @@
 		C35BAB611AF905A00085C9C5 /* MissFitTeacherCertification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35BAB601AF905A00085C9C5 /* MissFitTeacherCertification.swift */; };
 		C36A84CC1B010972007294A5 /* TeacherBookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A84CB1B010972007294A5 /* TeacherBookingViewController.swift */; };
 		C36AF3111AEA221100FF8E0C /* ForgotPasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36AF3101AEA221100FF8E0C /* ForgotPasscodeViewController.swift */; };
-		C37CCB8E1AE7D95D00384C7E /* UINavigationItem+ChevronBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CCB8D1AE7D95D00384C7E /* UINavigationItem+ChevronBackButton.swift */; };
 		C37CCB901AE7E9BE00384C7E /* ClassDetailImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CCB8F1AE7E9BE00384C7E /* ClassDetailImageTableViewCell.swift */; };
 		C37CCB921AE7E9D400384C7E /* ClassDetailBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CCB911AE7E9D400384C7E /* ClassDetailBookTableViewCell.swift */; };
 		C37CCB941AE7E9FB00384C7E /* ClassDetailInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CCB931AE7E9FB00384C7E /* ClassDetailInfoTableViewCell.swift */; };
@@ -113,7 +112,6 @@
 		C35BAB601AF905A00085C9C5 /* MissFitTeacherCertification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitTeacherCertification.swift; sourceTree = "<group>"; };
 		C36A84CB1B010972007294A5 /* TeacherBookingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherBookingViewController.swift; sourceTree = "<group>"; };
 		C36AF3101AEA221100FF8E0C /* ForgotPasscodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasscodeViewController.swift; sourceTree = "<group>"; };
-		C37CCB8D1AE7D95D00384C7E /* UINavigationItem+ChevronBackButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+ChevronBackButton.swift"; sourceTree = "<group>"; };
 		C37CCB8F1AE7E9BE00384C7E /* ClassDetailImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailImageTableViewCell.swift; sourceTree = "<group>"; };
 		C37CCB911AE7E9D400384C7E /* ClassDetailBookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailBookTableViewCell.swift; sourceTree = "<group>"; };
 		C37CCB931AE7E9FB00384C7E /* ClassDetailInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailInfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -279,7 +277,6 @@
 			children = (
 				C35A8A301AE3F0B800AB974C /* MissFitTheme.swift */,
 				C3F6F2E31AE4E7DB00BAD118 /* MissFitUtils.swift */,
-				C37CCB8D1AE7D95D00384C7E /* UINavigationItem+ChevronBackButton.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -493,7 +490,6 @@
 				C39DB0CA1AEBC9F000C91E5A /* MissFitUser.swift in Sources */,
 				C313B0BA1B028615009FE2E4 /* MissFitBookingTeacher.swift in Sources */,
 				C313B0C01B02F5B6009FE2E4 /* TermsOfUseViewController.swift in Sources */,
-				C37CCB8E1AE7D95D00384C7E /* UINavigationItem+ChevronBackButton.swift in Sources */,
 				C35BAB611AF905A00085C9C5 /* MissFitTeacherCertification.swift in Sources */,
 				C3C202621AEC948900F3E30C /* SettingsDetailTableViewCell.swift in Sources */,
 				C3392A431AF1CB70004DB947 /* TeacherManifestoTableViewCell.swift in Sources */,

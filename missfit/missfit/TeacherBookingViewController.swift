@@ -25,7 +25,7 @@ class TeacherBookingViewController: UIViewController {
     @IBAction func submitButtonClicked(sender: AnyObject) {
         // Validate the text fields.
         var regex: NSRegularExpression = NSRegularExpression(pattern: "(\\d{11})", options: NSRegularExpressionOptions.CaseInsensitive, error: nil)!
-        let result = regex.firstMatchInString(self.phone.text!, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, self.phone.text!.utf16Count))
+        let result = regex.firstMatchInString(self.phone.text!, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, count(self.phone.text!.utf16)))
         
         if result != nil && !NSEqualRanges(result!.range, NSMakeRange(NSNotFound, 0)) {
             let phoneNumber: String = (self.phone.text! as NSString).substringWithRange(result!.rangeAtIndex(1))
@@ -56,9 +56,9 @@ class TeacherBookingViewController: UIViewController {
                             }) { (operation, error) -> Void in
                                 if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
                                     // Need to get the status and message
-                                    let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as NSData)
+                                    let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as! NSData)
                                     let message: String? = json["message"].string
-                                    KVNProgress.showErrorWithStatus(message?)
+                                    KVNProgress.showErrorWithStatus(message)
                                 } else {
                                     KVNProgress.showErrorWithStatus("预约失败")
                                 }
