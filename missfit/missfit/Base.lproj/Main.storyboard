@@ -1410,23 +1410,39 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LMo-pD-Lb5" id="uab-89-PZH">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A4c-bR-jp2">
+                                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejz-5X-m1l">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="673"/>
-                                                    <color key="backgroundColor" red="0.96862745100000003" green="0.4941176471" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" secondItem="A4c-bR-jp2" secondAttribute="width" multiplier="718:640" id="Qbm-O5-BWs"/>
+                                                        <constraint firstAttribute="height" secondItem="ejz-5X-m1l" secondAttribute="width" multiplier="718:640" id="P4N-1y-ddg"/>
                                                     </constraints>
-                                                </imageView>
+                                                </scrollView>
+                                                <view alpha="0.29999999999999966" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzZ-rY-Wxd">
+                                                    <rect key="frame" x="0.0" y="637" width="600" height="36"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="36" id="xmz-vv-bXa"/>
+                                                    </constraints>
+                                                </view>
+                                                <pageControl opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="UZD-r8-lpB">
+                                                    <rect key="frame" x="280" y="636" width="39" height="37"/>
+                                                </pageControl>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="top" secondItem="A4c-bR-jp2" secondAttribute="top" id="6Ql-gU-jhc"/>
-                                                <constraint firstAttribute="bottom" secondItem="A4c-bR-jp2" secondAttribute="bottom" id="WLX-2b-qV2"/>
-                                                <constraint firstAttribute="leading" secondItem="A4c-bR-jp2" secondAttribute="leading" id="X9G-PH-akz"/>
-                                                <constraint firstAttribute="trailing" secondItem="A4c-bR-jp2" secondAttribute="trailing" id="jtm-Nu-T0D"/>
+                                                <constraint firstItem="ejz-5X-m1l" firstAttribute="leading" secondItem="uab-89-PZH" secondAttribute="leading" id="0O3-sQ-P6D"/>
+                                                <constraint firstAttribute="centerX" secondItem="dzZ-rY-Wxd" secondAttribute="centerX" id="Aub-6c-CKJ"/>
+                                                <constraint firstItem="dzZ-rY-Wxd" firstAttribute="leading" secondItem="uab-89-PZH" secondAttribute="leading" id="Pr5-sc-XNo"/>
+                                                <constraint firstAttribute="bottom" secondItem="ejz-5X-m1l" secondAttribute="bottom" id="d97-SE-T7i"/>
+                                                <constraint firstItem="ejz-5X-m1l" firstAttribute="top" secondItem="uab-89-PZH" secondAttribute="top" id="hP9-us-6CN"/>
+                                                <constraint firstAttribute="trailing" secondItem="dzZ-rY-Wxd" secondAttribute="trailing" id="iwE-VD-MU2"/>
+                                                <constraint firstItem="UZD-r8-lpB" firstAttribute="centerY" secondItem="dzZ-rY-Wxd" secondAttribute="centerY" id="ksy-az-XWh"/>
+                                                <constraint firstAttribute="trailing" secondItem="ejz-5X-m1l" secondAttribute="trailing" id="kw4-S6-PVG"/>
+                                                <constraint firstAttribute="centerX" secondItem="UZD-r8-lpB" secondAttribute="centerX" constant="0.5" id="wC7-Rs-cmp"/>
+                                                <constraint firstAttribute="bottom" secondItem="UZD-r8-lpB" secondAttribute="bottom" id="wMC-Ba-Bvh"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="teacherImage" destination="A4c-bR-jp2" id="YWU-p8-zha"/>
+                                            <outlet property="pageControl" destination="UZD-r8-lpB" id="m7h-AQ-TPN"/>
+                                            <outlet property="scrollView" destination="ejz-5X-m1l" id="Wxg-eF-Lwx"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TeacherInfoTableViewCell" rowHeight="179" id="Sak-s1-gMK" customClass="TeacherInfoTableViewCell" customModule="missfit" customModuleProvider="target">

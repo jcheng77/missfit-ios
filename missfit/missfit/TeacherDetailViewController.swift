@@ -107,8 +107,8 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row == kTeacherImageCellIndex {
             let cell = tableView.dequeueReusableCellWithIdentifier("TeacherImageTableViewCell", forIndexPath: indexPath) as! TeacherImageTableViewCell
-            if let picUrl = teacherInfo?.coverPicUrl {
-                cell.teacherImage?.setImageWithURL(NSURL(string: picUrl))
+            if let picUrls = teacherInfo?.pics {
+                cell.setData(picUrls)
             }
             return cell
         } else if indexPath.row == kTeacherInfoCellIndex {
