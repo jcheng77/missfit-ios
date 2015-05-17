@@ -258,12 +258,16 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
             }
         }
     }
+    
+    func getClassEndPoint() -> String {
+        return MissFitBaseURL + MissFitClassesURI + MissFitClassesDateURI
+    }
 
     func fetchData(date: NSDate) {
         classes.removeAll(keepCapacity: false)
         var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
         let dateString = MissFitUtils.formatDate(date)
-        var endpoint: String = MissFitBaseURL + MissFitClassesURI + MissFitClassesDateURI + dateString
+        var endpoint: String = getClassEndPoint() + dateString
         KVNProgress.show()
         manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
 //            KVNProgress.showSuccessWithStatus("获取课程列表成功！")

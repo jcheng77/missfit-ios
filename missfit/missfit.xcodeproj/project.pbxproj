@@ -32,6 +32,7 @@
 		C33CF1081AE78A7F00B35BF8 /* MissFitClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33CF1071AE78A7F00B35BF8 /* MissFitClass.swift */; };
 		C33CF10A1AE78AB900B35BF8 /* MissFitClassSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33CF1091AE78AB900B35BF8 /* MissFitClassSchedule.swift */; };
 		C33CF10C1AE78C8100B35BF8 /* ClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33CF10B1AE78C8100B35BF8 /* ClassTableViewCell.swift */; };
+		C344E9B81B08D62600468301 /* TeacherClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344E9B71B08D62600468301 /* TeacherClassesViewController.swift */; };
 		C34B9F631ADFE8A900911821 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B9F621ADFE8A900911821 /* LoginViewController.swift */; };
 		C351CC5A1B02423F00B61900 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C351CC561B02423F00B61900 /* libWeChatSDK.a */; };
 		C35A8A311AE3F0B800AB974C /* MissFitTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A8A301AE3F0B800AB974C /* MissFitTheme.swift */; };
@@ -102,6 +103,7 @@
 		C33CF1071AE78A7F00B35BF8 /* MissFitClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitClass.swift; sourceTree = "<group>"; };
 		C33CF1091AE78AB900B35BF8 /* MissFitClassSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitClassSchedule.swift; sourceTree = "<group>"; };
 		C33CF10B1AE78C8100B35BF8 /* ClassTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTableViewCell.swift; sourceTree = "<group>"; };
+		C344E9B71B08D62600468301 /* TeacherClassesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherClassesViewController.swift; sourceTree = "<group>"; };
 		C34B9F621ADFE8A900911821 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C351CC561B02423F00B61900 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		C351CC581B02423F00B61900 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				C35BAB5C1AF8E1320085C9C5 /* MyClassesViewController.swift */,
 				C35BAB5E1AF8E6130085C9C5 /* MyClassTableViewCell.swift */,
 				C31152101B027EFC00FBF0CD /* MyTeacherTableViewCell.swift */,
+				C344E9B71B08D62600468301 /* TeacherClassesViewController.swift */,
 				C310D5951ADC0E2800A70054 /* Main.storyboard */,
 				C310D5981ADC0E2800A70054 /* Images.xcassets */,
 				C310D59A1ADC0E2800A70054 /* LaunchScreen.xib */,
@@ -462,6 +465,7 @@
 				C37CCB941AE7E9FB00384C7E /* ClassDetailInfoTableViewCell.swift in Sources */,
 				C37CCB921AE7E9D400384C7E /* ClassDetailBookTableViewCell.swift in Sources */,
 				C36A84CC1B010972007294A5 /* TeacherBookingViewController.swift in Sources */,
+				C344E9B81B08D62600468301 /* TeacherClassesViewController.swift in Sources */,
 				C3C202601AEC941600F3E30C /* SettingsNormalTableViewCell.swift in Sources */,
 				C3392A411AF1CB3A004DB947 /* TeacherInfoTableViewCell.swift in Sources */,
 				C36AF3111AEA221100FF8E0C /* ForgotPasscodeViewController.swift in Sources */,

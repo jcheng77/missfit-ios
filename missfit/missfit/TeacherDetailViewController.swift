@@ -66,6 +66,9 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @IBAction func classesButtonClicked(sender: AnyObject) {
+        let teacherClassesController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TeacherClassesViewController") as! TeacherClassesViewController
+        teacherClassesController.teacherInfo = self.teacherInfo
+        navigationController?.pushViewController(teacherClassesController, animated: true)
     }
     
     @IBAction func orderButtonClicked(sender: AnyObject) {
