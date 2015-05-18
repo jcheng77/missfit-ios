@@ -10,7 +10,7 @@ import UIKit
 
 class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
-    let sectionsInfo = [["key": "个人信息", "value": ["电话"]], /*"所在城市", "账户信息", */["key": "关于我们", "value": ["服务条款"]]]
+    let sectionsInfo = [["key": "个人信息", "value": ["电话"]], ["key": "会员卡", "value": ["月卡"]], ["key": "关于我们", "value": ["服务条款"]], ]
 
     @IBAction func backButtonClicked(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
@@ -49,6 +49,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44.0
+        // Retrieve info from server
     }
 
     override func didReceiveMemoryWarning() {
@@ -84,11 +85,21 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 cell.seperator.hidden = false
             }
             return cell
+        } else if sectionsInfo[indexPath.section]["key"] as! String == "会员卡" {
+            // According to the info loaded from server
+            let cell = tableView.dequeueReusableCellWithIdentifier("SettingsDetailTableViewCell", forIndexPath: indexPath) as! SettingsDetailTableViewCell
+            cell.content.text = (sectionsInfo[indexPath.section]["value"] as! [String])[indexPath.row]
+            cell.status.text = "未购买"
+            cell.detail.text = "¥399"
+            cell.detail.hidden = false
+            cell.status.hidden = false
+            return cell
         } else if sectionsInfo[indexPath.section]["key"] as! String == "关于我们" {
             if indexPath.row < (sectionsInfo[indexPath.section]["value"] as! [String]).count {
                 let cell = tableView.dequeueReusableCellWithIdentifier("SettingsDetailTableViewCell", forIndexPath: indexPath) as! SettingsDetailTableViewCell
                 cell.content.text = (sectionsInfo[indexPath.section]["value"] as! [String])[indexPath.row]
                 cell.detail.hidden = true
+                cell.status.hidden = true
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCellWithIdentifier("SettingsActionTableViewCell", forIndexPath: indexPath) as! SettingsActionTableViewCell
@@ -117,6 +128,11 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             if indexPath.row < stringArray.count && stringArray[indexPath.row] == "服务条款" {
                 let touController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TermsOfUseViewController") as! TermsOfUseViewController
                 navigationController?.pushViewController(touController, animated: true)
+            }
+        } else if sectionsInfo[indexPath.section]["key"] as! String == "会员卡" {
+            let stringArray = sectionsInfo[indexPath.section]["value"] as! [String]
+            if indexPath.row < stringArray.count && stringArray[indexPath.row] == "会员卡" {
+                // navigate to payment view controller
             }
         }
     }

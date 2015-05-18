@@ -13,6 +13,7 @@ class SettingsDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var detail: UILabel!
     @IBOutlet weak var line: UIView!
     @IBOutlet weak var lineHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var status: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
