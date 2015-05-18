@@ -9,11 +9,11 @@
 import UIKit
 
 enum ClassDetailCellIndex: Int {
-    case ClassDetailImageCell = 0, ClassDetailBookCell, ClassDetailInfoCell
+    case ClassDetailImageCell = 0, ClassDetailBookCell, ClassDetailInfoCell, ClassDetailLocationCell
 }
 
 class ClassDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    let kRowNumber = 3
+    let kRowNumber = 4
     let classCoverImageAspectRatio: CGFloat = 488.0 / 640.0
     var missfitClass: MissFitClass?
     var scene: WXScene = WXSceneSession
@@ -137,6 +137,10 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
             return cell
         case ClassDetailCellIndex.ClassDetailInfoCell.rawValue:
             let cell = tableView.dequeueReusableCellWithIdentifier("ClassDetailInfoTableViewCell", forIndexPath: indexPath) as! ClassDetailInfoTableViewCell
+            cell.setData(missfitClass!)
+            return cell
+        case ClassDetailCellIndex.ClassDetailLocationCell.rawValue:
+            let cell = tableView.dequeueReusableCellWithIdentifier("ClassDetailLocationTableViewCell", forIndexPath: indexPath) as! ClassDetailLocationTableViewCell
             cell.setData(missfitClass!)
             return cell
         default:

@@ -964,11 +964,11 @@
                         <viewControllerLayoutGuide type="bottom" id="IRx-zU-Ey0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="b9v-6Y-F8o">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="730"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4Pt-jY-F2k">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="730"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="1200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClassDetailImageTableViewCell" rowHeight="458" id="Mhy-ER-hru" customClass="ClassDetailImageTableViewCell" customModule="missfit" customModuleProvider="target">
@@ -1151,6 +1151,115 @@
                                             <outlet property="targetUsers" destination="jxL-mM-A6g" id="Y1S-7N-ur9"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClassDetailLocationTableViewCell" rowHeight="413" id="KSo-Ks-T9J" customClass="ClassDetailLocationTableViewCell" customModule="missfit" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KSo-Ks-T9J" id="aOI-eT-uVu">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6WK-5Z-xIu">
+                                                    <rect key="frame" x="31" y="0.0" width="538" height="1"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="HR2-WI-5Zg"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="场馆信息" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCB-Dm-GR6">
+                                                    <rect key="frame" x="31" y="9" width="538" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heF-bu-UYW">
+                                                    <rect key="frame" x="201" y="63" width="198" height="46"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="198" id="4PS-U4-3Nk"/>
+                                                        <constraint firstAttribute="height" constant="46" id="4Qu-0Q-fwx"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                                    <state key="normal" title="400-032-0092" image="phone-certified">
+                                                        <color key="titleColor" red="0.63137254899999995" green="0.63137254899999995" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="phoneButtonClicked:" destination="KSo-Ks-T9J" eventType="touchUpInside" id="a8M-wW-yZo"/>
+                                                    </connections>
+                                                </button>
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2ec-r4-z62">
+                                                    <rect key="frame" x="0.0" y="117" width="600" height="240"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="240" id="ZTy-lZ-5Yc"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="KSo-Ks-T9J" id="SVt-Fz-hT7"/>
+                                                    </connections>
+                                                </mapView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06m-Rq-C8E">
+                                                    <rect key="frame" x="31" y="365" width="254" height="40"/>
+                                                    <color key="backgroundColor" red="0.96862745100000003" green="0.4941176471" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="lE1-ii-62r"/>
+                                                    </constraints>
+                                                    <state key="normal" title="获取场馆路线">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="locationRouteButtonClicked:" destination="KSo-Ks-T9J" eventType="touchUpInside" id="Cke-jz-Oq3"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVT-Gp-p6q">
+                                                    <rect key="frame" x="316" y="365" width="253" height="40"/>
+                                                    <color key="backgroundColor" red="0.96862745100000003" green="0.4941176471" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="9Fm-0Z-oZX"/>
+                                                    </constraints>
+                                                    <state key="normal" title="查看该馆信息">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="locationInfoButtonClicked:" destination="KSo-Ks-T9J" eventType="touchUpInside" id="ID3-CQ-3qH"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6X-RZ-8bQ">
+                                                    <rect key="frame" x="31" y="38" width="538" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="c6X-RZ-8bQ" firstAttribute="top" secondItem="YCB-Dm-GR6" secondAttribute="bottom" constant="8" id="0Q4-6d-Tgo"/>
+                                                <constraint firstAttribute="bottom" secondItem="06m-Rq-C8E" secondAttribute="bottom" constant="8" id="1cv-j2-AE3"/>
+                                                <constraint firstItem="YCB-Dm-GR6" firstAttribute="leading" secondItem="aOI-eT-uVu" secondAttribute="leading" constant="31" id="4BB-NT-PlQ"/>
+                                                <constraint firstItem="6WK-5Z-xIu" firstAttribute="leading" secondItem="aOI-eT-uVu" secondAttribute="leading" constant="31" id="4lk-Nn-wSP"/>
+                                                <constraint firstItem="6WK-5Z-xIu" firstAttribute="top" secondItem="aOI-eT-uVu" secondAttribute="top" id="7c6-GP-vFl"/>
+                                                <constraint firstAttribute="centerX" secondItem="heF-bu-UYW" secondAttribute="centerX" id="AK6-iI-zh8"/>
+                                                <constraint firstItem="06m-Rq-C8E" firstAttribute="leading" secondItem="aOI-eT-uVu" secondAttribute="leading" constant="31" id="Bbr-1Z-lvY"/>
+                                                <constraint firstItem="06m-Rq-C8E" firstAttribute="width" secondItem="uVT-Gp-p6q" secondAttribute="width" id="Ls0-fn-nzt"/>
+                                                <constraint firstItem="c6X-RZ-8bQ" firstAttribute="leading" secondItem="aOI-eT-uVu" secondAttribute="leading" constant="31" id="MQo-DF-DKY"/>
+                                                <constraint firstItem="heF-bu-UYW" firstAttribute="top" secondItem="c6X-RZ-8bQ" secondAttribute="bottom" constant="8" id="MbG-0q-hqD"/>
+                                                <constraint firstItem="2ec-r4-z62" firstAttribute="leading" secondItem="aOI-eT-uVu" secondAttribute="leading" id="STK-h4-m0k"/>
+                                                <constraint firstItem="06m-Rq-C8E" firstAttribute="top" secondItem="uVT-Gp-p6q" secondAttribute="top" id="UgG-cR-1mB"/>
+                                                <constraint firstItem="06m-Rq-C8E" firstAttribute="top" secondItem="2ec-r4-z62" secondAttribute="bottom" constant="8" id="YeW-y2-UoW"/>
+                                                <constraint firstAttribute="trailing" secondItem="YCB-Dm-GR6" secondAttribute="trailing" constant="31" id="ZIs-e7-PLj"/>
+                                                <constraint firstAttribute="trailing" secondItem="uVT-Gp-p6q" secondAttribute="trailing" constant="31" id="dCo-c5-sRL"/>
+                                                <constraint firstAttribute="trailing" secondItem="2ec-r4-z62" secondAttribute="trailing" id="mpT-lB-Ov5"/>
+                                                <constraint firstAttribute="trailing" secondItem="c6X-RZ-8bQ" secondAttribute="trailing" constant="31" id="pg3-1e-QM6"/>
+                                                <constraint firstAttribute="trailing" secondItem="6WK-5Z-xIu" secondAttribute="trailing" constant="31" id="sQj-c5-MfX"/>
+                                                <constraint firstItem="YCB-Dm-GR6" firstAttribute="top" secondItem="6WK-5Z-xIu" secondAttribute="bottom" constant="8" id="sXY-PY-fFm"/>
+                                                <constraint firstItem="uVT-Gp-p6q" firstAttribute="leading" secondItem="06m-Rq-C8E" secondAttribute="trailing" constant="31" id="t0b-Tl-l4X"/>
+                                                <constraint firstItem="2ec-r4-z62" firstAttribute="top" secondItem="heF-bu-UYW" secondAttribute="bottom" constant="8" id="t4f-Ze-b3W"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="line" destination="6WK-5Z-xIu" id="x8H-lA-hMr"/>
+                                            <outlet property="lineHeightConstraint" destination="HR2-WI-5Zg" id="XYg-8N-N6a"/>
+                                            <outlet property="locationInfo" destination="c6X-RZ-8bQ" id="Kci-xa-i5F"/>
+                                            <outlet property="mapView" destination="2ec-r4-z62" id="kih-v6-O2K"/>
+                                            <outlet property="phone" destination="heF-bu-UYW" id="arc-NR-I6S"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="N8O-fK-Qk9" id="RYI-qk-skM"/>
@@ -1181,14 +1290,14 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="730"/>
+                    <size key="freeformSize" width="600" height="1200"/>
                     <connections>
                         <outlet property="tableView" destination="4Pt-jY-F2k" id="ufc-jS-1RE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HYj-H1-CK3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2392" y="-104"/>
+            <point key="canvasLocation" x="2387" y="-219"/>
         </scene>
         <!--找老师-->
         <scene sceneID="35C-Q7-ANT">

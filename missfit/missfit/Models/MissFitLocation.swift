@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import MapKit
+import AddressBook
 
-class MissFitLocation {
+class MissFitLocation: NSObject, MKAnnotation {
     var locationId: String
     var name: String
     var phone: String
@@ -16,6 +18,12 @@ class MissFitLocation {
     var address: String
     var area: String?
     var picUrl: String?
+    var isVerified: Bool = false
+    var locationCoordinate: MissFitLocationCoordinate
+    
+    // MKAnnotation
+    let title: String
+    let coordinate: CLLocationCoordinate2D
     
     init(json: JSON) {
         locationId = json["_id"].stringValue
@@ -25,5 +33,25 @@ class MissFitLocation {
         name = json["name"].stringValue
         phone = json["phone"].stringValue
         picUrl = json["pic"].string
+        isVerified = json["verified"].boolValue
+        locationCoordinate = MissFitLocationCoordinate(json: json["geo"])
+        title = name
+        coordinate = CLLocationCoordinate2D(latitude: locationCoordinate.latitude, longitude: locationCoordinate.longtitude)
     }
+    
+    var subtitle: String {
+        return name
+    }
+    
+    // annotation callout info button opens this mapItem in Maps app
+    func mapItem() -> MKMapItem {
+        let addressDictionary = [String(kABPersonAddressStreetKey): subtitle]
+        let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDictionary)
+        
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = title
+        
+        return mapItem
+    }
+    
 }

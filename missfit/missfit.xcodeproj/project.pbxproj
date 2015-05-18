@@ -34,6 +34,7 @@
 		C33CF10C1AE78C8100B35BF8 /* ClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33CF10B1AE78C8100B35BF8 /* ClassTableViewCell.swift */; };
 		C344E9B81B08D62600468301 /* TeacherClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344E9B71B08D62600468301 /* TeacherClassesViewController.swift */; };
 		C34B9F631ADFE8A900911821 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B9F621ADFE8A900911821 /* LoginViewController.swift */; };
+		C34C42541B098DDB006E9A5D /* ClassDetailLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34C42531B098DDB006E9A5D /* ClassDetailLocationTableViewCell.swift */; };
 		C351CC5A1B02423F00B61900 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C351CC561B02423F00B61900 /* libWeChatSDK.a */; };
 		C35A8A311AE3F0B800AB974C /* MissFitTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35A8A301AE3F0B800AB974C /* MissFitTheme.swift */; };
 		C35BAB5D1AF8E1320085C9C5 /* MyClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35BAB5C1AF8E1320085C9C5 /* MyClassesViewController.swift */; };
@@ -52,6 +53,7 @@
 		C3C202641AEC96AD00F3E30C /* SettingsActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C202631AEC96AD00F3E30C /* SettingsActionTableViewCell.swift */; };
 		C3C7BD521ADEAF4700755CE3 /* MissFitConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C7BD511ADEAF4700755CE3 /* MissFitConstants.swift */; };
 		C3C7BD6B1ADFAB1300755CE3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C7BD6A1ADFAB1300755CE3 /* SwiftyJSON.swift */; };
+		C3E48FBC1B09D5CE0070C1E7 /* MissFitLocationCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E48FBB1B09D5CE0070C1E7 /* MissFitLocationCoordinate.swift */; };
 		C3F6F2DA1AE4A84000BAD118 /* TeacherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F6F2D91AE4A84000BAD118 /* TeacherTableViewCell.swift */; };
 		C3F6F2DF1AE4CA7500BAD118 /* MissFitTeacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F6F2DE1AE4CA7500BAD118 /* MissFitTeacher.swift */; };
 		C3F6F2E11AE4CB4F00BAD118 /* MissFitLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F6F2E01AE4CB4F00BAD118 /* MissFitLocation.swift */; };
@@ -105,6 +107,7 @@
 		C33CF10B1AE78C8100B35BF8 /* ClassTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTableViewCell.swift; sourceTree = "<group>"; };
 		C344E9B71B08D62600468301 /* TeacherClassesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherClassesViewController.swift; sourceTree = "<group>"; };
 		C34B9F621ADFE8A900911821 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C34C42531B098DDB006E9A5D /* ClassDetailLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailLocationTableViewCell.swift; sourceTree = "<group>"; };
 		C351CC561B02423F00B61900 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		C351CC581B02423F00B61900 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		C351CC591B02423F00B61900 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
@@ -126,6 +129,7 @@
 		C3C7BD511ADEAF4700755CE3 /* MissFitConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitConstants.swift; sourceTree = "<group>"; };
 		C3C7BD531ADEB74900755CE3 /* missfit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "missfit-Bridging-Header.h"; sourceTree = "<group>"; };
 		C3C7BD6A1ADFAB1300755CE3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		C3E48FBB1B09D5CE0070C1E7 /* MissFitLocationCoordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitLocationCoordinate.swift; sourceTree = "<group>"; };
 		C3F6F2D91AE4A84000BAD118 /* TeacherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherTableViewCell.swift; sourceTree = "<group>"; };
 		C3F6F2DE1AE4CA7500BAD118 /* MissFitTeacher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitTeacher.swift; sourceTree = "<group>"; };
 		C3F6F2E01AE4CB4F00BAD118 /* MissFitLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitLocation.swift; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 				C37CCB8F1AE7E9BE00384C7E /* ClassDetailImageTableViewCell.swift */,
 				C37CCB911AE7E9D400384C7E /* ClassDetailBookTableViewCell.swift */,
 				C37CCB931AE7E9FB00384C7E /* ClassDetailInfoTableViewCell.swift */,
+				C34C42531B098DDB006E9A5D /* ClassDetailLocationTableViewCell.swift */,
 				C310D5C81ADE9E3600A70054 /* RegisterViewController.swift */,
 				C36AF3101AEA221100FF8E0C /* ForgotPasscodeViewController.swift */,
 				C34B9F621ADFE8A900911821 /* LoginViewController.swift */,
@@ -312,6 +317,7 @@
 				C33CF1091AE78AB900B35BF8 /* MissFitClassSchedule.swift */,
 				C35BAB601AF905A00085C9C5 /* MissFitTeacherCertification.swift */,
 				C39DB0C91AEBC9F000C91E5A /* MissFitUser.swift */,
+				C3E48FBB1B09D5CE0070C1E7 /* MissFitLocationCoordinate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -479,6 +485,8 @@
 				C35A8A311AE3F0B800AB974C /* MissFitTheme.swift in Sources */,
 				C310D58F1ADC0E2800A70054 /* AppDelegate.swift in Sources */,
 				C33CF10C1AE78C8100B35BF8 /* ClassTableViewCell.swift in Sources */,
+				C3E48FBC1B09D5CE0070C1E7 /* MissFitLocationCoordinate.swift in Sources */,
+				C34C42541B098DDB006E9A5D /* ClassDetailLocationTableViewCell.swift in Sources */,
 				C37CCB901AE7E9BE00384C7E /* ClassDetailImageTableViewCell.swift in Sources */,
 				C3F6F2EB1AE54DF300BAD118 /* LocationDetailViewController.swift in Sources */,
 				C3F6F2E91AE54DA700BAD118 /* TeacherDetailViewController.swift in Sources */,
