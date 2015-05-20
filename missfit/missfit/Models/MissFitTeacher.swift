@@ -21,10 +21,9 @@ class MissFitTeacher {
     var avatarUrl: String?
     var idVerified: Bool = false
     var price: String?
-    var area: String?
-    var district: String?
     var teacherCertification: MissFitTeacherCertification?
     var distance: String?
+    var teachAreas: String?
     
     init(json: JSON) {
         teacherId = json["_id"].stringValue
@@ -52,8 +51,7 @@ class MissFitTeacher {
         self.idVerified = json["verified"].boolValue
         
         self.price = json["price"].stringValue
-        self.area = json["area"].string
-        self.district = json["district"].string
+        self.teachAreas = json["shangmenAddress"].string
         self.teacherCertification = MissFitTeacherCertification(json: json["certified"])
         if json["distance"] != nil {
             self.distance = json["distance"].stringValue

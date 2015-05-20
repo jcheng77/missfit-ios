@@ -13,7 +13,6 @@ class TeacherInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var verifiedIcon: UIImageView!
     @IBOutlet weak var teachScopes: UILabel!
     @IBOutlet weak var district: UILabel!
-    @IBOutlet weak var area: UILabel!
     @IBOutlet weak var teachModes: UILabel!
     @IBOutlet weak var price: UILabel!
 

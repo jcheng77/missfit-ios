@@ -1937,7 +1937,7 @@
                                             <outlet property="scrollView" destination="ejz-5X-m1l" id="Wxg-eF-Lwx"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TeacherInfoTableViewCell" rowHeight="179" id="Sak-s1-gMK" customClass="TeacherInfoTableViewCell" customModule="missfit" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TeacherInfoTableViewCell" rowHeight="153" id="Sak-s1-gMK" customClass="TeacherInfoTableViewCell" customModule="missfit" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sak-s1-gMK" id="TEk-Lm-7mX">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1959,38 +1959,32 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="浦东新区" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3a-6c-52c">
-                                                    <rect key="frame" x="109" y="78" width="56" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="康桥" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaf-vi-TMt">
-                                                    <rect key="frame" x="109" y="103" width="28" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="浦东新区" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3a-6c-52c">
+                                                    <rect key="frame" x="109" y="78" width="460" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上课方式：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLd-Ik-anB">
-                                                    <rect key="frame" x="31" y="129" width="70" height="17"/>
+                                                    <rect key="frame" x="31" y="103" width="70" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="1对1私教" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ikh-Ea-eW3">
-                                                    <rect key="frame" x="109" y="129" width="58" height="17"/>
+                                                    <rect key="frame" x="109" y="103" width="58" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上课费用：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVb-6X-vyA">
-                                                    <rect key="frame" x="31" y="154" width="70" height="17"/>
+                                                    <rect key="frame" x="31" y="128" width="70" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="400元/小时" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLC-dY-BGh">
-                                                    <rect key="frame" x="109" y="154" width="71" height="17"/>
+                                                    <rect key="frame" x="109" y="128" width="71" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1999,7 +1993,7 @@
                                                     <rect key="frame" x="267" y="8" width="66" height="37"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="747" text="潇潇" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJf-GA-vPz">
-                                                            <rect key="frame" x="8" y="8" width="34" height="20.5"/>
+                                                            <rect key="frame" x="8" y="8" width="34" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -2026,29 +2020,27 @@
                                                 <constraint firstItem="f3a-6c-52c" firstAttribute="top" secondItem="P6R-s1-dCe" secondAttribute="top" id="3u4-tl-MJL"/>
                                                 <constraint firstItem="uFs-G0-fTN" firstAttribute="leading" secondItem="TEk-Lm-7mX" secondAttribute="leading" constant="31" id="6Vp-pN-MeB"/>
                                                 <constraint firstItem="uFs-G0-fTN" firstAttribute="top" secondItem="IYN-fS-v1n" secondAttribute="bottom" constant="8" id="87n-c6-bde"/>
+                                                <constraint firstAttribute="trailing" secondItem="f3a-6c-52c" secondAttribute="trailing" constant="31" id="9sw-Wv-Qdd"/>
                                                 <constraint firstItem="eVb-6X-vyA" firstAttribute="top" secondItem="oLC-dY-BGh" secondAttribute="top" id="L5p-np-Wdx"/>
                                                 <constraint firstItem="oLC-dY-BGh" firstAttribute="leading" secondItem="eVb-6X-vyA" secondAttribute="trailing" constant="8" id="LfZ-A2-UtM"/>
                                                 <constraint firstItem="Ikh-Ea-eW3" firstAttribute="top" secondItem="BLd-Ik-anB" secondAttribute="top" id="Nl6-HB-zWb"/>
                                                 <constraint firstItem="BLd-Ik-anB" firstAttribute="leading" secondItem="eVb-6X-vyA" secondAttribute="leading" id="P3N-cw-UI4"/>
-                                                <constraint firstItem="BLd-Ik-anB" firstAttribute="top" secondItem="aaf-vi-TMt" secondAttribute="bottom" constant="9" id="R2l-B0-zzm"/>
                                                 <constraint firstItem="JT9-Z1-Moe" firstAttribute="leading" secondItem="uFs-G0-fTN" secondAttribute="trailing" constant="8" id="RpB-Ce-z7u"/>
                                                 <constraint firstItem="Ikh-Ea-eW3" firstAttribute="leading" secondItem="BLd-Ik-anB" secondAttribute="trailing" constant="8" id="StS-RD-vJq"/>
                                                 <constraint firstAttribute="centerX" secondItem="IYN-fS-v1n" secondAttribute="centerX" id="XRf-Ia-VMD"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="eVb-6X-vyA" secondAttribute="bottom" id="YZj-xQ-edh"/>
+                                                <constraint firstItem="BLd-Ik-anB" firstAttribute="top" secondItem="f3a-6c-52c" secondAttribute="bottom" constant="8" id="a53-Vd-ic8"/>
                                                 <constraint firstItem="eVb-6X-vyA" firstAttribute="top" secondItem="Ikh-Ea-eW3" secondAttribute="bottom" constant="8" id="btg-GW-EXN"/>
                                                 <constraint firstAttribute="trailing" secondItem="JT9-Z1-Moe" secondAttribute="trailing" constant="31" id="dhU-RI-C7k"/>
                                                 <constraint firstItem="uFs-G0-fTN" firstAttribute="top" secondItem="JT9-Z1-Moe" secondAttribute="top" id="ewp-NX-aWY"/>
                                                 <constraint firstItem="BLd-Ik-anB" firstAttribute="leading" secondItem="P6R-s1-dCe" secondAttribute="leading" id="gHH-2M-qoF"/>
                                                 <constraint firstItem="IYN-fS-v1n" firstAttribute="top" secondItem="TEk-Lm-7mX" secondAttribute="topMargin" id="ijf-8v-q7q"/>
                                                 <constraint firstItem="uFs-G0-fTN" firstAttribute="leading" secondItem="P6R-s1-dCe" secondAttribute="leading" id="jpY-P7-YdZ"/>
-                                                <constraint firstItem="aaf-vi-TMt" firstAttribute="top" secondItem="f3a-6c-52c" secondAttribute="bottom" constant="8" id="lnN-Lb-zdB"/>
                                                 <constraint firstItem="f3a-6c-52c" firstAttribute="leading" secondItem="P6R-s1-dCe" secondAttribute="trailing" constant="8" id="rjp-h8-tGa"/>
-                                                <constraint firstItem="aaf-vi-TMt" firstAttribute="leading" secondItem="f3a-6c-52c" secondAttribute="leading" id="tYC-jX-Vsb"/>
                                                 <constraint firstItem="P6R-s1-dCe" firstAttribute="top" secondItem="JT9-Z1-Moe" secondAttribute="bottom" constant="8" id="uON-Yd-aNv"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="area" destination="aaf-vi-TMt" id="E5G-j5-7MY"/>
                                             <outlet property="district" destination="f3a-6c-52c" id="FCP-zH-gMZ"/>
                                             <outlet property="name" destination="hJf-GA-vPz" id="5qD-0y-D0C"/>
                                             <outlet property="price" destination="oLC-dY-BGh" id="0xB-wS-Pef"/>

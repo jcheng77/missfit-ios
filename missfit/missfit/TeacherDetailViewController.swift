@@ -119,10 +119,9 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
             cell.name.text = teacherInfo?.name
             cell.verifiedIcon.hidden = !teacherInfo!.idVerified
             cell.teachScopes.text = teacherInfo?.classScopesString()
-            if let districtString = teacherInfo?.district {
-                cell.district.text = "【" + districtString + "】"
+            if let areas = teacherInfo?.teachAreas {
+                cell.district.text = "【" + areas + "】"
             }
-            cell.area.text = teacherInfo?.area
             cell.teachModes.text = teacherInfo?.teachModesString()
             if let priceString = teacherInfo?.price {
                 cell.price.text = priceString + "元/小时"
