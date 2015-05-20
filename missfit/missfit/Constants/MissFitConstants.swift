@@ -40,6 +40,10 @@ let MissFitSharingTeacherURI: String = "http://missfit.boluo.me/teachers/"
 
 let MissFitTermsOfUseURI: String = "http://missfit-static.boluo.me/termsofuse.html"
 
+let MissFitPaymentCallbackURI: String = "orders/notify"
+
+let MissFitOrdersURI: String = "orders"
+
 
 
 // MissFit user related:
@@ -57,3 +61,10 @@ let MissFitUserNickName: String = "MissFitUserNickName"
 let MissFitUserPasscode: String = "MissFitUserPasscode"
 
 let MissFitUserAvatarUrl: String = "MissFitUserAvatarUrl"
+
+let MissFitUserHasMonthlyCard: String = "MissFitUserHasMonthlyCard"
+
+let MissFitUserMonthlyCardValidThrough: String = "MissFitUserMonthlyCardValidThrough"
+
+// Notifications 
+let MissFitAlipaySucceededCallback: String = "MissFitAlipaySucceededCallback"

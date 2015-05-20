@@ -89,10 +89,16 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             // According to the info loaded from server
             let cell = tableView.dequeueReusableCellWithIdentifier("SettingsDetailTableViewCell", forIndexPath: indexPath) as! SettingsDetailTableViewCell
             cell.content.text = (sectionsInfo[indexPath.section]["value"] as! [String])[indexPath.row]
-            cell.status.text = "未购买"
-            cell.detail.text = "¥399"
+            if MissFitUser.user.hasMonthlyCard {
+                cell.status.text = "有效期至"
+                cell.detail.text = MissFitUser.user.monthlyCardValidThrough
+            } else {
+                cell.status.text = "未购买"
+                cell.detail.text = "¥399"
+            }
             cell.detail.hidden = false
             cell.status.hidden = false
+            cell.line.hidden = true
             return cell
         } else if sectionsInfo[indexPath.section]["key"] as! String == "关于我们" {
             if indexPath.row < (sectionsInfo[indexPath.section]["value"] as! [String]).count {
@@ -131,8 +137,19 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         } else if sectionsInfo[indexPath.section]["key"] as! String == "会员卡" {
             let stringArray = sectionsInfo[indexPath.section]["value"] as! [String]
-            if indexPath.row < stringArray.count && stringArray[indexPath.row] == "会员卡" {
+            if indexPath.row < stringArray.count && stringArray[indexPath.row] == "月卡" {
                 // navigate to payment view controller
+                let paymentController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("PaymentViewController") as! PaymentViewController
+                paymentController.settingsController = self
+                
+                let oneMonthTimeInterval: Double = 3600 * 24 * 30
+                if MissFitUser.user.hasMonthlyCard {
+                    paymentController.validThrough = MissFitUtils.formatDate(NSDate(timeInterval: oneMonthTimeInterval, sinceDate: MissFitUtils.dateFromString(MissFitUser.user.monthlyCardValidThrough!)))
+                } else {
+                    // 30 days
+                    paymentController.validThrough = MissFitUtils.formatDate( NSDate(timeInterval: oneMonthTimeInterval, sinceDate: NSDate()))
+                }
+                navigationController?.pushViewController(paymentController, animated: true)
             }
         }
     }

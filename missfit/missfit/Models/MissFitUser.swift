@@ -30,6 +30,10 @@ class MissFitUser {
         passcode = userInfo?[MissFitUserPasscode]
         nickName = userInfo?[MissFitUserNickName]
         avatarUrl = userInfo?[MissFitUserAvatarUrl]
+        if let monthlyCardString = userInfo?[MissFitUserHasMonthlyCard] {
+            hasMonthlyCard = (monthlyCardString as NSString).boolValue
+        }
+        monthlyCardValidThrough = userInfo?[MissFitUserMonthlyCardValidThrough]
     }
     
     var userId: String?
@@ -41,6 +45,8 @@ class MissFitUser {
     var isLogin: Bool {
         return userId != nil && token != nil
     }
+    var hasMonthlyCard: Bool = false
+    var monthlyCardValidThrough: String?
     
     func login(userId: String, userPhoneNumber: String, userToken: String, userPasscode: String) {
         self.userId = userId
@@ -55,6 +61,7 @@ class MissFitUser {
         userInfo[MissFitUserPasscode] = passcode
         userInfo[MissFitUserNickName] = nickName
         userInfo[MissFitUserAvatarUrl] = avatarUrl
+        //TODO: also need load the membership info
         
         NSUserDefaults.standardUserDefaults().setObject(userInfo, forKey: MissFitUserInfo)
         NSUserDefaults.standardUserDefaults().synchronize()
@@ -67,8 +74,33 @@ class MissFitUser {
         token = nil
         nickName = nil
         avatarUrl = nil
+        hasMonthlyCard = false
+        monthlyCardValidThrough = nil
         
         NSUserDefaults.standardUserDefaults().setObject(nil, forKey: MissFitUserInfo)
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
+    
+    func extendMembership() {
+        self.hasMonthlyCard = true
+        let oneMonthTimeInterval: Double = 3600 * 24 * 30
+        if let validThrough = self.monthlyCardValidThrough {
+            self.monthlyCardValidThrough = MissFitUtils.formatDate(NSDate(timeInterval: oneMonthTimeInterval, sinceDate: MissFitUtils.dateFromString(validThrough)))
+        } else {
+            self.monthlyCardValidThrough = MissFitUtils.formatDate(NSDate(timeInterval: oneMonthTimeInterval, sinceDate: NSDate()))
+        }
+        
+        var userInfo = [String: String]()
+        userInfo[MissFitUserId] = userId
+        userInfo[MissFitUserPhoneNumber] = phoneNumber
+        userInfo[MissFitUserToken] = token
+        userInfo[MissFitUserPasscode] = passcode
+        userInfo[MissFitUserNickName] = nickName
+        userInfo[MissFitUserAvatarUrl] = avatarUrl
+        userInfo[MissFitUserHasMonthlyCard] = hasMonthlyCard ? "1" : "0"
+        userInfo[MissFitUserMonthlyCardValidThrough] = monthlyCardValidThrough
+        
+        NSUserDefaults.standardUserDefaults().setObject(userInfo, forKey: MissFitUserInfo)
         NSUserDefaults.standardUserDefaults().synchronize()
     }
 }

@@ -120,7 +120,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-        return WXApi.handleOpenURL(url, delegate: self)
+        //跳转支付宝钱包进行支付，需要将支付宝钱包的支付结果回传给SDK
+        if url.host == "safepay" {
+            AlipaySDK.defaultService().processOrderWithPaymentResult(url, standbyCallback: { (resultDictionary) -> Void in
+                let result = resultDictionary as NSDictionary
+                let resultsStatus = result["resultStatus"] as! String
+                if resultsStatus == "9000" {
+                    KVNProgress.showSuccessWithStatus("支付成功")
+                    // Update local data
+                    MissFitUser.user.extendMembership()
+                    NSNotificationCenter.defaultCenter().postNotificationName(MissFitAlipaySucceededCallback, object: nil)
+                } else {
+                    if resultsStatus == "8000" {
+                        KVNProgress.showWithStatus("支付结果确认中")
+                    } else {
+                        KVNProgress.showErrorWithStatus("支付失败")
+                    }
+                }
+            })
+            return true
+        } else {
+            return WXApi.handleOpenURL(url, delegate: self)
+        }
     }
 
 }

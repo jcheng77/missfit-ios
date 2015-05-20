@@ -6,3 +6,5 @@
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "UIImageView+AFNetworking.h"
 #import "WXApi.h"
+#import <AlipaySDK/AlipaySDK.h>
+#import "DataSigner.h"

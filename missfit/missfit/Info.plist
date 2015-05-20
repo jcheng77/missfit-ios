@@ -30,6 +30,16 @@
 				<string>wxedf7d40749c4a907</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>alipaycallback</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>missfit.yoga</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
