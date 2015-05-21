@@ -66,5 +66,7 @@ let MissFitUserHasMonthlyCard: String = "MissFitUserHasMonthlyCard"
 
 let MissFitUserMonthlyCardValidThrough: String = "MissFitUserMonthlyCardValidThrough"
 
+let MissFitUserLoginDate: String = "MissFitUserLoginDate"
+
 // Notifications 
 let MissFitAlipaySucceededCallback: String = "MissFitAlipaySucceededCallback"

@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
         // Override point for customization after application launch.
         self.initializeThemeSettings()
         WXApi.registerApp("wxedf7d40749c4a907")
+        MissFitUser.user.checkTokenExpired()
         return true
     }
 

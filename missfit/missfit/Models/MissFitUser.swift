@@ -34,6 +34,7 @@ class MissFitUser {
             hasMonthlyCard = (monthlyCardString as NSString).boolValue
         }
         monthlyCardValidThrough = userInfo?[MissFitUserMonthlyCardValidThrough]
+        loginDate = userInfo?[MissFitUserLoginDate]
     }
     
     var userId: String?
@@ -47,6 +48,7 @@ class MissFitUser {
     }
     var hasMonthlyCard: Bool = false
     var monthlyCardValidThrough: String?
+    var loginDate: String?
     
     func login(userId: String, userPhoneNumber: String, userToken: String, userPasscode: String) {
         self.userId = userId
@@ -63,8 +65,25 @@ class MissFitUser {
         userInfo[MissFitUserAvatarUrl] = avatarUrl
         //TODO: also need load the membership info
         
+        // Set the login date
+        userInfo[MissFitUserLoginDate] = MissFitUtils.formatDate(NSDate())
+        
         NSUserDefaults.standardUserDefaults().setObject(userInfo, forKey: MissFitUserInfo)
         NSUserDefaults.standardUserDefaults().synchronize()
+    }
+    
+    func checkTokenExpired() {
+        if self.isLogin {
+            if let dateString = self.loginDate {
+                let date = MissFitUtils.dateFromString(dateString)
+                let twentyDaysInterval: Double = 20.0 * 24 * 3600
+                if NSDate().timeIntervalSinceDate(date) > twentyDaysInterval {
+                    self.logout()
+                }
+            } else {
+                self.logout()
+            }
+        }
     }
     
     func logout() {
