@@ -58,6 +58,15 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         
         fetchData(NSDate())
+        tableView.addPullToRefreshWithAction({ () -> () in
+            if self.selectedDateIndice.datesPageIndex == 0 {
+                // Current week's classes
+                self.fetchData(self.currentWeekDates[self.selectedDateIndice.dateIndex])
+            } else {
+                // Next week's classes
+                self.fetchData(self.nextWeekDates[self.selectedDateIndice.dateIndex])
+            }
+        }, withAnimator: BeatAnimator())
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -272,6 +281,7 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
         manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
 //            KVNProgress.showSuccessWithStatus("获取课程列表成功！")
             KVNProgress.dismiss()
+            self.tableView.stopPullToRefresh()
             // Parse data
             self.parseResponseObject(responseObject as! NSDictionary)
             self.tableView.reloadData()
@@ -284,6 +294,7 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
                 } else {
                     KVNProgress.showErrorWithStatus("获取课程列表失败")
                 }
+                self.tableView.stopPullToRefresh()
         }
     }
     

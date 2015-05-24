@@ -24,6 +24,11 @@
 		C313B0BA1B028615009FE2E4 /* MissFitBookingTeacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313B0B91B028615009FE2E4 /* MissFitBookingTeacher.swift */; };
 		C313B0BC1B02CB78009FE2E4 /* MissFitBookingTeacherDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313B0BB1B02CB78009FE2E4 /* MissFitBookingTeacherDetail.swift */; };
 		C313B0C01B02F5B6009FE2E4 /* TermsOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313B0BF1B02F5B6009FE2E4 /* TermsOfUseViewController.swift */; };
+		C31710141B10FA0D0080D294 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C317100F1B10FA0D0080D294 /* Animator.swift */; };
+		C31710151B10FA0D0080D294 /* PacmanAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31710101B10FA0D0080D294 /* PacmanAnimator.swift */; };
+		C31710161B10FA0D0080D294 /* PullToRefreshExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31710111B10FA0D0080D294 /* PullToRefreshExtension.swift */; };
+		C31710171B10FA0D0080D294 /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31710121B10FA0D0080D294 /* PullToRefreshView.swift */; };
+		C31710191B1176500080D294 /* BeatAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31710181B1176500080D294 /* BeatAnimator.swift */; };
 		C3316E471B0A4826001D2E03 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3316E461B0A4826001D2E03 /* PaymentViewController.swift */; };
 		C3392A3F1AF1CB01004DB947 /* TeacherImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3392A3E1AF1CB01004DB947 /* TeacherImageTableViewCell.swift */; };
 		C3392A411AF1CB3A004DB947 /* TeacherInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3392A401AF1CB3A004DB947 /* TeacherInfoTableViewCell.swift */; };
@@ -115,6 +120,12 @@
 		C313B0B91B028615009FE2E4 /* MissFitBookingTeacher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitBookingTeacher.swift; sourceTree = "<group>"; };
 		C313B0BB1B02CB78009FE2E4 /* MissFitBookingTeacherDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitBookingTeacherDetail.swift; sourceTree = "<group>"; };
 		C313B0BF1B02F5B6009FE2E4 /* TermsOfUseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsOfUseViewController.swift; sourceTree = "<group>"; };
+		C317100F1B10FA0D0080D294 /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
+		C31710101B10FA0D0080D294 /* PacmanAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PacmanAnimator.swift; sourceTree = "<group>"; };
+		C31710111B10FA0D0080D294 /* PullToRefreshExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshExtension.swift; sourceTree = "<group>"; };
+		C31710121B10FA0D0080D294 /* PullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
+		C31710131B10FA0D0080D294 /* Refresher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Refresher.h; sourceTree = "<group>"; };
+		C31710181B1176500080D294 /* BeatAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeatAnimator.swift; sourceTree = "<group>"; };
 		C3316E461B0A4826001D2E03 /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		C3392A3E1AF1CB01004DB947 /* TeacherImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherImageTableViewCell.swift; sourceTree = "<group>"; };
 		C3392A401AF1CB3A004DB947 /* TeacherInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherInfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -398,6 +409,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C317100E1B10FA0D0080D294 /* Refresher */ = {
+			isa = PBXGroup;
+			children = (
+				C317100F1B10FA0D0080D294 /* Animator.swift */,
+				C31710181B1176500080D294 /* BeatAnimator.swift */,
+				C31710101B10FA0D0080D294 /* PacmanAnimator.swift */,
+				C31710111B10FA0D0080D294 /* PullToRefreshExtension.swift */,
+				C31710121B10FA0D0080D294 /* PullToRefreshView.swift */,
+				C31710131B10FA0D0080D294 /* Refresher.h */,
+			);
+			path = Refresher;
+			sourceTree = "<group>";
+		};
 		C351CC551B02423F00B61900 /* WeChatSDK_1.5 */ = {
 			isa = PBXGroup;
 			children = (
@@ -548,6 +572,7 @@
 		C3C7BD691ADFAB1300755CE3 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				C317100E1B10FA0D0080D294 /* Refresher */,
 				C35FB5A31B0B086C00B82954 /* AliPay */,
 				C351CC551B02423F00B61900 /* WeChatSDK_1.5 */,
 				C3C7BD6A1ADFAB1300755CE3 /* SwiftyJSON.swift */,
@@ -717,10 +742,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C31710141B10FA0D0080D294 /* Animator.swift in Sources */,
 				C3BA87EF1AE29EF4009D7A56 /* AllTeachersViewController.swift in Sources */,
 				C37CCB941AE7E9FB00384C7E /* ClassDetailInfoTableViewCell.swift in Sources */,
 				C37CCB921AE7E9D400384C7E /* ClassDetailBookTableViewCell.swift in Sources */,
 				C36A84CC1B010972007294A5 /* TeacherBookingViewController.swift in Sources */,
+				C31710161B10FA0D0080D294 /* PullToRefreshExtension.swift in Sources */,
 				C344E9B81B08D62600468301 /* TeacherClassesViewController.swift in Sources */,
 				C35FB60E1B0B086C00B82954 /* NSDataEx.m in Sources */,
 				C3C202601AEC941600F3E30C /* SettingsNormalTableViewCell.swift in Sources */,
@@ -746,9 +773,12 @@
 				C3F6F2EB1AE54DF300BAD118 /* LocationDetailViewController.swift in Sources */,
 				C35FB60F1B0B086C00B82954 /* openssl_wrapper.m in Sources */,
 				C3F6F2E91AE54DA700BAD118 /* TeacherDetailViewController.swift in Sources */,
+				C31710151B10FA0D0080D294 /* PacmanAnimator.swift in Sources */,
+				C31710171B10FA0D0080D294 /* PullToRefreshView.swift in Sources */,
 				C31152111B027EFC00FBF0CD /* MyTeacherTableViewCell.swift in Sources */,
 				C310D5921ADC0E2800A70054 /* missfit.xcdatamodeld in Sources */,
 				C34B9F631ADFE8A900911821 /* LoginViewController.swift in Sources */,
+				C31710191B1176500080D294 /* BeatAnimator.swift in Sources */,
 				C37B8C051B0B75F800BDB3F0 /* PaymentCouponTableViewCell.swift in Sources */,
 				C3392A3F1AF1CB01004DB947 /* TeacherImageTableViewCell.swift in Sources */,
 				C3392A451AF1CB8C004DB947 /* TeacherCertificationsTableViewCell.swift in Sources */,
