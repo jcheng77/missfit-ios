@@ -79,6 +79,7 @@ class MyClassesViewController: UIViewController, UITableViewDataSource, UITableV
                 // Parse data
                 self.parseClassResponseObject(responseObject as! NSDictionary)
                 self.tableView.reloadData()
+                self.tableView.stopPullToRefresh()
                 }) { (operation, error) -> Void in
                     if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
                         // Need to get the status and message
@@ -88,6 +89,7 @@ class MyClassesViewController: UIViewController, UITableViewDataSource, UITableV
                     } else {
                         KVNProgress.showErrorWithStatus("获取我的课程列表失败")
                     }
+                    self.tableView.stopPullToRefresh()
             }
         } else {
             if bookingTeachers == nil {
@@ -104,6 +106,7 @@ class MyClassesViewController: UIViewController, UITableViewDataSource, UITableV
                 // Parse data
                 self.parseTeacherResponseObject(responseObject as! NSDictionary)
                 self.tableView.reloadData()
+                self.tableView.stopPullToRefresh()
                 }) { (operation, error) -> Void in
                     if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
                         // Need to get the status and message
@@ -113,12 +116,12 @@ class MyClassesViewController: UIViewController, UITableViewDataSource, UITableV
                     } else {
                         KVNProgress.showErrorWithStatus("获取老师预约列表失败")
                     }
+                    self.tableView.stopPullToRefresh()
             }
         }
     }
     
     func loadMoreData(page: Int) {
-        
     }
     
     func initSegments() {
@@ -133,6 +136,16 @@ class MyClassesViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         initSegments()
         fetchData(currentCategory)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if tableView.pullToRefreshView == nil {
+            tableView.addPullToRefreshWithAction({ () -> () in
+                self.fetchData(self.currentCategory)
+                }, withAnimator: BeatAnimator())
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -58,20 +58,22 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         
         fetchData(NSDate())
-        tableView.addPullToRefreshWithAction({ () -> () in
-            if self.selectedDateIndice.datesPageIndex == 0 {
-                // Current week's classes
-                self.fetchData(self.currentWeekDates[self.selectedDateIndice.dateIndex])
-            } else {
-                // Next week's classes
-                self.fetchData(self.nextWeekDates[self.selectedDateIndice.dateIndex])
-            }
-        }, withAnimator: BeatAnimator())
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         createDatesButtons()
+        if tableView.pullToRefreshView == nil {
+            tableView.addPullToRefreshWithAction({ () -> () in
+                if self.selectedDateIndice.datesPageIndex == 0 {
+                    // Current week's classes
+                    self.fetchData(self.currentWeekDates[self.selectedDateIndice.dateIndex])
+                } else {
+                    // Next week's classes
+                    self.fetchData(self.nextWeekDates[self.selectedDateIndice.dateIndex])
+                }
+                }, withAnimator: BeatAnimator())
+        }
     }
 
     override func didReceiveMemoryWarning() {

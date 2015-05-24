@@ -81,7 +81,7 @@ public class PullToRefreshView: UIView {
         labelTitle.frame = bounds
         labelTitle.textAlignment = .Center
         labelTitle.autoresizingMask = .FlexibleLeftMargin | .FlexibleRightMargin
-        labelTitle.textColor = UIColor.blackColor()
+        labelTitle.textColor = UIColor.darkGrayColor()
         labelTitle.text = NSLocalizedString("下拉刷新", comment: "Refresher")
         addSubview(labelTitle)
     }
@@ -132,7 +132,7 @@ public class PullToRefreshView: UIView {
                         } else if (loading == true) {
                             labelTitle.text = NSLocalizedString("加载中...", comment: "Refresher")
                         } else {
-                            labelTitle.text = NSLocalizedString("松开刷新", comment: "Refresher")
+                            labelTitle.text = NSLocalizedString("松开即可刷新", comment: "Refresher")
                             animator.changeProgress(-offsetWithoutInsets / self.frame.size.height)
                         }
                     } else if (loading == true) {

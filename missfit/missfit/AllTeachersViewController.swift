@@ -28,7 +28,16 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: Selector("locationNotFound"), userInfo: nil, repeats: false)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if tableView.pullToRefreshView == nil {
+            self.tableView.addPullToRefreshWithAction({ () -> () in
+                self.currentLocation = nil
+                self.locationManager.startUpdatingLocation()
+                }, withAnimator: BeatAnimator())
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,13 +57,6 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
-    func locationNotFound() {
-        // 暂时没获取到位置信息
-        if currentLocation == nil && allowUseLocation {
-            self.refreshData()
-        }
-    }
-    
     func refreshData() {
         teachers = []
         var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
@@ -64,12 +66,14 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
             endpoint = endpoint + MissFitTeachersLocationURI + "\(currentLocation!.coordinate.longitude),\(currentLocation!.coordinate.latitude)"
         }
         
+        KVNProgress.dismiss()
         KVNProgress.show()
         manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
             KVNProgress.dismiss()
             // Parse data
             self.parseResponseObject(responseObject as! NSDictionary)
             self.tableView.reloadData()
+            self.tableView.stopPullToRefresh()
         }) { (operation, error) -> Void in
             if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
                 // Need to get the status and message
@@ -79,6 +83,7 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
             } else {
                 KVNProgress.showErrorWithStatus("获取老师列表失败")
             }
+            self.tableView.stopPullToRefresh()
         }
     }
     

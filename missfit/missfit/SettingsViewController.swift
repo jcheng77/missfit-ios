@@ -51,6 +51,15 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.estimatedRowHeight = 44.0
         // Retrieve info from server
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if tableView.pullToRefreshView == nil {
+            tableView.addPullToRefreshWithAction({ () -> () in
+                
+                }, withAnimator: BeatAnimator())
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
