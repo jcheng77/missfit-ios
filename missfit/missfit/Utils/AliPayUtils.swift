@@ -74,10 +74,6 @@ class AliPayUtils {
     }
     
     class func getOutTradeNo(tenderID: String) -> String {
-        let interval = NSDate().timeIntervalSince1970
-        let tradeNo = String(format: "%ld", Int(interval)) + tenderID
-        println("tradeNo: \(tradeNo)")
-        println("interval: \(interval.description)")
         return tenderID
     }
     
