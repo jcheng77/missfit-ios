@@ -28,6 +28,8 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+        NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("locationNotFound"), userInfo: nil, repeats: false)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -44,6 +46,14 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func locationNotFound() {
+        // 暂时没获取到位置信息
+        if currentLocation == nil && allowUseLocation {
+            self.refreshData()
+        }
+    }
+
     
     func parseResponseObject(responseObject: NSDictionary) {
         let json = JSON(responseObject)
