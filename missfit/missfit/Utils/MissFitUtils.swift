@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 public class MissFitUtils {
+    public class func isIpad() -> Bool {
+        return UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad
+    }
+    
     public class func shortestScreenWidth() -> CGFloat {
         let screenWidth = UIScreen.mainScreen().bounds.size.width
         let screenHeight = UIScreen.mainScreen().bounds.size.height

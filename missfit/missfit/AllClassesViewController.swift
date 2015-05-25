@@ -279,6 +279,10 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
         var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
         let dateString = MissFitUtils.formatDate(date)
         var endpoint: String = getClassEndPoint() + dateString
+        if MissFitUser.user.isLogin {
+            manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
+            manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
+        }
         KVNProgress.show()
         manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
 //            KVNProgress.showSuccessWithStatus("获取课程列表成功！")
@@ -316,7 +320,11 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 94.0
+        if MissFitUtils.isIpad() {
+            return 92.0
+        } else {
+            return 106.0
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

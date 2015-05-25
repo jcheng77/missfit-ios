@@ -1201,19 +1201,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="2:30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYS-yE-6tX">
-                                                    <rect key="frame" x="16" y="8" width="34" height="21"/>
+                                                    <rect key="frame" x="16" y="8" width="34" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.96862745098039216" green="0.49411764705882355" blue="0.64313725490196072" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60分钟" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wrw-NY-lx6">
-                                                    <rect key="frame" x="16" y="37" width="44" height="17"/>
+                                                    <rect key="frame" x="16" y="36" width="44" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.63137254901960782" green="0.63137254901960782" blue="0.63137254901960782" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qm0-Zq-Qhz">
-                                                    <rect key="frame" x="74" y="37" width="452" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qm0-Zq-Qhz">
+                                                    <rect key="frame" x="74" y="36" width="452" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="JWP-L2-iiD"/>
                                                     </constraints>
@@ -1227,7 +1227,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="商圈" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYg-hf-5OW">
-                                                    <rect key="frame" x="74" y="62" width="452" height="18"/>
+                                                    <rect key="frame" x="74" y="61" width="452" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="CwM-7d-ekh"/>
                                                     </constraints>
@@ -1252,7 +1252,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="阴瑜伽" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSS-VN-I9f">
-                                                    <rect key="frame" x="74" y="8" width="51" height="21"/>
+                                                    <rect key="frame" x="74" y="8" width="51" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" red="0.96862745100000003" green="0.4941176471" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1287,6 +1287,11 @@
                                                 <constraint firstItem="pYg-hf-5OW" firstAttribute="leading" secondItem="uSS-VN-I9f" secondAttribute="leading" id="eYD-Ey-slx"/>
                                                 <constraint firstItem="VYS-yE-6tX" firstAttribute="top" secondItem="mEE-9n-GBW" secondAttribute="topMargin" id="sTy-oU-G4h"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Svp-PK-0S1"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="address" destination="Qm0-Zq-Qhz" id="tzS-qJ-Md6"/>
