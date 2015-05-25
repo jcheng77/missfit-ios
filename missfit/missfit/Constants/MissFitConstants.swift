@@ -40,7 +40,7 @@ let MissFitSharingTeacherURI: String = "http://missfit.boluo.me/teachers/"
 
 let MissFitTermsOfUseURI: String = "http://missfit-static.boluo.me/termsofuse.html"
 
-let MissFitPaymentCallbackURI: String = "orders/notify"
+let MissFitPaymentCallbackURI: String = "orders/alipay/notify"
 
 let MissFitOrdersURI: String = "orders"
 

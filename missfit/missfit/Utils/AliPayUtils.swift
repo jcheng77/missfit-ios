@@ -78,7 +78,7 @@ class AliPayUtils {
         let tradeNo = String(format: "%ld", Int(interval)) + tenderID
         println("tradeNo: \(tradeNo)")
         println("interval: \(interval.description)")
-        return tradeNo
+        return tenderID
     }
     
     class func sign(orderSpec: String) -> String? {
