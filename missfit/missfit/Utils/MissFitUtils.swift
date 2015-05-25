@@ -49,4 +49,9 @@ public class MissFitUtils {
             return dateFormatter.dateFromString(dateString)!
         }
     }
+    
+    public class func dateFromServer(dateString: String) -> NSDate {
+        var date = (dateString as NSString).substringToIndex(10) as String
+        return self.dateFromString(date)
+    }
 }

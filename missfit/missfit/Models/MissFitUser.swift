@@ -55,6 +55,7 @@ class MissFitUser {
         self.phoneNumber = userPhoneNumber
         self.token = userToken
         self.passcode = userPasscode
+        self.loginDate = MissFitUtils.formatDate(NSDate())
         
         var userInfo = [String: String]()
         userInfo[MissFitUserId] = userId
@@ -66,10 +67,11 @@ class MissFitUser {
         //TODO: also need load the membership info
         
         // Set the login date
-        userInfo[MissFitUserLoginDate] = MissFitUtils.formatDate(NSDate())
+        userInfo[MissFitUserLoginDate] = loginDate
         
         NSUserDefaults.standardUserDefaults().setObject(userInfo, forKey: MissFitUserInfo)
         NSUserDefaults.standardUserDefaults().synchronize()
+        
     }
     
     func checkTokenExpired() {
@@ -101,14 +103,6 @@ class MissFitUser {
     }
     
     func extendMembership() {
-        self.hasMonthlyCard = true
-        let oneMonthTimeInterval: Double = 3600 * 24 * 30
-        if let validThrough = self.monthlyCardValidThrough {
-            self.monthlyCardValidThrough = MissFitUtils.formatDate(NSDate(timeInterval: oneMonthTimeInterval, sinceDate: MissFitUtils.dateFromString(validThrough)))
-        } else {
-            self.monthlyCardValidThrough = MissFitUtils.formatDate(NSDate(timeInterval: oneMonthTimeInterval, sinceDate: NSDate()))
-        }
-        
         var userInfo = [String: String]()
         userInfo[MissFitUserId] = userId
         userInfo[MissFitUserPhoneNumber] = phoneNumber
@@ -118,8 +112,60 @@ class MissFitUser {
         userInfo[MissFitUserAvatarUrl] = avatarUrl
         userInfo[MissFitUserHasMonthlyCard] = hasMonthlyCard ? "1" : "0"
         userInfo[MissFitUserMonthlyCardValidThrough] = monthlyCardValidThrough
+        userInfo[MissFitUserLoginDate] = loginDate
         
         NSUserDefaults.standardUserDefaults().setObject(userInfo, forKey: MissFitUserInfo)
         NSUserDefaults.standardUserDefaults().synchronize()
+        
+
+    }
+    
+    func parseMembershipData(responseObject: NSDictionary) {
+        let json = JSON(responseObject)
+        for (key: String, subJson: JSON) in json {
+            if key == "data" {
+                self.hasMonthlyCard = subJson["profile"]["isMember"].boolValue
+                if let memberExpiredDate = subJson["profile"]["memberExpired"].string {
+                    self.monthlyCardValidThrough = MissFitUtils.formatDate(MissFitUtils.dateFromServer(memberExpiredDate))
+                }
+                self.extendMembership()
+            }
+        }
+    }
+    
+    func loadMembershipInfo() {
+        var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+        var endpoint: String = MissFitBaseURL + MissFitMembershipURI + self.userId!
+        KVNProgress.show()
+        manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
+        manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
+        manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
+            KVNProgress.dismiss()
+            self.parseMembershipData(responseObject as! NSDictionary)
+            NSNotificationCenter.defaultCenter().postNotificationName(MissFitLoadMembershipSucceededCallback, object: nil)
+        }) { (operation, error) -> Void in
+            if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
+                // Need to get the status and message
+                let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as! NSData)
+                let message: String? = json["message"].string
+                KVNProgress.showErrorWithStatus(message)
+            } else {
+                KVNProgress.showErrorWithStatus("获取会员信息失败")
+            }
+            NSNotificationCenter.defaultCenter().postNotificationName(MissFitLoadMembershipFailureCallback, object: nil)
+        }
+    }
+    
+    func isMonthlyCardExpired() ->Bool {
+        if monthlyCardValidThrough == nil {
+            return true
+        } else {
+            if MissFitUtils.dateFromString(monthlyCardValidThrough!).timeIntervalSinceDate(NSDate().dateByAddingTimeInterval(24.0 * 3600)) > 0 {
+                // Valid date is farther away from tomorrow
+                return false
+            } else {
+                return true
+            }
+        }
     }
 }

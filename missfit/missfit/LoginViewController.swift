@@ -37,6 +37,7 @@ class LoginViewController: UIViewController {
                     let json = JSON(responseObject)
                     MissFitUser.user.login(json["data"]["userId"].stringValue, userPhoneNumber: phoneNumber, userToken: json["data"]["authToken"].stringValue, userPasscode: passcode)
                     self.dismissViewControllerAnimated(true, completion: nil)
+                    MissFitUser.user.loadMembershipInfo()
                     }, failure: { (operation, error) -> Void in
                         //登录失败
                         if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {

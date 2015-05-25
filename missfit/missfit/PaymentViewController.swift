@@ -17,7 +17,9 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
     var orderId: String?
     var currentPayMethod: PayMethods = .Alipay
     var validThrough: String?
+    var memberFee: String?
     var settingsController: SettingsViewController?
+    var finalPrice: Float = 0.01
     
     var kPaymentContentCellIndex = 0
     var kPaymentCouponCellIndex = 1
@@ -61,11 +63,11 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBAction func submitPayment(sender: AnyObject) {
         let bodyString = "美人瑜月卡"
-        self.pay("订金支付", body: bodyString, price: "0.01")
+        self.pay("订金支付", body: bodyString, price: NSNumber(float: self.finalPrice).stringValue)
     }
     
     func paySucceededCallback() {
-        self.settingsController?.tableView.reloadData()
+        self.settingsController?.loadMembership()
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
@@ -78,8 +80,6 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
                 let resultsStatus = result["resultStatus"] as! String
                 if resultsStatus == "9000" {
                     KVNProgress.showSuccessWithStatus("支付成功")
-                    // Update local data
-                    MissFitUser.user.extendMembership()
                     self.paySucceededCallback()
                 } else {
                     if resultsStatus == "8000" {
@@ -106,7 +106,7 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
         // POST /orders (需登陆) {"subject":"订单标题，比如美人鱼月费"//也可以考虑由服务器端统一指定, total_fee:"金额，不填则是199", price: 199//可不填, quantity: 1//可不填}
         var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
         var endpoint: String = MissFitBaseURL + MissFitOrdersURI
-        let params = ["subject": "美人瑜月卡", "total_fee": 399, "price": 399, "quantity": 1]
+        let params = ["subject": "美人瑜月卡", "total_fee": finalPrice, "price": finalPrice, "quantity": 1]
         KVNProgress.show()
         manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
         manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
@@ -136,12 +136,16 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
         if indexPath.row == kPaymentContentCellIndex {
             let cell = tableView.dequeueReusableCellWithIdentifier("PaymentContentTableViewCell", forIndexPath: indexPath) as! PaymentContentTableViewCell
             cell.validThrough.text = validThrough
+            cell.price.text = self.memberFee
+            cell.needToPay.text = self.memberFee
             return cell
         } else if indexPath.row == kPaymentCouponCellIndex {
             let cell = tableView.dequeueReusableCellWithIdentifier("PaymentCouponTableViewCell", forIndexPath: indexPath) as! PaymentCouponTableViewCell
             return cell
         } else if indexPath.row == kPaymentActualPriceCellIndex {
             let cell = tableView.dequeueReusableCellWithIdentifier("PaymentActualPriceTableViewCell", forIndexPath: indexPath) as! PaymentActualPriceTableViewCell
+            cell.actualPrice.text = self.memberFee
+            finalPrice = (cell.actualPrice.text! as NSString).floatValue
             return cell
         } else if indexPath.row == kPaymentActionCellIndex {
             let cell = tableView.dequeueReusableCellWithIdentifier("PaymentActionTableViewCell", forIndexPath: indexPath) as! PaymentActionTableViewCell

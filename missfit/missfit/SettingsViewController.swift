@@ -10,6 +10,8 @@ import UIKit
 
 class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
+    var memberFee: Float = 0.0
+    var isMembershipLoaded = false
     let sectionsInfo = [["key": "个人信息", "value": ["电话"]], ["key": "会员卡", "value": ["月卡"]], ["key": "关于我们", "value": ["服务条款"]], ]
 
     @IBAction func backButtonClicked(sender: AnyObject) {
@@ -45,19 +47,76 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    func loadMembership() {
+        self.tableView.reloadData()
+        MissFitUser.user.loadMembershipInfo()
+    }
+    
+    func loadMembershipSucceeded() {
+        isMembershipLoaded = true
+        self.tableView.reloadData()
+        self.tableView.stopPullToRefresh()
+    }
+    
+    func loadMembershipFailed() {
+        isMembershipLoaded = false
+        self.tableView.reloadData()
+        self.tableView.stopPullToRefresh()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44.0
-        // Retrieve info from server
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("loadMembershipSucceeded"), name: MissFitLoadMembershipSucceededCallback, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("loadMembershipFailed"), name: MissFitLoadMembershipFailureCallback, object: nil)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        isMembershipLoaded = false
+        self.loadSettings()
+
+        
         if tableView.pullToRefreshView == nil {
             tableView.addPullToRefreshWithAction({ () -> () in
-                
+                self.loadSettings()
                 }, withAnimator: BeatAnimator())
+        }
+    }
+    
+    func parseResponseObject(responseObject: NSDictionary) {
+        let json = JSON(responseObject)
+        for (key: String, subJson: JSON) in json {
+            if key == "data" {
+                self.memberFee = subJson["member_fee"].floatValue
+            }
+        }
+    }
+    
+    func loadSettings() {
+        var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+        var endpoint: String = MissFitBaseURL + MissFitSettings
+        manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
+        manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
+        KVNProgress.show()
+        manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
+            MissFitUser.user.loadMembershipInfo()
+            self.parseResponseObject(responseObject as! NSDictionary)
+            }) { (operation, error) -> Void in
+                if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
+                    // Need to get the status and message
+                    let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as! NSData)
+                    let message: String? = json["message"].string
+                    KVNProgress.showErrorWithStatus(message)
+                } else {
+                    KVNProgress.showErrorWithStatus("获取设置信息失败")
+                }
+                self.tableView.stopPullToRefresh()
         }
     }
 
@@ -67,7 +126,12 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return sectionsInfo.count
+        if isMembershipLoaded {
+            return sectionsInfo.count
+
+        } else {
+            return 0
+        }
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -75,10 +139,14 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if sectionsInfo[section]["key"] as! String == "关于我们" {
-            return (sectionsInfo[section]["value"] as! [String]).count + 1
+        if isMembershipLoaded {
+            if sectionsInfo[section]["key"] as! String == "关于我们" {
+                return (sectionsInfo[section]["value"] as! [String]).count + 1
+            } else {
+                return (sectionsInfo[section]["value"] as! [String]).count
+            }
         } else {
-            return (sectionsInfo[section]["value"] as! [String]).count
+            return 0
         }
     }
     
@@ -103,7 +171,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 cell.detail.text = MissFitUser.user.monthlyCardValidThrough
             } else {
                 cell.status.text = "未购买"
-                cell.detail.text = "¥399"
+                cell.detail.text = "¥" + NSNumber(float: memberFee).stringValue
             }
             cell.detail.hidden = false
             cell.status.hidden = false
@@ -158,6 +226,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                     // 30 days
                     paymentController.validThrough = MissFitUtils.formatDate( NSDate(timeInterval: oneMonthTimeInterval, sinceDate: NSDate()))
                 }
+                paymentController.memberFee = NSNumber(float: memberFee).stringValue
                 navigationController?.pushViewController(paymentController, animated: true)
             }
         }

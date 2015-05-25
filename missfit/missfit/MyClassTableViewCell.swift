@@ -20,6 +20,7 @@ class MyClassTableViewCell: ClassTableViewCell {
         duration.text = String("\(missfitClass.schedule.duration)分钟")
         address.text = missfitClass.location.address
         area.text = missfitClass.location.area
+        teacherAvatar.image = nil
         if let avatarUrl = missfitClass.teacher.avatarUrl {
             teacherAvatar.setImageWithURL(NSURL(string: avatarUrl))
         }

@@ -87,29 +87,35 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
         let alert: UIAlertController = UIAlertController(title: "提示", message: "你确定要预约本次课程吗？", preferredStyle: .Alert)
         let confirmAction = UIAlertAction(title: "确定", style: .Default) { (action: UIAlertAction!) -> Void in
             if MissFitUser.user.isLogin {
-                var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-                var endpoint: String = MissFitBaseURL + MissFitClassesURI + "/" + self.missfitClass!.classId + MissFitClassesBookingURI
-                
-                KVNProgress.show()
-                manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
-                manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
-                manager.POST(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
-                    KVNProgress.showSuccessWithStatus("预约成功")
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                    }) { (operation, error) -> Void in
-                        if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
-                            // Need to get the status and message
-                            let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as! NSData)
-                            let message: String? = json["message"].string
-                            KVNProgress.showErrorWithStatus(message)
-                        } else {
-                            KVNProgress.showErrorWithStatus("预约失败")
-                        }
+                if MissFitUser.user.hasMonthlyCard && !MissFitUser.user.isMonthlyCardExpired() {
+                    var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+                    var endpoint: String = MissFitBaseURL + MissFitClassesURI + "/" + self.missfitClass!.classId + MissFitClassesBookingURI
+                    
+                    KVNProgress.show()
+                    manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
+                    manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
+                    manager.POST(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
+                        KVNProgress.showSuccessWithStatus("预约成功")
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                        }) { (operation, error) -> Void in
+                            if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
+                                // Need to get the status and message
+                                let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as! NSData)
+                                let message: String? = json["message"].string
+                                KVNProgress.showErrorWithStatus(message)
+                            } else {
+                                KVNProgress.showErrorWithStatus("预约失败")
+                            }
+                    }
+                } else {
+                    let settingsController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SettingsViewController") as! UIViewController
+                    self.presentViewController(UINavigationController(rootViewController: settingsController), animated: true, completion: nil)
+                    KVNProgress.showWithStatus("请先购买会员卡再约课")
                 }
-
             } else {
                 let loginController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as! UIViewController
                 self.presentViewController(UINavigationController(rootViewController: loginController), animated: true, completion: nil)
+                KVNProgress.showWithStatus("请先登录再约课")
             }
         }
         

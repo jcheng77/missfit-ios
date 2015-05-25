@@ -34,8 +34,11 @@ class MyTeacherTableViewCell: UITableViewCell {
     }
     
     func setData(bookingTeacher: MissFitBookingTeacher) {
-        date.text = bookingTeacher.detail.expectedDate
+        if bookingTeacher.detail.expectedDate != nil {
+            date.text = MissFitUtils.formatDate(MissFitUtils.dateFromString(bookingTeacher.detail.expectedDate!))
+        }
         address.text = bookingTeacher.detail.address
+        teacherAvatar.image = nil
         if let avatarUrl = bookingTeacher.teacherAvatar {
             teacherAvatar.setImageWithURL(NSURL(string: avatarUrl))
         }

@@ -129,7 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
                 if resultsStatus == "9000" {
                     KVNProgress.showSuccessWithStatus("支付成功")
                     // Update local data
-                    MissFitUser.user.extendMembership()
+                    MissFitUser.user.loadMembershipInfo()
                     NSNotificationCenter.defaultCenter().postNotificationName(MissFitAlipaySucceededCallback, object: nil)
                 } else {
                     if resultsStatus == "8000" {

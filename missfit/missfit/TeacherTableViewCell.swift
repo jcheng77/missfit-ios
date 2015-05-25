@@ -35,10 +35,12 @@ class TeacherTableViewCell: UITableViewCell {
     }
     
     func setData(teacher: MissFitTeacher) {
+        teacherImage.image = nil
         if let coverPicUrl = teacher.coverPicUrl {
             teacherImage.setImageWithURL(NSURL(string: coverPicUrl))
         }
         
+        teacherAvatar.image = nil
         if let avatarUrl = teacher.avatarUrl {
             teacherAvatar.setImageWithURL(NSURL(string: avatarUrl))
         }

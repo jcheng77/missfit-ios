@@ -44,6 +44,10 @@ let MissFitPaymentCallbackURI: String = "orders/alipay/notify"
 
 let MissFitOrdersURI: String = "orders"
 
+let MissFitMembershipURI: String = "users/" // + userId
+
+let MissFitSettings: String = "settings"
+
 
 
 // MissFit user related:
@@ -70,3 +74,7 @@ let MissFitUserLoginDate: String = "MissFitUserLoginDate"
 
 // Notifications 
 let MissFitAlipaySucceededCallback: String = "MissFitAlipaySucceededCallback"
+
+let MissFitLoadMembershipSucceededCallback: String = "MissFitLoadMembershipSucceededCallback"
+
+let MissFitLoadMembershipFailureCallback: String = "MissFitLoadMembershipFailureCallback"
