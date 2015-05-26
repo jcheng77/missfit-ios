@@ -48,6 +48,8 @@ let MissFitMembershipURI: String = "users/" // + userId
 
 let MissFitSettings: String = "settings"
 
+let MissFitLocations: String = "locations"
+
 
 
 // MissFit user related:
