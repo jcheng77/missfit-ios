@@ -323,7 +323,7 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
         if MissFitUtils.isIpad() {
             return 92.0
         } else {
-            return 106.0
+            return 116.0
         }
     }
     
