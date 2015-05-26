@@ -68,6 +68,8 @@
 		C37CCB901AE7E9BE00384C7E /* ClassDetailImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CCB8F1AE7E9BE00384C7E /* ClassDetailImageTableViewCell.swift */; };
 		C37CCB921AE7E9D400384C7E /* ClassDetailBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CCB911AE7E9D400384C7E /* ClassDetailBookTableViewCell.swift */; };
 		C37CCB941AE7E9FB00384C7E /* ClassDetailInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CCB931AE7E9FB00384C7E /* ClassDetailInfoTableViewCell.swift */; };
+		C38FACCC1B1399730034CF2D /* LocationDetailImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38FACCB1B1399730034CF2D /* LocationDetailImageTableViewCell.swift */; };
+		C38FACCE1B13F28B0034CF2D /* LocationDetailInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38FACCD1B13F28B0034CF2D /* LocationDetailInfoTableViewCell.swift */; };
 		C39DB0CA1AEBC9F000C91E5A /* MissFitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39DB0C91AEBC9F000C91E5A /* MissFitUser.swift */; };
 		C3BA87EF1AE29EF4009D7A56 /* AllTeachersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BA87EE1AE29EF4009D7A56 /* AllTeachersViewController.swift */; };
 		C3C2025E1AEC92CF00F3E30C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C2025D1AEC92CF00F3E30C /* SettingsViewController.swift */; };
@@ -251,6 +253,8 @@
 		C37CCB8F1AE7E9BE00384C7E /* ClassDetailImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailImageTableViewCell.swift; sourceTree = "<group>"; };
 		C37CCB911AE7E9D400384C7E /* ClassDetailBookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailBookTableViewCell.swift; sourceTree = "<group>"; };
 		C37CCB931AE7E9FB00384C7E /* ClassDetailInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailInfoTableViewCell.swift; sourceTree = "<group>"; };
+		C38FACCB1B1399730034CF2D /* LocationDetailImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailImageTableViewCell.swift; sourceTree = "<group>"; };
+		C38FACCD1B13F28B0034CF2D /* LocationDetailInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailInfoTableViewCell.swift; sourceTree = "<group>"; };
 		C39DB0C91AEBC9F000C91E5A /* MissFitUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitUser.swift; sourceTree = "<group>"; };
 		C3BA87EE1AE29EF4009D7A56 /* AllTeachersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTeachersViewController.swift; sourceTree = "<group>"; };
 		C3C2025D1AEC92CF00F3E30C /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -352,6 +356,8 @@
 				C3392A461AF1CB9D004DB947 /* TeacherActionsTableViewCell.swift */,
 				C36A84CB1B010972007294A5 /* TeacherBookingViewController.swift */,
 				C3F6F2EA1AE54DF300BAD118 /* LocationDetailViewController.swift */,
+				C38FACCB1B1399730034CF2D /* LocationDetailImageTableViewCell.swift */,
+				C38FACCD1B13F28B0034CF2D /* LocationDetailInfoTableViewCell.swift */,
 				C3F6F2EC1AE54E5200BAD118 /* ClassDetailViewController.swift */,
 				C37CCB8F1AE7E9BE00384C7E /* ClassDetailImageTableViewCell.swift */,
 				C37CCB911AE7E9D400384C7E /* ClassDetailBookTableViewCell.swift */,
@@ -763,6 +769,7 @@
 				C35BAB5D1AF8E1320085C9C5 /* MyClassesViewController.swift in Sources */,
 				C37B8C071B0B76B400BDB3F0 /* PaymentActualPriceTableViewCell.swift in Sources */,
 				C3F6F2DA1AE4A84000BAD118 /* TeacherTableViewCell.swift in Sources */,
+				C38FACCE1B13F28B0034CF2D /* LocationDetailInfoTableViewCell.swift in Sources */,
 				C35A8A311AE3F0B800AB974C /* MissFitTheme.swift in Sources */,
 				C310D58F1ADC0E2800A70054 /* AppDelegate.swift in Sources */,
 				C33CF10C1AE78C8100B35BF8 /* ClassTableViewCell.swift in Sources */,
@@ -786,6 +793,7 @@
 				C35FB6131B0B08F200B82954 /* AliPayUtils.swift in Sources */,
 				C35FB60D1B0B086C00B82954 /* MD5DataSigner.m in Sources */,
 				C310D5C51ADD670E00A70054 /* AllClassesViewController.swift in Sources */,
+				C38FACCC1B1399730034CF2D /* LocationDetailImageTableViewCell.swift in Sources */,
 				C3392A471AF1CB9D004DB947 /* TeacherActionsTableViewCell.swift in Sources */,
 				C33CF10A1AE78AB900B35BF8 /* MissFitClassSchedule.swift in Sources */,
 				C39DB0CA1AEBC9F000C91E5A /* MissFitUser.swift in Sources */,

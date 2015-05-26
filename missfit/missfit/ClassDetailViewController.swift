@@ -35,6 +35,12 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func locationInfoButtonClicked(sender: AnyObject) {
+        let locationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LocationDetailViewController") as! LocationDetailViewController
+        locationController.missfitLocation = self.missfitClass?.location
+        navigationController?.pushViewController(locationController, animated: true)
+    }
+    
     @IBAction func backButtonClicked(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
     }
@@ -147,7 +153,7 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
             return cell
         case ClassDetailCellIndex.ClassDetailLocationCell.rawValue:
             let cell = tableView.dequeueReusableCellWithIdentifier("ClassDetailLocationTableViewCell", forIndexPath: indexPath) as! ClassDetailLocationTableViewCell
-            cell.setData(missfitClass!)
+            cell.setData(missfitClass!.location)
             return cell
         default:
             return UITableViewCell()

@@ -16,7 +16,7 @@ class ClassDetailLocationTableViewCell: UITableViewCell, MKMapViewDelegate {
     @IBOutlet weak var locationInfo: UILabel!
     @IBOutlet weak var phone: UIButton!
     @IBOutlet weak var mapView: MKMapView!
-    var missfitClass: MissFitClass?
+    var missfitLocation: MissFitLocation?
     let regionRadius: CLLocationDistance = 1000
     
     func centerMapOnLocation(location: CLLocation) {
@@ -33,18 +33,15 @@ class ClassDetailLocationTableViewCell: UITableViewCell, MKMapViewDelegate {
 
     @IBAction func locationRouteButtonClicked(sender: AnyObject) {
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-        missfitClass?.location.mapItem().openInMapsWithLaunchOptions(launchOptions)
+        missfitLocation!.mapItem().openInMapsWithLaunchOptions(launchOptions)
     }
     
-    @IBAction func locationInfoButtonClicked(sender: AnyObject) {
-    }
-    
-    func setData(missfitClass: MissFitClass) {
-        self.missfitClass = missfitClass
-        locationInfo.text = missfitClass.location.address
-        let initialLocation = CLLocation(latitude: missfitClass.location.locationCoordinate.latitude, longitude: missfitClass.location.locationCoordinate.longtitude)
+    func setData(missfitLocation: MissFitLocation) {
+        self.missfitLocation = missfitLocation
+        locationInfo.text = missfitLocation.address
+        let initialLocation = CLLocation(latitude: missfitLocation.locationCoordinate.latitude, longitude: missfitLocation.locationCoordinate.longtitude)
         centerMapOnLocation(initialLocation)
-        mapView.addAnnotation(missfitClass.location)
+        mapView.addAnnotation(missfitLocation)
     }
     
     override func awakeFromNib() {
