@@ -43,7 +43,7 @@ class TeacherBookingViewController: UIViewController {
                         KVNProgress.showErrorWithStatus("日期不能为空")
                     } else {
                         var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-                        var endpoint: String = MissFitBaseURL + MissFitTeachersURI + "/" + self.teacherInfo!.teacherId + MissFitClassesBookingURI
+                        var endpoint: String = MissFitBaseURL + MissFitTeachersURI + "/" + self.teacherInfo!.teacherId + "/" + MissFitClassesBookingURI
                         var parameters = ["details": ["date": dateString, "name": nameString, "phone": phoneNumber, "address": addressString]]
                         
                         KVNProgress.show()

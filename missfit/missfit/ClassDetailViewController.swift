@@ -17,6 +17,7 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
     let classCoverImageAspectRatio: CGFloat = 488.0 / 640.0
     var missfitClass: MissFitClass?
     var scene: WXScene = WXSceneSession
+    weak var myClassesController: MyClassesViewController?
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
@@ -42,6 +43,9 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     @IBAction func backButtonClicked(sender: AnyObject) {
+        if myClassesController != nil {
+        }
+        myClassesController?.fetchData(MyClassCategory.Class)
         navigationController?.popViewControllerAnimated(true)
     }
     
@@ -90,48 +94,95 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     @IBAction func bookButtonClicked(sender: AnyObject) {
-        let alert: UIAlertController = UIAlertController(title: "提示", message: "你确定要预约本次课程吗？", preferredStyle: .Alert)
-        let confirmAction = UIAlertAction(title: "确定", style: .Default) { (action: UIAlertAction!) -> Void in
-            if MissFitUser.user.isLogin {
-                if MissFitUser.user.hasMonthlyCard && !MissFitUser.user.isMonthlyCardExpired() {
-                    var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-                    var endpoint: String = MissFitBaseURL + MissFitClassesURI + "/" + self.missfitClass!.classId + MissFitClassesBookingURI
-                    
-                    KVNProgress.show()
-                    manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
-                    manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
-                    manager.POST(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
-                        KVNProgress.showSuccessWithStatus("预约成功")
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                        }) { (operation, error) -> Void in
-                            if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
-                                // Need to get the status and message
-                                let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as! NSData)
-                                let message: String? = json["message"].string
-                                KVNProgress.showErrorWithStatus(message)
-                            } else {
-                                KVNProgress.showErrorWithStatus("预约失败")
-                            }
+        if missfitClass!.isBooked {
+            let alert: UIAlertController = UIAlertController(title: "提示", message: "你确定要取消本次课程的预约吗？", preferredStyle: .Alert)
+            let confirmAction = UIAlertAction(title: "确定", style: .Default) { (action: UIAlertAction!) -> Void in
+                var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+                var endpoint: String = MissFitBaseURL + MissFitClassesBookingURI + "/" + self.missfitClass!.bookingId!
+                
+                KVNProgress.show()
+                manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
+                manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
+                manager.DELETE(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
+                    KVNProgress.showSuccessWithStatus("取消预约成功")
+                    self.missfitClass!.isBooked = false
+                    self.tableView.reloadData()
+                    }) { (operation, error) -> Void in
+                        if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
+                            // Need to get the status and message
+                            let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as! NSData)
+                            let message: String? = json["message"].string
+                            KVNProgress.showErrorWithStatus(message)
+                        } else {
+                            KVNProgress.showErrorWithStatus("取消预约失败")
+                        }
+                }
+            }
+            
+            let cancelAction = UIAlertAction(title: "取消", style: .Cancel) { (action: UIAlertAction!) -> Void in
+                // Do nothing
+            }
+            
+            alert.addAction(confirmAction)
+            alert.addAction(cancelAction)
+            presentViewController(alert, animated: true, completion: nil)
+        } else {
+            let alert: UIAlertController = UIAlertController(title: "提示", message: "你确定要预约本次课程吗？", preferredStyle: .Alert)
+            let confirmAction = UIAlertAction(title: "确定", style: .Default) { (action: UIAlertAction!) -> Void in
+                if MissFitUser.user.isLogin {
+                    if MissFitUser.user.hasMonthlyCard && !MissFitUser.user.isMonthlyCardExpired() {
+                        var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+                        var endpoint: String = MissFitBaseURL + MissFitClassesURI + "/" + self.missfitClass!.classId + "/" + MissFitClassesBookingURI
+                        
+                        KVNProgress.show()
+                        manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
+                        manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
+                        manager.POST(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
+                            self.missfitClass!.bookingId = (responseObject as! NSDictionary)["data"] as? String
+                            self.missfitClass!.isBooked = true
+                            self.tableView.reloadData()
+                            KVNProgress.showSuccessWithStatus("预约成功")
+                            }) { (operation, error) -> Void in
+                                if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
+                                    // Need to get the status and message
+                                    let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as! NSData)
+                                    let message: String? = json["message"].string
+                                    KVNProgress.showErrorWithStatus(message)
+                                } else {
+                                    KVNProgress.showErrorWithStatus("预约失败")
+                                }
+                        }
+                    } else {
+                        let alert: UIAlertController = UIAlertController(title: "温馨提示", message: "请先购买会员卡再约课", preferredStyle: .Alert)
+                        let cancelAction = UIAlertAction(title: "确定", style: .Cancel) { (action: UIAlertAction!) -> Void in
+                            let settingsController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SettingsViewController") as! UIViewController
+                            self.presentViewController(UINavigationController(rootViewController: settingsController), animated: true, completion: nil)
+                        }
+                        
+                        alert.addAction(cancelAction)
+                        self.presentViewController(alert, animated: true, completion: nil)
                     }
                 } else {
-                    let settingsController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SettingsViewController") as! UIViewController
-                    self.presentViewController(UINavigationController(rootViewController: settingsController), animated: true, completion: nil)
-                    KVNProgress.showWithStatus("请先购买会员卡再约课")
+                    let alert: UIAlertController = UIAlertController(title: "温馨提示", message: "请先登录再约课", preferredStyle: .Alert)
+                    let cancelAction = UIAlertAction(title: "确定", style: .Cancel) { (action: UIAlertAction!) -> Void in
+                        // Do nothing
+                        let loginController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as! UIViewController
+                        self.presentViewController(UINavigationController(rootViewController: loginController), animated: true, completion: nil)
+                    }
+                    
+                    alert.addAction(cancelAction)
+                    self.presentViewController(alert, animated: true, completion: nil)
                 }
-            } else {
-                let loginController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as! UIViewController
-                self.presentViewController(UINavigationController(rootViewController: loginController), animated: true, completion: nil)
-                KVNProgress.showWithStatus("请先登录再约课")
             }
+            
+            let cancelAction = UIAlertAction(title: "取消", style: .Cancel) { (action: UIAlertAction!) -> Void in
+                // Do nothing
+            }
+            
+            alert.addAction(confirmAction)
+            alert.addAction(cancelAction)
+            presentViewController(alert, animated: true, completion: nil)
         }
-        
-        let cancelAction = UIAlertAction(title: "取消", style: .Cancel) { (action: UIAlertAction!) -> Void in
-            // Do nothing
-        }
-        
-        alert.addAction(confirmAction)
-        alert.addAction(cancelAction)
-        presentViewController(alert, animated: true, completion: nil)
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -146,6 +197,11 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
             return cell
         case ClassDetailCellIndex.ClassDetailBookCell.rawValue:
             let cell = tableView.dequeueReusableCellWithIdentifier("ClassDetailBookTableViewCell", forIndexPath: indexPath) as! ClassDetailBookTableViewCell
+            if missfitClass!.isBooked {
+                cell.bookButton.setTitle("取消预约", forState: .Normal)
+            } else {
+                cell.bookButton.setTitle("我要预约", forState: .Normal)
+            }
             return cell
         case ClassDetailCellIndex.ClassDetailInfoCell.rawValue:
             let cell = tableView.dequeueReusableCellWithIdentifier("ClassDetailInfoTableViewCell", forIndexPath: indexPath) as! ClassDetailInfoTableViewCell

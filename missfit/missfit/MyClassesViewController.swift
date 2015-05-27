@@ -190,6 +190,8 @@ class MyClassesViewController: UIViewController, UITableViewDataSource, UITableV
         if currentCategory == MyClassCategory.Class {
             let classDetailController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ClassDetailViewController") as! ClassDetailViewController
             classDetailController.missfitClass = classes![indexPath.row]
+            classDetailController.missfitClass?.isBooked = true
+            classDetailController.myClassesController = self
             navigationController?.pushViewController(classDetailController, animated: true)
         }
     }

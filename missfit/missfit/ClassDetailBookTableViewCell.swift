@@ -10,6 +10,7 @@ import UIKit
 
 class ClassDetailBookTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var bookButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -84,6 +84,7 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
                 } else {
                     if resultsStatus == "8000" {
                         KVNProgress.showWithStatus("支付结果确认中")
+                        KVNProgress.dismiss()
                     } else {
                         KVNProgress.showErrorWithStatus("支付失败")
                     }

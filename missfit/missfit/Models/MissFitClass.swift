@@ -16,12 +16,15 @@ class MissFitClass {
     var schedule: MissFitClassSchedule
     var location: MissFitLocation
     var teacher: MissFitTeacher
+    var isBooked: Bool = false
+    var bookingId: String?
     
     init(json: JSON) {
         classId = json["_id"].stringValue
         name = json["name"].stringValue
         desc = json["desc"].string
         target = json["target"].string
+        bookingId = json["booking_id"].string
         schedule = MissFitClassSchedule(json: json["schedule"])
         location = MissFitLocation(json: json["location"])
         teacher = MissFitTeacher(json: json["teacher"])
