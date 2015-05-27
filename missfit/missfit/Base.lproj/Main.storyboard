@@ -1212,7 +1212,7 @@
                                                     <color key="textColor" red="0.63137254901960782" green="0.63137254901960782" blue="0.63137254901960782" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qm0-Zq-Qhz">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qm0-Zq-Qhz">
                                                     <rect key="frame" x="74" y="36" width="452" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="JWP-L2-iiD"/>
@@ -1302,6 +1302,7 @@
                                             <outlet property="name" destination="uSS-VN-I9f" id="4UM-zs-2Sl"/>
                                             <outlet property="startTime" destination="VYS-yE-6tX" id="GMD-AQ-kKy"/>
                                             <outlet property="teacherAvatar" destination="90F-u6-ZFK" id="qHV-6F-sjn"/>
+                                            <outlet property="teacherAvatarConstraint" destination="O5G-1y-vYw" id="qVd-P5-B50"/>
                                             <outlet property="teacherName" destination="pRZ-5D-wYd" id="cyl-bG-Dje"/>
                                         </connections>
                                     </tableViewCell>

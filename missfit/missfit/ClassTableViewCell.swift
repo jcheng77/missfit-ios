@@ -19,6 +19,7 @@ class ClassTableViewCell: UITableViewCell {
     @IBOutlet weak var teacherName: UILabel!
     @IBOutlet weak var line: UIView!
     @IBOutlet weak var lineHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var teacherAvatarConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,8 +43,10 @@ class ClassTableViewCell: UITableViewCell {
         address.text = missfitClass.location.address
         area.text = missfitClass.location.area
         teacherAvatar.image = nil
+        teacherAvatarConstraint.constant = 0.0
         if let avatarUrl = missfitClass.teacher.avatarUrl {
             teacherAvatar.setImageWithURL(NSURL(string: avatarUrl))
+            teacherAvatarConstraint.constant = 50.0
         }
         teacherName.text = missfitClass.teacher.name
     }

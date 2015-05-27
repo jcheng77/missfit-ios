@@ -320,11 +320,7 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if MissFitUtils.isIpad() {
-            return 92.0
-        } else {
-            return 116.0
-        }
+        return 94.0
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
