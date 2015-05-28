@@ -1302,7 +1302,6 @@
                                             <outlet property="name" destination="uSS-VN-I9f" id="4UM-zs-2Sl"/>
                                             <outlet property="startTime" destination="VYS-yE-6tX" id="GMD-AQ-kKy"/>
                                             <outlet property="teacherAvatar" destination="90F-u6-ZFK" id="qHV-6F-sjn"/>
-                                            <outlet property="teacherAvatarConstraint" destination="O5G-1y-vYw" id="qVd-P5-B50"/>
                                             <outlet property="teacherName" destination="pRZ-5D-wYd" id="cyl-bG-Dje"/>
                                         </connections>
                                     </tableViewCell>
