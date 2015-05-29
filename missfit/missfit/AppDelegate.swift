@@ -129,6 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
                 let result = resultDictionary as NSDictionary
                 let resultsStatus = result["resultStatus"] as! String
                 if resultsStatus == "9000" {
+                    UmengHelper.event(AnalyticsPaymentSucceed)
                     KVNProgress.showSuccessWithStatus("支付成功")
                     // Update local data
                     MissFitUser.user.loadMembershipInfo()
@@ -138,6 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
                         KVNProgress.showWithStatus("支付结果确认中")
                         KVNProgress.dismiss()
                     } else {
+                        UmengHelper.event(AnalyticsPaymentFail)
                         KVNProgress.showErrorWithStatus("支付失败")
                     }
                 }
