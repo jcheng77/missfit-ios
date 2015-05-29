@@ -19,6 +19,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @IBAction func dialButtonClicked(sender: AnyObject) {
+        UmengHelper.event(AnalyticsDial400)
         let servicePhoneNumber = (sender as! UIButton).titleForState(.Normal)
         UIApplication.sharedApplication().openURL(NSURL(string: "telprompt://" + servicePhoneNumber!.stringByReplacingOccurrencesOfString("-", withString: "", options: nil, range: nil))!)
     }
@@ -31,6 +32,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
         manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
         manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
+            UmengHelper.event(AnalyticsLogout)
             KVNProgress.showSuccessWithStatus("退出登录成功")
             // Parse data
             MissFitUser.user.logout()
@@ -236,6 +238,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         if sectionsInfo[indexPath.section]["key"] as! String == "关于我们" {
             let stringArray = sectionsInfo[indexPath.section]["value"] as! [String]
             if indexPath.row < stringArray.count && stringArray[indexPath.row] == "服务条款" {
+                UmengHelper.event(AnalyticsClickTOU)
                 let touController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TermsOfUseViewController") as! TermsOfUseViewController
                 navigationController?.pushViewController(touController, animated: true)
             }
@@ -244,6 +247,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             if indexPath.row < stringArray.count {
                 if stringArray[indexPath.row] == "月卡" {
                     // navigate to payment view controller
+                    UmengHelper.event(AnalyticsClickPayment)
                     let paymentController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("PaymentViewController") as! PaymentViewController
                     paymentController.settingsController = self
                     
@@ -257,6 +261,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                     paymentController.memberFee = NSNumber(float: memberFee).stringValue
                     navigationController?.pushViewController(paymentController, animated: true)
                 } else if stringArray[indexPath.row] == "月卡使用规则" {
+                    UmengHelper.event(AnalyticsClickMCI)
                     let memberCardInfoController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MemberCardInfoViewController") as! MemberCardInfoViewController
                     navigationController?.pushViewController(memberCardInfoController, animated: true)
                 }

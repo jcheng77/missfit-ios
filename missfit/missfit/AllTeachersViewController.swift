@@ -121,6 +121,7 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
         let teacherInfo = teachers[indexPath.row]
         let teacherDetailController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TeacherDetailViewController") as! TeacherDetailViewController
         teacherDetailController.teacherInfo = teacherInfo
+        UmengHelper.event(AnalyticsClickTeacherDetail, label: teacherInfo.name)
         navigationController?.pushViewController(teacherDetailController, animated: true)
     }
     

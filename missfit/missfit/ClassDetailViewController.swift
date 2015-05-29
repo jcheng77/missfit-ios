@@ -37,6 +37,7 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     @IBAction func locationInfoButtonClicked(sender: AnyObject) {
+        UmengHelper.event(AnalyticsClickLocationDetail)
         let locationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LocationDetailViewController") as! LocationDetailViewController
         locationController.missfitLocation = self.missfitClass?.location
         navigationController?.pushViewController(locationController, animated: true)
@@ -74,6 +75,7 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func sendClassInfo() {
+        UmengHelper.event(AnalyticsClickShareClass)
         let message = WXMediaMessage()
         message.title = "美人瑜 - " + self.missfitClass!.name
         message.description = "你身边的瑜伽健身教练"
@@ -95,8 +97,10 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
     @IBAction func bookButtonClicked(sender: AnyObject) {
         if missfitClass!.isBooked {
+            UmengHelper.event(AnalyticsClickCancelClass)
             let alert: UIAlertController = UIAlertController(title: "提示", message: "你确定要取消本次课程的预约吗？", preferredStyle: .Alert)
             let confirmAction = UIAlertAction(title: "确定", style: .Default) { (action: UIAlertAction!) -> Void in
+                UmengHelper.event(AnalyticsConfirmCancelBookingClass)
                 var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
                 var endpoint: String = MissFitBaseURL + MissFitClassesBookingURI + "/" + self.missfitClass!.bookingId!
                 
@@ -105,6 +109,7 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
                 manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
                 manager.DELETE(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
                     KVNProgress.showSuccessWithStatus("取消预约成功")
+                    UmengHelper.event(AnalyticsCancelBookingClassSucceed)
                     self.missfitClass!.isBooked = false
                     self.tableView.reloadData()
                     }) { (operation, error) -> Void in
@@ -127,8 +132,10 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
             alert.addAction(cancelAction)
             presentViewController(alert, animated: true, completion: nil)
         } else {
+            UmengHelper.event(AnalyticsClickBookingClass)
             let alert: UIAlertController = UIAlertController(title: "提示", message: "你确定要预约本次课程吗？", preferredStyle: .Alert)
             let confirmAction = UIAlertAction(title: "确定", style: .Default) { (action: UIAlertAction!) -> Void in
+                UmengHelper.event(AnalyticsConfirmBookingClass)
                 if MissFitUser.user.isLogin {
                     if MissFitUser.user.hasMonthlyCard && !MissFitUser.user.isMonthlyCardExpired() {
                         var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
@@ -142,6 +149,7 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
                             self.missfitClass!.isBooked = true
                             self.tableView.reloadData()
                             KVNProgress.showSuccessWithStatus("预约成功")
+                            UmengHelper.event(AnalyticsBookClassSucceed)
                             }) { (operation, error) -> Void in
                                 if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
                                     // Need to get the status and message
@@ -153,6 +161,7 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
                                 }
                         }
                     } else {
+                        UmengHelper.event(AnalyticsBookClassButNotPay)
                         let alert: UIAlertController = UIAlertController(title: "温馨提示", message: "请先购买会员卡再约课", preferredStyle: .Alert)
                         let cancelAction = UIAlertAction(title: "确定", style: .Cancel) { (action: UIAlertAction!) -> Void in
                             let settingsController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SettingsViewController") as! UIViewController
@@ -163,6 +172,7 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
                         self.presentViewController(alert, animated: true, completion: nil)
                     }
                 } else {
+                    UmengHelper.event(AnalyticsBookClassButNotLogin)
                     let alert: UIAlertController = UIAlertController(title: "温馨提示", message: "请先登录再约课", preferredStyle: .Alert)
                     let cancelAction = UIAlertAction(title: "确定", style: .Cancel) { (action: UIAlertAction!) -> Void in
                         // Do nothing

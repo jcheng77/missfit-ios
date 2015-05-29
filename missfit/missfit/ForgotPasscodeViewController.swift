@@ -32,9 +32,11 @@ class ForgotPasscodeViewController: RegisterViewController {
                     KVNProgress.show()
                     manager.POST(endpoint, parameters: parameters, success: { (operation, responseObject) -> Void in
                         KVNProgress.showSuccessWithStatus("重置密码成功！")
-                        //注册成功
+                        UmengHelper.event(AnalyticsForgotPasswordSucceed)
+                        //重置密码成功
                         }, failure: { (operation, error) -> Void in
-                            //注册失败
+                            //重置密码失败
+                            UmengHelper.event(AnalyticsForgotPasswordFail)
                             if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
                                 // Need to get the status and message
                                 let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as! NSData)

@@ -8,3 +8,4 @@
 #import "WXApi.h"
 #import <AlipaySDK/AlipaySDK.h>
 #import "DataSigner.h"
+#import "UmengHelper.h"

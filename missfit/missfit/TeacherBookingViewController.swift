@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TeacherBookingViewController: UIViewController {
+class TeacherBookingViewController: UIViewController, UITextFieldDelegate {
     var teacherInfo: MissFitTeacher?
     @IBOutlet weak var phone: UITextField!
     @IBOutlet weak var name: UITextField!
@@ -92,6 +92,15 @@ class TeacherBookingViewController: UIViewController {
         self.date.inputView = self.datePicker
         // Won't work when set the color in storyboard
         self.datePicker.backgroundColor = UIColor.whiteColor()
+        
+        self.phone.layer.borderWidth = 1.0
+        self.phone.layer.borderColor = MissFitTheme.theme.colorTextFieldBorder.CGColor
+        self.name.layer.borderWidth = 1.0
+        self.name.layer.borderColor = MissFitTheme.theme.colorTextFieldBorder.CGColor
+        self.address.layer.borderWidth = 1.0
+        self.address.layer.borderColor = MissFitTheme.theme.colorTextFieldBorder.CGColor
+        self.date.layer.borderWidth = 1.0
+        self.date.layer.borderColor = MissFitTheme.theme.colorTextFieldBorder.CGColor
     }
     
     func keyboardWillShow(notifiction: NSNotification) {
@@ -115,5 +124,29 @@ class TeacherBookingViewController: UIViewController {
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if phone.isFirstResponder() {
+            self.phone.layer.borderColor = MissFitTheme.theme.colorPink.CGColor
+            self.name.layer.borderColor = MissFitTheme.theme.colorTextFieldBorder.CGColor
+            self.address.layer.borderColor = MissFitTheme.theme.colorTextFieldBorder.CGColor
+            self.date.layer.borderColor = MissFitTheme.theme.colorTextFieldBorder.CGColor
+        } else if name.isFirstResponder() {
+            self.phone.layer.borderColor = MissFitTheme.theme.colorTextFieldBorder.CGColor
+            self.name.layer.borderColor = MissFitTheme.theme.colorPink.CGColor
+            self.address.layer.borderColor = MissFitTheme.theme.colorTextFieldBorder.CGColor
+            self.date.layer.borderColor = MissFitTheme.theme.colorTextFieldBorder.CGColor
+        } else if address.isFirstResponder() {
+            self.phone.layer.borderColor = MissFitTheme.theme.colorTextFieldBorder.CGColor
+            self.name.layer.borderColor = MissFitTheme.theme.colorTextFieldBorder.CGColor
+            self.address.layer.borderColor = MissFitTheme.theme.colorPink.CGColor
+            self.date.layer.borderColor = MissFitTheme.theme.colorTextFieldBorder.CGColor
+        } else if date.isFirstResponder() {
+            self.phone.layer.borderColor = MissFitTheme.theme.colorTextFieldBorder.CGColor
+            self.name.layer.borderColor = MissFitTheme.theme.colorTextFieldBorder.CGColor
+            self.address.layer.borderColor = MissFitTheme.theme.colorTextFieldBorder.CGColor
+            self.date.layer.borderColor = MissFitTheme.theme.colorPink.CGColor
+        }
     }
 }

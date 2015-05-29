@@ -39,6 +39,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 KVNProgress.show()
                 manager.POST(endpoint, parameters: parameters, success: { (operation, responseObject) -> Void in
                     KVNProgress.showSuccessWithStatus("登录成功")
+                    UmengHelper.event(AnalyticsLogin)
                     //登录成功
                     let json = JSON(responseObject)
                     MissFitUser.user.login(json["data"]["userId"].stringValue, userPhoneNumber: phoneNumber, userToken: json["data"]["authToken"].stringValue, userPasscode: passcode)
@@ -63,11 +64,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func registerButtonClicked(sender: AnyObject) {
+        UmengHelper.event(AnalyticsClickRegister)
         var registerViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("RegisterViewController") as! UIViewController
         self.presentViewController(UINavigationController(rootViewController: registerViewController), animated: true, completion: nil)
     }
     
     @IBAction func forgotPasscodeButtonClicked(sender: AnyObject) {
+        UmengHelper.event(AnalyticsClickForgotPassword)
         var resetPasscodeViewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ForgotPasscodeViewController") as! UIViewController
         self.presentViewController(UINavigationController(rootViewController: resetPasscodeViewController), animated: true, completion: nil)
     }

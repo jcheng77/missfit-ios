@@ -81,6 +81,8 @@
 		C3C7BD6B1ADFAB1300755CE3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C7BD6A1ADFAB1300755CE3 /* SwiftyJSON.swift */; };
 		C3E48FBC1B09D5CE0070C1E7 /* MissFitLocationCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E48FBB1B09D5CE0070C1E7 /* MissFitLocationCoordinate.swift */; };
 		C3F5BE221B18B0B7009B21AB /* MemberCardInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F5BE211B18B0B7009B21AB /* MemberCardInfoViewController.swift */; };
+		C3F5BE271B18C076009B21AB /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F5BE241B18C076009B21AB /* libMobClickLibrary.a */; };
+		C3F5BE2A1B18C24F009B21AB /* UmengHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F5BE291B18C24F009B21AB /* UmengHelper.m */; };
 		C3F6F2DA1AE4A84000BAD118 /* TeacherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F6F2D91AE4A84000BAD118 /* TeacherTableViewCell.swift */; };
 		C3F6F2DF1AE4CA7500BAD118 /* MissFitTeacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F6F2DE1AE4CA7500BAD118 /* MissFitTeacher.swift */; };
 		C3F6F2E11AE4CB4F00BAD118 /* MissFitLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F6F2E01AE4CB4F00BAD118 /* MissFitLocation.swift */; };
@@ -269,6 +271,11 @@
 		C3C7BD6A1ADFAB1300755CE3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C3E48FBB1B09D5CE0070C1E7 /* MissFitLocationCoordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitLocationCoordinate.swift; sourceTree = "<group>"; };
 		C3F5BE211B18B0B7009B21AB /* MemberCardInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberCardInfoViewController.swift; sourceTree = "<group>"; };
+		C3F5BE241B18C076009B21AB /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		C3F5BE251B18C076009B21AB /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		C3F5BE261B18C076009B21AB /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
+		C3F5BE281B18C24F009B21AB /* UmengHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UmengHelper.h; sourceTree = "<group>"; };
+		C3F5BE291B18C24F009B21AB /* UmengHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UmengHelper.m; sourceTree = "<group>"; };
 		C3F6F2D91AE4A84000BAD118 /* TeacherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherTableViewCell.swift; sourceTree = "<group>"; };
 		C3F6F2DE1AE4CA7500BAD118 /* MissFitTeacher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitTeacher.swift; sourceTree = "<group>"; };
 		C3F6F2E01AE4CB4F00BAD118 /* MissFitLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitLocation.swift; sourceTree = "<group>"; };
@@ -294,6 +301,7 @@
 				C31152091B024EB900FBF0CD /* SystemConfiguration.framework in Frameworks */,
 				C351CC5A1B02423F00B61900 /* libWeChatSDK.a in Frameworks */,
 				CEC30D075A8648C356B13DD9 /* libPods-missfit.a in Frameworks */,
+				C3F5BE271B18C076009B21AB /* libMobClickLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +458,8 @@
 				C35FB6121B0B08F200B82954 /* AliPayUtils.swift */,
 				C35A8A301AE3F0B800AB974C /* MissFitTheme.swift */,
 				C3F6F2E31AE4E7DB00BAD118 /* MissFitUtils.swift */,
+				C3F5BE281B18C24F009B21AB /* UmengHelper.h */,
+				C3F5BE291B18C24F009B21AB /* UmengHelper.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -584,12 +594,23 @@
 		C3C7BD691ADFAB1300755CE3 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				C3F5BE231B18C076009B21AB /* UMAnalytics_Sdk_3.5.9 */,
 				C317100E1B10FA0D0080D294 /* Refresher */,
 				C35FB5A31B0B086C00B82954 /* AliPay */,
 				C351CC551B02423F00B61900 /* WeChatSDK_1.5 */,
 				C3C7BD6A1ADFAB1300755CE3 /* SwiftyJSON.swift */,
 			);
 			path = Vendor;
+			sourceTree = "<group>";
+		};
+		C3F5BE231B18C076009B21AB /* UMAnalytics_Sdk_3.5.9 */ = {
+			isa = PBXGroup;
+			children = (
+				C3F5BE241B18C076009B21AB /* libMobClickLibrary.a */,
+				C3F5BE251B18C076009B21AB /* MobClick.h */,
+				C3F5BE261B18C076009B21AB /* MobClickSocialAnalytics.h */,
+			);
+			path = UMAnalytics_Sdk_3.5.9;
 			sourceTree = "<group>";
 		};
 		C3F6F2DD1AE4BFA900BAD118 /* Models */ = {
@@ -754,6 +775,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3F5BE2A1B18C24F009B21AB /* UmengHelper.m in Sources */,
 				C31710141B10FA0D0080D294 /* Animator.swift in Sources */,
 				C3BA87EF1AE29EF4009D7A56 /* AllTeachersViewController.swift in Sources */,
 				C37CCB941AE7E9FB00384C7E /* ClassDetailInfoTableViewCell.swift in Sources */,
@@ -970,6 +992,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/missfit/Vendor/WeChatSDK_1.5",
 					"$(PROJECT_DIR)/missfit/Vendor/AliPay",
+					"$(PROJECT_DIR)/missfit/Vendor/UMAnalytics_Sdk_3.5.9",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1007,6 +1030,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/missfit/Vendor/WeChatSDK_1.5",
 					"$(PROJECT_DIR)/missfit/Vendor/AliPay",
+					"$(PROJECT_DIR)/missfit/Vendor/UMAnalytics_Sdk_3.5.9",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

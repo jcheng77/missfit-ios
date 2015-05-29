@@ -99,6 +99,7 @@ class LocationDetailViewController: UIViewController, UITableViewDataSource, UIT
             containerView.hidden = true
             tableView.hidden = false
         } else {
+            UmengHelper.event(AnalyticsClickLocationClasses)
             currentCategory = LocationCategory.Class
             containerView.hidden = false
             tableView.hidden = true

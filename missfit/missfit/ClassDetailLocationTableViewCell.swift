@@ -27,11 +27,13 @@ class ClassDetailLocationTableViewCell: UITableViewCell, MKMapViewDelegate {
     
 
     @IBAction func phoneButtonClicked(sender: AnyObject) {
+        UmengHelper.event(AnalyticsDial400)
         let servicePhoneNumber = (sender as! UIButton).titleForState(.Normal)
         UIApplication.sharedApplication().openURL(NSURL(string: "telprompt://" + servicePhoneNumber!.stringByReplacingOccurrencesOfString("-", withString: "", options: nil, range: nil))!)
     }
 
     @IBAction func locationRouteButtonClicked(sender: AnyObject) {
+        UmengHelper.event(AnalyticsClickLocationRoute)
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
         missfitLocation!.mapItem().openInMapsWithLaunchOptions(launchOptions)
     }

@@ -324,6 +324,7 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        UmengHelper.event(AnalyticsClickClassDetail)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let classDetailController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ClassDetailViewController") as! ClassDetailViewController
         classDetailController.missfitClass = classes[indexPath.row]

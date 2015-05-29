@@ -123,9 +123,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                         manager.POST(endpoint, parameters: parameters, success: { (operation, responseObject) -> Void in
                             self.dismissViewControllerAnimated(true, completion: nil)
                             KVNProgress.showSuccessWithStatus("恭喜您注册成功！")
+                            UmengHelper.event(AnalyticsRegisterSucceed)
                             //注册成功
                             }, failure: { (operation, error) -> Void in
                                 //注册失败
+                                UmengHelper.event(AnalyticsRegisterFail)
                                 if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
                                     // Need to get the status and message
                                     let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as! NSData)

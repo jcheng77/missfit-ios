@@ -46,6 +46,7 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func sendTeacherInfo() {
+        UmengHelper.event(AnalyticsClickShareTeacher)
         let message = WXMediaMessage()
         message.title = "美人瑜 - " + self.teacherInfo!.name
         message.description = "你身边的瑜伽健身教练"
@@ -66,12 +67,14 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @IBAction func classesButtonClicked(sender: AnyObject) {
+        UmengHelper.event(AnalyticsClickTeacherClasses, label: self.teacherInfo!.name)
         let teacherClassesController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TeacherClassesViewController") as! TeacherClassesViewController
         teacherClassesController.teacherInfo = self.teacherInfo
         navigationController?.pushViewController(teacherClassesController, animated: true)
     }
     
     @IBAction func orderButtonClicked(sender: AnyObject) {
+        UmengHelper.event(AnalyticsClickBookingTeacher)
         if MissFitUser.user.isLogin {
             let teacherBookingController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TeacherBookingViewController") as! TeacherBookingViewController
             teacherBookingController.teacherInfo = teacherInfo

@@ -51,6 +51,7 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
         kPaymentCouponCellIndex = -1
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("paySucceededCallback"), name: MissFitAlipaySucceededCallback, object: nil)
+        UmengHelper.event(AnalyticsEnterPayment)
     }
     
     deinit {
@@ -81,6 +82,7 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
                 let resultsStatus = result["resultStatus"] as! String
                 if resultsStatus == "9000" {
                     KVNProgress.showSuccessWithStatus("支付成功")
+                    UmengHelper.event(AnalyticsPaymentSucceed)
                     self.paySucceededCallback()
                 } else {
                     if resultsStatus == "8000" {
@@ -88,6 +90,7 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
                         KVNProgress.dismiss()
                     } else {
                         KVNProgress.showErrorWithStatus("支付失败")
+                        UmengHelper.event(AnalyticsPaymentFail)
                     }
                 }
             })
@@ -101,7 +104,6 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
         //}
         let json = JSON(responseObject)
         self.orderId = json["data"].stringValue
-        println("orderId:\(self.orderId)")
     }
     
     func submitOrder() {
