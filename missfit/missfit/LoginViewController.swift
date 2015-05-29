@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var passcodeTextField: UITextField!
@@ -16,7 +16,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var forgotPasscodeButton: UIButton!
     
+    @IBAction func hideKeyboard(sender: AnyObject) {
+        phoneNumberTextField.resignFirstResponder()
+        passcodeTextField.resignFirstResponder()
+    }
+    
     @IBAction func loginButtonClicked(sender: AnyObject) {
+        self.hideKeyboard(self)
         var regex: NSRegularExpression = NSRegularExpression(pattern: "(\\d{11})", options: NSRegularExpressionOptions.CaseInsensitive, error: nil)!
         let result = regex.firstMatchInString(self.phoneNumberTextField.text!, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, count(self.phoneNumberTextField.text!.utf16)))
         
@@ -72,7 +78,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.phoneNumberTextField.layer.borderWidth = 1.0
+        self.phoneNumberTextField.layer.borderColor = MissFitTheme.theme.colorTextFieldBorder.CGColor
+        self.passcodeTextField.layer.borderWidth = 1.0
+        self.passcodeTextField.layer.borderColor = MissFitTheme.theme.colorTextFieldBorder.CGColor
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,15 +89,16 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if self.phoneNumberTextField.isFirstResponder() {
+            self.phoneNumberTextField.layer.borderColor = MissFitTheme.theme.colorPink.CGColor
+            self.passcodeTextField.layer.borderColor = MissFitTheme.theme.colorTextFieldBorder.CGColor
+        }
+        
+        if self.passcodeTextField.isFirstResponder() {
+            self.phoneNumberTextField.layer.borderColor = MissFitTheme.theme.colorTextFieldBorder.CGColor
+            self.passcodeTextField.layer.borderColor = MissFitTheme.theme.colorPink.CGColor
+        }
     }
-    */
-
 }

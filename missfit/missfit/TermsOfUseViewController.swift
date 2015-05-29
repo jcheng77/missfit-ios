@@ -16,10 +16,14 @@ class TermsOfUseViewController: UIViewController {
         navigationController?.popViewControllerAnimated(true)
     }
     
+    func getRequestUrl() -> NSURL? {
+        return NSURL(string: MissFitTermsOfUseURI)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let touUrl = NSURL(string: MissFitTermsOfUseURI)
-        let request = NSURLRequest(URL: touUrl!)
+        let url = getRequestUrl()
+        let request = NSURLRequest(URL: url!)
         webView.loadRequest(request)
     }
 

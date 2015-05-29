@@ -80,6 +80,7 @@
 		C3C7BD521ADEAF4700755CE3 /* MissFitConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C7BD511ADEAF4700755CE3 /* MissFitConstants.swift */; };
 		C3C7BD6B1ADFAB1300755CE3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C7BD6A1ADFAB1300755CE3 /* SwiftyJSON.swift */; };
 		C3E48FBC1B09D5CE0070C1E7 /* MissFitLocationCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E48FBB1B09D5CE0070C1E7 /* MissFitLocationCoordinate.swift */; };
+		C3F5BE221B18B0B7009B21AB /* MemberCardInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F5BE211B18B0B7009B21AB /* MemberCardInfoViewController.swift */; };
 		C3F6F2DA1AE4A84000BAD118 /* TeacherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F6F2D91AE4A84000BAD118 /* TeacherTableViewCell.swift */; };
 		C3F6F2DF1AE4CA7500BAD118 /* MissFitTeacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F6F2DE1AE4CA7500BAD118 /* MissFitTeacher.swift */; };
 		C3F6F2E11AE4CB4F00BAD118 /* MissFitLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F6F2E01AE4CB4F00BAD118 /* MissFitLocation.swift */; };
@@ -267,6 +268,7 @@
 		C3C7BD531ADEB74900755CE3 /* missfit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "missfit-Bridging-Header.h"; sourceTree = "<group>"; };
 		C3C7BD6A1ADFAB1300755CE3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C3E48FBB1B09D5CE0070C1E7 /* MissFitLocationCoordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitLocationCoordinate.swift; sourceTree = "<group>"; };
+		C3F5BE211B18B0B7009B21AB /* MemberCardInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberCardInfoViewController.swift; sourceTree = "<group>"; };
 		C3F6F2D91AE4A84000BAD118 /* TeacherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherTableViewCell.swift; sourceTree = "<group>"; };
 		C3F6F2DE1AE4CA7500BAD118 /* MissFitTeacher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitTeacher.swift; sourceTree = "<group>"; };
 		C3F6F2E01AE4CB4F00BAD118 /* MissFitLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitLocation.swift; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 				C37B8C041B0B75F800BDB3F0 /* PaymentCouponTableViewCell.swift */,
 				C37B8C061B0B76B400BDB3F0 /* PaymentActualPriceTableViewCell.swift */,
 				C37B8C081B0B76CA00BDB3F0 /* PaymentActionTableViewCell.swift */,
+				C3F5BE211B18B0B7009B21AB /* MemberCardInfoViewController.swift */,
 				C310D5951ADC0E2800A70054 /* Main.storyboard */,
 				C310D5981ADC0E2800A70054 /* Images.xcassets */,
 				C310D59A1ADC0E2800A70054 /* LaunchScreen.xib */,
@@ -789,6 +792,7 @@
 				C31152111B027EFC00FBF0CD /* MyTeacherTableViewCell.swift in Sources */,
 				C310D5921ADC0E2800A70054 /* missfit.xcdatamodeld in Sources */,
 				C34B9F631ADFE8A900911821 /* LoginViewController.swift in Sources */,
+				C3F5BE221B18B0B7009B21AB /* MemberCardInfoViewController.swift in Sources */,
 				C31710191B1176500080D294 /* BeatAnimator.swift in Sources */,
 				C37B8C051B0B75F800BDB3F0 /* PaymentCouponTableViewCell.swift in Sources */,
 				C3392A3F1AF1CB01004DB947 /* TeacherImageTableViewCell.swift in Sources */,

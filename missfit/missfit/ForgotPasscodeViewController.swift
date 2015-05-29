@@ -17,13 +17,13 @@ class ForgotPasscodeViewController: RegisterViewController {
         if result != nil && !NSEqualRanges(result!.range, NSMakeRange(NSNotFound, 0)) {
             let phoneNumber: String = (self.phoneNumberTextField.text! as NSString).substringWithRange(result!.rangeAtIndex(1))
             
-            var passcode: String = self.passcodeTextField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-            if passcode == "" {
-                KVNProgress.showErrorWithStatus("密码不能为空")
+            var verifyCode: String = self.verifyCodeTextField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+            if verifyCode == "" {
+                KVNProgress.showErrorWithStatus("验证码不能为空")
             } else {
-                var verifyCode: String = self.verifyCodeTextField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-                if verifyCode == "" {
-                    KVNProgress.showErrorWithStatus("验证码不能为空")
+                var passcode: String = self.passcodeTextField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                if passcode == "" {
+                    KVNProgress.showErrorWithStatus("密码不能为空")
                 } else {
                     var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
                     var endpoint: String = MissFitBaseURL + MissFitResetURI

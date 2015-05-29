@@ -2,13 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "phone-icon-pink-1x.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "phone-icon-pink-2x.png"
+      "filename" : "helpdetail@2x.png"
     },
     {
       "idiom" : "universal",

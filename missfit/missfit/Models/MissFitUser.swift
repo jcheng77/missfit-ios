@@ -128,6 +128,7 @@ class MissFitUser {
                 if let memberExpiredDate = subJson["profile"]["memberExpired"].string {
                     self.monthlyCardValidThrough = MissFitUtils.formatDate(MissFitUtils.dateFromServer(memberExpiredDate))
                 }
+                self.nickName = subJson["profile"]["name"].string
                 self.extendMembership()
             }
         }

@@ -123,9 +123,7 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
                 cell.district.text = areas
             }
             cell.teachModes.text = teacherInfo?.teachModesString()
-            if let priceString = teacherInfo?.price {
-                cell.price.text = priceString + "元/小时"
-            }
+            cell.price.text = teacherInfo?.price
             return cell
         } else if indexPath.row == kTeacherManifestoCellIndex {
             let cell = tableView.dequeueReusableCellWithIdentifier("TeacherManifestoTableViewCell", forIndexPath: indexPath) as! TeacherManifestoTableViewCell

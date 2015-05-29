@@ -12,7 +12,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var tableView: UITableView!
     var memberFee: Float = 0.0
     var isMembershipLoaded = false
-    let sectionsInfo = [["key": "个人信息", "value": ["电话"]], ["key": "会员卡", "value": ["月卡"]], ["key": "关于我们", "value": ["服务条款"]], ]
+    let sectionsInfo = [["key": "个人信息", "value": ["姓名", "电话"]], ["key": "会员卡", "value": ["月卡", "月卡使用规则"]], ["key": "关于我们", "value": ["服务条款"]], ]
 
     @IBAction func backButtonClicked(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
@@ -152,31 +152,58 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if sectionsInfo[indexPath.section]["key"] as! String == "个人信息" {
-            let cell = tableView.dequeueReusableCellWithIdentifier("SettingsNormalTableViewCell", forIndexPath: indexPath) as! SettingsNormalTableViewCell
-            cell.key.text = (sectionsInfo[indexPath.section]["value"] as! [String])[indexPath.row]
-            // TODO: need to set different value for different cell
-            cell.value.text = MissFitUser.user.phoneNumber
-            if indexPath.row == (sectionsInfo[indexPath.section]["value"] as! [String]).count - 1 {
-                cell.seperator.hidden = true
+            if (sectionsInfo[indexPath.section]["value"] as! [String])[indexPath.row] == "姓名" {
+                let cell = tableView.dequeueReusableCellWithIdentifier("SettingsNormalTableViewCell", forIndexPath: indexPath) as! SettingsNormalTableViewCell
+                cell.key.text = (sectionsInfo[indexPath.section]["value"] as! [String])[indexPath.row]
+                // TODO: need to set different value for different cell
+                cell.value.text = MissFitUser.user.nickName
+                if indexPath.row == (sectionsInfo[indexPath.section]["value"] as! [String]).count - 1 {
+                    cell.seperator.hidden = true
+                } else {
+                    cell.seperator.hidden = false
+                }
+                return cell
+            } else if (sectionsInfo[indexPath.section]["value"] as! [String])[indexPath.row] == "电话" {
+                let cell = tableView.dequeueReusableCellWithIdentifier("SettingsNormalTableViewCell", forIndexPath: indexPath) as! SettingsNormalTableViewCell
+                cell.key.text = (sectionsInfo[indexPath.section]["value"] as! [String])[indexPath.row]
+                // TODO: need to set different value for different cell
+                cell.value.text = MissFitUser.user.phoneNumber
+                if indexPath.row == (sectionsInfo[indexPath.section]["value"] as! [String]).count - 1 {
+                    cell.seperator.hidden = true
+                } else {
+                    cell.seperator.hidden = false
+                }
+                return cell
             } else {
-                cell.seperator.hidden = false
+                return UITableViewCell()
             }
-            return cell
         } else if sectionsInfo[indexPath.section]["key"] as! String == "会员卡" {
             // According to the info loaded from server
-            let cell = tableView.dequeueReusableCellWithIdentifier("SettingsDetailTableViewCell", forIndexPath: indexPath) as! SettingsDetailTableViewCell
-            cell.content.text = (sectionsInfo[indexPath.section]["value"] as! [String])[indexPath.row]
-            if MissFitUser.user.hasMonthlyCard {
-                cell.status.text = "有效期至"
-                cell.detail.text = MissFitUser.user.monthlyCardValidThrough
+            if (sectionsInfo[indexPath.section]["value"] as! [String])[indexPath.row] == "月卡" {
+                let cell = tableView.dequeueReusableCellWithIdentifier("SettingsDetailTableViewCell", forIndexPath: indexPath) as! SettingsDetailTableViewCell
+                cell.content.text = (sectionsInfo[indexPath.section]["value"] as! [String])[indexPath.row]
+                if MissFitUser.user.hasMonthlyCard {
+                    cell.status.text = "有效期至"
+                    cell.detail.text = MissFitUser.user.monthlyCardValidThrough
+                } else {
+                    cell.status.text = "未购买"
+                    cell.detail.text = "¥" + NSNumber(float: memberFee).stringValue
+                }
+                cell.detail.hidden = false
+                cell.status.hidden = false
+                cell.line.hidden = false
+                return cell
+            } else if (sectionsInfo[indexPath.section]["value"] as! [String])[indexPath.row] == "月卡使用规则" {
+                // member card rules
+                let cell = tableView.dequeueReusableCellWithIdentifier("SettingsDetailTableViewCell", forIndexPath: indexPath) as! SettingsDetailTableViewCell
+                cell.content.text = (sectionsInfo[indexPath.section]["value"] as! [String])[indexPath.row]
+                cell.detail.hidden = true
+                cell.status.hidden = true
+                cell.line.hidden = true
+                return cell
             } else {
-                cell.status.text = "未购买"
-                cell.detail.text = "¥" + NSNumber(float: memberFee).stringValue
+                return UITableViewCell()
             }
-            cell.detail.hidden = false
-            cell.status.hidden = false
-            cell.line.hidden = true
-            return cell
         } else if sectionsInfo[indexPath.section]["key"] as! String == "关于我们" {
             if indexPath.row < (sectionsInfo[indexPath.section]["value"] as! [String]).count {
                 let cell = tableView.dequeueReusableCellWithIdentifier("SettingsDetailTableViewCell", forIndexPath: indexPath) as! SettingsDetailTableViewCell
@@ -214,20 +241,25 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         } else if sectionsInfo[indexPath.section]["key"] as! String == "会员卡" {
             let stringArray = sectionsInfo[indexPath.section]["value"] as! [String]
-            if indexPath.row < stringArray.count && stringArray[indexPath.row] == "月卡" {
-                // navigate to payment view controller
-                let paymentController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("PaymentViewController") as! PaymentViewController
-                paymentController.settingsController = self
-                
-                let oneMonthTimeInterval: Double = 3600 * 24 * 30
-                if MissFitUser.user.hasMonthlyCard {
-                    paymentController.validThrough = MissFitUtils.formatDate(NSDate(timeInterval: oneMonthTimeInterval, sinceDate: MissFitUtils.dateFromString(MissFitUser.user.monthlyCardValidThrough!)))
-                } else {
-                    // 30 days
-                    paymentController.validThrough = MissFitUtils.formatDate( NSDate(timeInterval: oneMonthTimeInterval, sinceDate: NSDate()))
+            if indexPath.row < stringArray.count {
+                if stringArray[indexPath.row] == "月卡" {
+                    // navigate to payment view controller
+                    let paymentController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("PaymentViewController") as! PaymentViewController
+                    paymentController.settingsController = self
+                    
+                    let oneMonthTimeInterval: Double = 3600 * 24 * 30
+                    if MissFitUser.user.hasMonthlyCard {
+                        paymentController.validThrough = MissFitUtils.formatDate(NSDate(timeInterval: oneMonthTimeInterval, sinceDate: MissFitUtils.dateFromString(MissFitUser.user.monthlyCardValidThrough!)))
+                    } else {
+                        // 30 days
+                        paymentController.validThrough = MissFitUtils.formatDate( NSDate(timeInterval: oneMonthTimeInterval, sinceDate: NSDate()))
+                    }
+                    paymentController.memberFee = NSNumber(float: memberFee).stringValue
+                    navigationController?.pushViewController(paymentController, animated: true)
+                } else if stringArray[indexPath.row] == "月卡使用规则" {
+                    let memberCardInfoController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MemberCardInfoViewController") as! MemberCardInfoViewController
+                    navigationController?.pushViewController(memberCardInfoController, animated: true)
                 }
-                paymentController.memberFee = NSNumber(float: memberFee).stringValue
-                navigationController?.pushViewController(paymentController, animated: true)
             }
         }
     }

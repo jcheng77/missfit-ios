@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().barTintColor = MissFitTheme.theme.colorPink
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        UITextField.appearance().tintColor = MissFitTheme.theme.colorPink
     }
 
 
