@@ -16,6 +16,7 @@ class ClassDetailImageTableViewCell: UITableViewCell {
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var classDate: UILabel!
     @IBOutlet weak var classTime: UILabel!
+    @IBOutlet weak var actualPrice: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -35,6 +36,12 @@ class ClassDetailImageTableViewCell: UITableViewCell {
         address.text = missfitClass.location.address
         if let classImageUrl = missfitClass.location.picUrl {
             classImage.setImageWithURL(NSURL(string: classImageUrl))
+        }
+        
+        if MissFitUser.user.isLogin && MissFitUser.user.hasMonthlyCard {
+            actualPrice.text = "¥ " + missfitClass.memberPrice!.stringValue
+        } else {
+            actualPrice.text = "¥ " + missfitClass.price!.stringValue
         }
     }
 

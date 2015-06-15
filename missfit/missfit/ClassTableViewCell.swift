@@ -19,6 +19,7 @@ class ClassTableViewCell: UITableViewCell {
     @IBOutlet weak var teacherName: UILabel!
     @IBOutlet weak var line: UIView!
     @IBOutlet weak var lineHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var actualPrice: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,6 +47,11 @@ class ClassTableViewCell: UITableViewCell {
             teacherAvatar.setImageWithURL(NSURL(string: avatarUrl))
         }
         teacherName.text = missfitClass.teacher.name
+        if MissFitUser.user.isLogin && MissFitUser.user.hasMonthlyCard {
+            actualPrice.text = missfitClass.memberPrice?.stringValue
+        } else {
+            actualPrice.text = missfitClass.price?.stringValue
+        }
     }
 
 }

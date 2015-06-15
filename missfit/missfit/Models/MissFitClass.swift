@@ -18,6 +18,8 @@ class MissFitClass {
     var teacher: MissFitTeacher
     var isBooked: Bool = false
     var bookingId: String?
+    var price: NSNumber?
+    var memberPrice: NSNumber?
     
     init(json: JSON) {
         classId = json["_id"].stringValue
@@ -25,6 +27,8 @@ class MissFitClass {
         desc = json["desc"].string
         target = json["target"].string
         bookingId = json["booking_id"].string
+        price = json["price"].number
+        memberPrice = json["memberPrice"].number
         schedule = MissFitClassSchedule(json: json["schedule"])
         location = MissFitLocation(json: json["location"])
         teacher = MissFitTeacher(json: json["teacher"])
