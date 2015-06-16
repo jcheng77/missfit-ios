@@ -142,9 +142,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="feeName" destination="b5r-q8-lXS" id="4xl-3g-eGv"/>
                                             <outlet property="needToPay" destination="LGO-cW-paD" id="j8u-2J-WkK"/>
                                             <outlet property="price" destination="hzB-P3-qNs" id="fec-rN-p71"/>
                                             <outlet property="validThrough" destination="DYd-iP-jlh" id="giU-48-K4y"/>
+                                            <outlet property="validThroughLabel" destination="YCi-t4-99X" id="2hP-F4-aCi"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PaymentCouponTableViewCell" id="agZ-m3-dlD" customClass="PaymentCouponTableViewCell" customModule="missfit" customModuleProvider="target">

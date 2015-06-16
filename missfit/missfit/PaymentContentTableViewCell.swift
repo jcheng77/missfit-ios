@@ -9,10 +9,12 @@
 import UIKit
 
 class PaymentContentTableViewCell: UITableViewCell {
+    @IBOutlet weak var validThroughLabel: UILabel!
     @IBOutlet weak var validThrough: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var needToPay: UILabel!
-
+    @IBOutlet weak var feeName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

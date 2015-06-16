@@ -13,7 +13,7 @@ enum PayMethods {
 }
 
 class PaymentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+    var missfitClass: MissFitClass?
     var orderId: String?
     var currentPayMethod: PayMethods = .Alipay
     var validThrough: String?
@@ -42,6 +42,14 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let lesson = missfitClass {
+            if MissFitUser.user.hasMonthlyCard && !MissFitUser.user.isMonthlyCardExpired() {
+                memberFee = lesson.memberPrice?.stringValue
+            } else {
+                memberFee = lesson.price?.stringValue
+            }
+        }
+        self.finalPrice = (memberFee! as NSString).floatValue
         // request for the orderId
         submitOrder()
         
@@ -64,7 +72,10 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     @IBAction func submitPayment(sender: AnyObject) {
-        let bodyString = "美人瑜月卡"
+        var bodyString = "美人瑜月卡"
+        if let lesson = missfitClass {
+            bodyString = lesson.name
+        }
         self.pay("订金支付", body: bodyString, price: NSNumber(float: self.finalPrice).stringValue)
     }
     
@@ -107,10 +118,15 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func submitOrder() {
-        // POST /orders (需登陆) {"subject":"订单标题，比如美人鱼月费"//也可以考虑由服务器端统一指定, total_fee:"金额，不填则是199", price: 199//可不填, quantity: 1//可不填}
+        // POST /orders (需登陆) {"subject":"订单标题，比如美人鱼月费"//也可以考虑由服务器端统一指定, total_fee:"金额，不填则是199", price: 199//可不填, quantity: 1//可不填, "payment_vender": "wechat"//不填默认是alipay, "order_type": "class"//不填默认是member, "order_target": "class_id"}
         var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
         var endpoint: String = MissFitBaseURL + MissFitOrdersURI
-        let params = ["subject": "美人瑜月卡", "total_fee": finalPrice, "price": finalPrice, "quantity": 1]
+        var params: [String: AnyObject] = ["subject": "美人瑜月卡", "total_fee": finalPrice, "price": finalPrice, "quantity": 1]
+        if let lesson = missfitClass {
+            params["subject"] = lesson.name
+            params["order_type"] = "class"
+            params["order_target"] = lesson.classId
+        }
         KVNProgress.show()
         manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
         manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
@@ -142,6 +158,11 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
             cell.validThrough.text = validThrough
             cell.price.text = self.memberFee
             cell.needToPay.text = self.memberFee
+            if let lesson = missfitClass {
+                cell.validThroughLabel.text = "美人瑜课程"
+                cell.validThrough.hidden = true
+                cell.feeName.text = lesson.name
+            }
             return cell
         } else if indexPath.row == kPaymentCouponCellIndex {
             let cell = tableView.dequeueReusableCellWithIdentifier("PaymentCouponTableViewCell", forIndexPath: indexPath) as! PaymentCouponTableViewCell

@@ -29,6 +29,17 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
         }
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("loadMembershipSucceededCallback"), name: MissFitLoadMembershipSucceededCallback, object: nil)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func loadMembershipSucceededCallback() {
+        if MissFitUser.user.hasMonthlyCard  && !MissFitUser.user.isMonthlyCardExpired() {
+            tableView.reloadData()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -137,7 +148,7 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
             let confirmAction = UIAlertAction(title: "确定", style: .Default) { (action: UIAlertAction!) -> Void in
                 UmengHelper.event(AnalyticsConfirmBookingClass)
                 if MissFitUser.user.isLogin {
-                    if MissFitUser.user.hasMonthlyCard && !MissFitUser.user.isMonthlyCardExpired() {
+                    if MissFitUser.user.hasMonthlyCard && !MissFitUser.user.isMonthlyCardExpired() && self.missfitClass!.memberPrice!.floatValue == 0 {
                         var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
                         var endpoint: String = MissFitBaseURL + MissFitClassesURI + "/" + self.missfitClass!.classId + "/" + MissFitClassesBookingURI
                         
@@ -162,14 +173,17 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
                         }
                     } else {
                         UmengHelper.event(AnalyticsBookClassButNotPay)
-                        let alert: UIAlertController = UIAlertController(title: "温馨提示", message: "请先购买会员卡再约课", preferredStyle: .Alert)
-                        let cancelAction = UIAlertAction(title: "确定", style: .Cancel) { (action: UIAlertAction!) -> Void in
-                            let settingsController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SettingsViewController") as! UIViewController
-                            self.presentViewController(UINavigationController(rootViewController: settingsController), animated: true, completion: nil)
-                        }
-                        
-                        alert.addAction(cancelAction)
-                        self.presentViewController(alert, animated: true, completion: nil)
+//                        let alert: UIAlertController = UIAlertController(title: "温馨提示", message: "请先购买会员卡再约课", preferredStyle: .Alert)
+//                        let cancelAction = UIAlertAction(title: "确定", style: .Cancel) { (action: UIAlertAction!) -> Void in
+//                            let settingsController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SettingsViewController") as! UIViewController
+//                            self.presentViewController(UINavigationController(rootViewController: settingsController), animated: true, completion: nil)
+//                        }
+//                        
+//                        alert.addAction(cancelAction)
+//                        self.presentViewController(alert, animated: true, completion: nil)
+                        let paymentController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("PaymentViewController") as! PaymentViewController
+                        paymentController.missfitClass = self.missfitClass
+                        self.navigationController?.pushViewController(paymentController, animated: true)
                     }
                 } else {
                     UmengHelper.event(AnalyticsBookClassButNotLogin)

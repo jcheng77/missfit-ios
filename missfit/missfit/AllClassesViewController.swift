@@ -56,8 +56,18 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("loadMembershipSucceededCallback"), name: MissFitLoadMembershipSucceededCallback, object: nil)
         fetchData(NSDate())
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func loadMembershipSucceededCallback() {
+        if MissFitUser.user.hasMonthlyCard && !MissFitUser.user.isMonthlyCardExpired() {
+            tableView.reloadData()
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
