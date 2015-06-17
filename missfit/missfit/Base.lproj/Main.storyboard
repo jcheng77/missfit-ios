@@ -1361,8 +1361,10 @@
                                         <connections>
                                             <outlet property="actualPrice" destination="dRN-UY-vDo" id="mw3-tD-FAD"/>
                                             <outlet property="address" destination="Qm0-Zq-Qhz" id="tzS-qJ-Md6"/>
+                                            <outlet property="addressImageHorizontalSpaceConstraint" destination="BI8-ii-sZ8" id="ewY-MP-4CS"/>
                                             <outlet property="area" destination="pYg-hf-5OW" id="jjI-eG-MXL"/>
                                             <outlet property="duration" destination="Wrw-NY-lx6" id="kVe-ln-qxY"/>
+                                            <outlet property="imageWidthConstraint" destination="O5G-1y-vYw" id="2NC-xG-FuE"/>
                                             <outlet property="line" destination="MTA-Ha-NCF" id="ys8-LF-2rb"/>
                                             <outlet property="lineHeightConstraint" destination="KMr-Hw-Yq7" id="imF-AQ-m0i"/>
                                             <outlet property="name" destination="uSS-VN-I9f" id="4UM-zs-2Sl"/>
@@ -1377,8 +1379,7 @@
                                     <outlet property="delegate" destination="hRg-CX-ILF" id="1JF-0z-lDh"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdl-7H-bvQ">
-                                <rect key="frame" x="0.0" y="108" width="600" height="0.0"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mdl-7H-bvQ">
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.8205217118" blue="0.90706863599999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="1NS-VP-jaW"/>
@@ -3093,8 +3094,7 @@
                                     <outlet property="delegate" destination="Zp5-Zb-ejg" id="tmY-0k-xLy"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eYO-dr-obA">
-                                <rect key="frame" x="16" y="285" width="568" height="0.0"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eYO-dr-obA">
                                 <constraints>
                                     <constraint firstAttribute="height" id="gh5-IL-YLw"/>
                                 </constraints>
@@ -3377,8 +3377,10 @@
                                         <connections>
                                             <outlet property="actualPrice" destination="sOg-uX-Dwb" id="A1q-WI-aAt"/>
                                             <outlet property="address" destination="raR-1R-Sd7" id="T6e-L5-OX6"/>
+                                            <outlet property="addressImageHorizontalSpaceConstraint" destination="7XV-Bk-daC" id="a1h-5H-1dJ"/>
                                             <outlet property="area" destination="0ca-g4-Uc4" id="bo9-yd-8LV"/>
                                             <outlet property="duration" destination="fNp-yo-dNK" id="C5Z-AK-VpD"/>
+                                            <outlet property="imageWidthConstraint" destination="907-to-4ns" id="VQM-zf-r1X"/>
                                             <outlet property="line" destination="HtB-rs-tmt" id="FLD-LG-6T4"/>
                                             <outlet property="lineHeightConstraint" destination="KSd-hO-aHY" id="8S1-7k-UaE"/>
                                             <outlet property="name" destination="IVc-0h-2mH" id="tn7-w9-cgh"/>
@@ -3627,8 +3629,10 @@
                                         <connections>
                                             <outlet property="actualPrice" destination="BvZ-aw-1fD" id="i6F-MT-do5"/>
                                             <outlet property="address" destination="Vwa-vy-VhD" id="7d1-MI-Ea9"/>
+                                            <outlet property="addressImageHorizontalSpaceConstraint" destination="FKy-eG-pd4" id="Rhc-HO-2WB"/>
                                             <outlet property="area" destination="5LI-Xo-m7L" id="aPf-9M-f2P"/>
                                             <outlet property="duration" destination="f4M-5h-Sjj" id="ofY-cf-W4Z"/>
+                                            <outlet property="imageWidthConstraint" destination="GeQ-il-2nK" id="kiR-MR-LAR"/>
                                             <outlet property="line" destination="8g9-l2-RZU" id="deb-EG-efj"/>
                                             <outlet property="lineHeightConstraint" destination="A96-kb-PSa" id="64A-H7-SPo"/>
                                             <outlet property="name" destination="ZBq-oc-Pjk" id="Bgk-O2-gGk"/>

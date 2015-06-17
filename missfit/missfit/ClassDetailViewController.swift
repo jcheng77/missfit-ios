@@ -164,12 +164,12 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
                             let statusCode = operation.response.statusCode
                             if statusCode == 403 {
                                 // Need to pay
-                                KVNProgress.dismiss()
                                 UmengHelper.event(AnalyticsBookClassButNotPay)
-                                let paymentController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("PaymentViewController") as! PaymentViewController
-                                paymentController.missfitClass = self.missfitClass
-                                self.navigationController?.pushViewController(paymentController, animated: true)
-
+                                KVNProgress.dismissWithCompletion({ () -> Void in
+                                    let paymentController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("PaymentViewController") as! PaymentViewController
+                                    paymentController.missfitClass = self.missfitClass
+                                    self.navigationController?.pushViewController(paymentController, animated: true)
+                                })
                             } else {
                                 if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
                                     // Need to get the status and message
