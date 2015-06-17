@@ -148,20 +148,29 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
             let confirmAction = UIAlertAction(title: "确定", style: .Default) { (action: UIAlertAction!) -> Void in
                 UmengHelper.event(AnalyticsConfirmBookingClass)
                 if MissFitUser.user.isLogin {
-                    if MissFitUser.user.hasMonthlyCard && !MissFitUser.user.isMonthlyCardExpired() && self.missfitClass!.memberPrice!.floatValue == 0 {
-                        var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
-                        var endpoint: String = MissFitBaseURL + MissFitClassesURI + "/" + self.missfitClass!.classId + "/" + MissFitClassesBookingURI
-                        
-                        KVNProgress.show()
-                        manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
-                        manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
-                        manager.POST(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
-                            self.missfitClass!.bookingId = (responseObject as! NSDictionary)["data"] as? String
-                            self.missfitClass!.isBooked = true
-                            self.tableView.reloadData()
-                            KVNProgress.showSuccessWithStatus("预约成功")
-                            UmengHelper.event(AnalyticsBookClassSucceed)
-                            }) { (operation, error) -> Void in
+                    var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+                    var endpoint: String = MissFitBaseURL + MissFitClassesURI + "/" + self.missfitClass!.classId + "/" + MissFitClassesBookingURI
+                    
+                    KVNProgress.show()
+                    manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
+                    manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
+                    manager.POST(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
+                        self.missfitClass!.bookingId = (responseObject as! NSDictionary)["data"] as? String
+                        self.missfitClass!.isBooked = true
+                        self.tableView.reloadData()
+                        KVNProgress.showSuccessWithStatus("预约成功")
+                        UmengHelper.event(AnalyticsBookClassSucceed)
+                        }) { (operation, error) -> Void in
+                            let statusCode = operation.response.statusCode
+                            if statusCode == 403 {
+                                // Need to pay
+                                KVNProgress.dismiss()
+                                UmengHelper.event(AnalyticsBookClassButNotPay)
+                                let paymentController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("PaymentViewController") as! PaymentViewController
+                                paymentController.missfitClass = self.missfitClass
+                                self.navigationController?.pushViewController(paymentController, animated: true)
+
+                            } else {
                                 if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
                                     // Need to get the status and message
                                     let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as! NSData)
@@ -170,20 +179,8 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
                                 } else {
                                     KVNProgress.showErrorWithStatus("预约失败")
                                 }
-                        }
-                    } else {
-                        UmengHelper.event(AnalyticsBookClassButNotPay)
-//                        let alert: UIAlertController = UIAlertController(title: "温馨提示", message: "请先购买会员卡再约课", preferredStyle: .Alert)
-//                        let cancelAction = UIAlertAction(title: "确定", style: .Cancel) { (action: UIAlertAction!) -> Void in
-//                            let settingsController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SettingsViewController") as! UIViewController
-//                            self.presentViewController(UINavigationController(rootViewController: settingsController), animated: true, completion: nil)
-//                        }
-//                        
-//                        alert.addAction(cancelAction)
-//                        self.presentViewController(alert, animated: true, completion: nil)
-                        let paymentController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("PaymentViewController") as! PaymentViewController
-                        paymentController.missfitClass = self.missfitClass
-                        self.navigationController?.pushViewController(paymentController, animated: true)
+                            }
+
                     }
                 } else {
                     UmengHelper.event(AnalyticsBookClassButNotLogin)

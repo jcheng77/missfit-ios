@@ -23,6 +23,9 @@ class MyClassTableViewCell: ClassTableViewCell {
         teacherAvatar.image = nil
         if let avatarUrl = missfitClass.teacher.avatarUrl {
             teacherAvatar.setImageWithURL(NSURL(string: avatarUrl))
+            teacherAvatar.hidden = false
+        } else {
+            teacherAvatar.hidden = true
         }
         teacherName.text = missfitClass.teacher.name
     }
