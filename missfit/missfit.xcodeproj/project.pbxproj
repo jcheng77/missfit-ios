@@ -29,6 +29,8 @@
 		C31710161B10FA0D0080D294 /* PullToRefreshExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31710111B10FA0D0080D294 /* PullToRefreshExtension.swift */; };
 		C31710171B10FA0D0080D294 /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31710121B10FA0D0080D294 /* PullToRefreshView.swift */; };
 		C31710191B1176500080D294 /* BeatAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31710181B1176500080D294 /* BeatAnimator.swift */; };
+		C31B972E1B31A0880025E739 /* FeaturedClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31B972D1B31A0880025E739 /* FeaturedClassesViewController.swift */; };
+		C31B97301B31A0EF0025E739 /* FeaturedClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31B972F1B31A0EF0025E739 /* FeaturedClassTableViewCell.swift */; };
 		C3316E471B0A4826001D2E03 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3316E461B0A4826001D2E03 /* PaymentViewController.swift */; };
 		C3392A3F1AF1CB01004DB947 /* TeacherImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3392A3E1AF1CB01004DB947 /* TeacherImageTableViewCell.swift */; };
 		C3392A411AF1CB3A004DB947 /* TeacherInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3392A401AF1CB3A004DB947 /* TeacherInfoTableViewCell.swift */; };
@@ -132,6 +134,8 @@
 		C31710121B10FA0D0080D294 /* PullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
 		C31710131B10FA0D0080D294 /* Refresher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Refresher.h; sourceTree = "<group>"; };
 		C31710181B1176500080D294 /* BeatAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeatAnimator.swift; sourceTree = "<group>"; };
+		C31B972D1B31A0880025E739 /* FeaturedClassesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedClassesViewController.swift; sourceTree = "<group>"; };
+		C31B972F1B31A0EF0025E739 /* FeaturedClassTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedClassTableViewCell.swift; sourceTree = "<group>"; };
 		C3316E461B0A4826001D2E03 /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		C3392A3E1AF1CB01004DB947 /* TeacherImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherImageTableViewCell.swift; sourceTree = "<group>"; };
 		C3392A401AF1CB3A004DB947 /* TeacherInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherInfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -394,6 +398,8 @@
 				C37B8C061B0B76B400BDB3F0 /* PaymentActualPriceTableViewCell.swift */,
 				C37B8C081B0B76CA00BDB3F0 /* PaymentActionTableViewCell.swift */,
 				C3F5BE211B18B0B7009B21AB /* MemberCardInfoViewController.swift */,
+				C31B972D1B31A0880025E739 /* FeaturedClassesViewController.swift */,
+				C31B972F1B31A0EF0025E739 /* FeaturedClassTableViewCell.swift */,
 				C310D5951ADC0E2800A70054 /* Main.storyboard */,
 				C310D5981ADC0E2800A70054 /* Images.xcassets */,
 				C310D59A1ADC0E2800A70054 /* LaunchScreen.xib */,
@@ -786,6 +792,7 @@
 				C35FB60E1B0B086C00B82954 /* NSDataEx.m in Sources */,
 				C3C202601AEC941600F3E30C /* SettingsNormalTableViewCell.swift in Sources */,
 				C3476D9B1B144E990049E84A /* LocationClassesViewController.swift in Sources */,
+				C31B972E1B31A0880025E739 /* FeaturedClassesViewController.swift in Sources */,
 				C3392A411AF1CB3A004DB947 /* TeacherInfoTableViewCell.swift in Sources */,
 				C36AF3111AEA221100FF8E0C /* ForgotPasscodeViewController.swift in Sources */,
 				C310D5941ADC0E2800A70054 /* HomeViewController.swift in Sources */,
@@ -801,6 +808,7 @@
 				C38FACCE1B13F28B0034CF2D /* LocationDetailInfoTableViewCell.swift in Sources */,
 				C35A8A311AE3F0B800AB974C /* MissFitTheme.swift in Sources */,
 				C310D58F1ADC0E2800A70054 /* AppDelegate.swift in Sources */,
+				C31B97301B31A0EF0025E739 /* FeaturedClassTableViewCell.swift in Sources */,
 				C33CF10C1AE78C8100B35BF8 /* ClassTableViewCell.swift in Sources */,
 				C3E48FBC1B09D5CE0070C1E7 /* MissFitLocationCoordinate.swift in Sources */,
 				C34C42541B098DDB006E9A5D /* ClassDetailLocationTableViewCell.swift in Sources */,
