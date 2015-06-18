@@ -15,6 +15,7 @@ class TeacherClassesViewController: AllClassesViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        super.fetchData(NSDate())
     }
 
     override func didReceiveMemoryWarning() {

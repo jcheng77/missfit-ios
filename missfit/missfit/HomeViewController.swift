@@ -25,8 +25,10 @@ class HomeViewController: UIViewController {
     }
     @IBAction func allClassesButtonClicked(sender: AnyObject) {
         UmengHelper.event(AnalyticsClickClasses)
-        let allClassesController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("AllClassesViewController") as! AllClassesViewController
-        presentViewController(UINavigationController(rootViewController: allClassesController), animated: true, completion: nil)
+//        let allClassesController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("AllClassesViewController") as! AllClassesViewController
+//        presentViewController(UINavigationController(rootViewController: allClassesController), animated: true, completion: nil)
+        let featuredClassesController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("FeaturedClassesViewController") as! FeaturedClassesViewController
+        presentViewController(UINavigationController(rootViewController: featuredClassesController), animated: true, completion: nil)
     }
 
     @IBAction func myClassesButtonClicked(sender: AnyObject) {

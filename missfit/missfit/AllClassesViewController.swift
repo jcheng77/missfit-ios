@@ -56,12 +56,29 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("startLoadData"), name: MissFitLoadWeeklyClasses, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("loadMembershipSucceededCallback"), name: MissFitLoadMembershipSucceededCallback, object: nil)
-        fetchData(NSDate())
+//        fetchData(NSDate())
     }
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func startLoadData() {
+        if classes.count <= 0 {
+            self.refreshData()
+        }
+    }
+    
+    func refreshData() {
+        if self.selectedDateIndice.datesPageIndex == 0 {
+            // Current week's classes
+            self.fetchData(self.currentWeekDates[self.selectedDateIndice.dateIndex])
+        } else {
+            // Next week's classes
+            self.fetchData(self.nextWeekDates[self.selectedDateIndice.dateIndex])
+        }
     }
     
     func loadMembershipSucceededCallback() {
@@ -75,13 +92,7 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
         createDatesButtons()
         if tableView.pullToRefreshView == nil {
             tableView.addPullToRefreshWithAction({ () -> () in
-                if self.selectedDateIndice.datesPageIndex == 0 {
-                    // Current week's classes
-                    self.fetchData(self.currentWeekDates[self.selectedDateIndice.dateIndex])
-                } else {
-                    // Next week's classes
-                    self.fetchData(self.nextWeekDates[self.selectedDateIndice.dateIndex])
-                }
+                self.refreshData()
                 }, withAnimator: BeatAnimator())
         }
     }

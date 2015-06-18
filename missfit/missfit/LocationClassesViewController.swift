@@ -12,8 +12,8 @@ class LocationClassesViewController: AllClassesViewController {
     var missfitLocation: MissFitLocation?
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        super.fetchData(NSDate())
     }
 
     override func didReceiveMemoryWarning() {

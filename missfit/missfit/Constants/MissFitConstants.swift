@@ -24,6 +24,8 @@ let MissFitTeachersURI: String = "teachers"
 
 let MissFitClassesURI: String = "classes"
 
+let MissFitFeaturedClasses: String = "?featured=true"
+
 let MissFitClassesDateURI: String = "?date="
 
 let MissFitClassesBookingURI: String = "bookings"
@@ -83,6 +85,8 @@ let MissFitLoadMembershipSucceededCallback: String = "MissFitLoadMembershipSucce
 
 let MissFitLoadMembershipFailureCallback: String = "MissFitLoadMembershipFailureCallback"
 
+let MissFitLoadWeeklyClasses: String = "MissFitLoadWeeklyClasses"
+
 // MARK: - Analytics
 let AnalyticsBookClassButNotLogin: String = "book_class_but_not_login" // 点了预约课程但是没登录
 let AnalyticsBookClassButNotPay: String = "book_class_but_not_pay" // 点了预约课程但是没购买会员
@@ -93,6 +97,7 @@ let AnalyticsClickBookingTeacher: String = "click_booking_teacher" // 点击预�
 let AnalyticsClickCancelClass: String = "click_cancel_class" // 点击取消预约
 let AnalyticsClickClassDetail: String = "click_class_detail" // 点击查看课程详情
 let AnalyticsClickClasses: String = "click_classes" // 选课程
+let AnalyticsClickWeeklyClasses: String = "click_weekly_classes" // 点击每周课程
 let AnalyticsClickForgotPassword: String = "click_forgot_password" // 点击找回密码
 let AnalyticsClickLocationClasses: String = "click_location_classes" // 点击分馆课程
 let AnalyticsClickLocationDetail: String = "click_location_detail" // 点击查看场馆信息

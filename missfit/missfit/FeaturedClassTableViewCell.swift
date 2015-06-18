@@ -27,6 +27,22 @@ class FeaturedClassTableViewCell: UITableViewCell {
     }
     
     func setData(missfitClass: MissFitClass) {
-        
+        className.text = missfitClass.name
+        date.text = missfitClass.schedule.date
+        price.text = missfitClass.price?.stringValue
+        if let distanceString = missfitClass.distance {
+            distance.text = distanceString
+            locatingImage.hidden = false
+        } else {
+            distance.text = nil
+            locatingImage.hidden = true
+        }
+        if MissFitUser.user.hasMonthlyCard && !MissFitUser.user.isMonthlyCardExpired() {
+            price.text = missfitClass.memberPrice?.stringValue
+        }
+        classImage.image = nil
+        if let classImageUrl = missfitClass.location.picUrl {
+            classImage.setImageWithURL(NSURL(string: classImageUrl))
+        }
     }
 }
