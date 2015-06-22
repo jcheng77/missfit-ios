@@ -14,9 +14,12 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
     var kTeacherInfoCellIndex = 1
     var kTeacherManifestoCellIndex = 2
     var kTeacherCertificationsCellIndex = 3
-    var kTeacherActionsCellIndex = 4
+    var kTeacherCommentSectionCellIndex = 4
     @IBOutlet weak var tableView: UITableView!
     var scene: WXScene = WXSceneSession
+    @IBOutlet weak var likes: UILabel!
+    var comments = [MissFitComment]()
+    
     
     @IBAction func backButtonClicked(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
@@ -73,17 +76,23 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
         navigationController?.pushViewController(teacherClassesController, animated: true)
     }
     
-    @IBAction func orderButtonClicked(sender: AnyObject) {
-        UmengHelper.event(AnalyticsClickBookingTeacher)
-        if MissFitUser.user.isLogin {
-            let teacherBookingController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TeacherBookingViewController") as! TeacherBookingViewController
-            teacherBookingController.teacherInfo = teacherInfo
-            navigationController?.pushViewController(teacherBookingController, animated: true)
-        } else {
-            let loginController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as! UIViewController
-            self.presentViewController(UINavigationController(rootViewController: loginController), animated: true, completion: nil)
-        }
+    @IBAction func thumbupButtonClicked(sender: AnyObject) {
     }
+    
+    @IBAction func composeButtonClicked(sender: AnyObject) {
+    }
+    
+//    @IBAction func orderButtonClicked(sender: AnyObject) {
+//        UmengHelper.event(AnalyticsClickBookingTeacher)
+//        if MissFitUser.user.isLogin {
+//            let teacherBookingController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TeacherBookingViewController") as! TeacherBookingViewController
+//            teacherBookingController.teacherInfo = teacherInfo
+//            navigationController?.pushViewController(teacherBookingController, animated: true)
+//        } else {
+//            let loginController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as! UIViewController
+//            self.presentViewController(UINavigationController(rootViewController: loginController), animated: true, completion: nil)
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,7 +105,7 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
         tableView.estimatedRowHeight = 100.0
         if !teacherInfo!.teacherCertification!.isCertified {
             kTeacherCertificationsCellIndex = -1
-            kTeacherActionsCellIndex = 3
+            kTeacherCommentSectionCellIndex = 3
         }
     }
 
@@ -106,7 +115,7 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return teacherInfo!.teacherCertification!.isCertified ? 5 : 4
+        return (teacherInfo!.teacherCertification!.isCertified ? 5 : 4) + comments.count
     }
     
     
@@ -151,11 +160,12 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
                 cell.certifiedTypeIcon2.hidden = true
             }
             return cell
-        } else if indexPath.row == kTeacherActionsCellIndex {
-            let cell = tableView.dequeueReusableCellWithIdentifier("TeacherActionsTableViewCell", forIndexPath: indexPath) as! TeacherActionsTableViewCell
+        } else if indexPath.row == kTeacherCommentSectionCellIndex {
+            let cell = tableView.dequeueReusableCellWithIdentifier("CommentSectionTableViewCell", forIndexPath: indexPath) as! CommentSectionTableViewCell
             return cell
         } else {
-            return UITableViewCell()
+            let cell = tableView.dequeueReusableCellWithIdentifier("CommentTableViewCell", forIndexPath: indexPath) as! CommentTableViewCell
+            return cell
         }
     }
 }

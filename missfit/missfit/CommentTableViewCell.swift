@@ -1,14 +1,14 @@
 //
-//  TeacherActionsTableViewCell.swift
+//  CommentTableViewCell.swift
 //  missfit
 //
-//  Created by Hank Liang on 4/30/15.
+//  Created by Hank Liang on 6/22/15.
 //  Copyright (c) 2015 Hank Liang. All rights reserved.
 //
 
 import UIKit
 
-class TeacherActionsTableViewCell: UITableViewCell {
+class CommentTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
