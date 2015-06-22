@@ -1210,7 +1210,7 @@
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="300" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvW-pO-kp9">
                                                             <rect key="frame" x="562" y="8" width="27.5" height="19.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -1229,7 +1229,7 @@
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPK-0s-Kya">
                                                             <rect key="frame" x="549" y="8" width="9.5" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -2782,6 +2782,95 @@
             </objects>
             <point key="canvasLocation" x="3014" y="-306"/>
         </scene>
+        <!--写评论-->
+        <scene sceneID="wFA-be-noA">
+            <objects>
+                <viewController id="30B-2w-3eR" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qlh-o5-78c"/>
+                        <viewControllerLayoutGuide type="bottom" id="Opx-FN-4kh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MpA-iG-KU4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zbd-AC-2dL">
+                                <rect key="frame" x="0.0" y="64" width="600" height="37"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zita（6.6 理疗工作坊）" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6f6-qM-wlA">
+                                        <rect key="frame" x="8" y="9" width="584" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="21x-kn-ane"/>
+                                    <constraint firstItem="6f6-qM-wlA" firstAttribute="leading" secondItem="Zbd-AC-2dL" secondAttribute="leading" constant="8" id="JGy-q4-zTG"/>
+                                    <constraint firstAttribute="centerY" secondItem="6f6-qM-wlA" secondAttribute="centerY" id="esF-Vv-TfW"/>
+                                    <constraint firstAttribute="trailing" secondItem="6f6-qM-wlA" secondAttribute="trailing" constant="8" id="iez-W8-4KY"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w3x-ZB-iDi">
+                                <rect key="frame" x="0.0" y="101" width="600" height="75"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZKd-sp-XbD">
+                                        <rect key="frame" x="2" y="68" width="596" height="1"/>
+                                        <color key="backgroundColor" red="0.65490196078431373" green="0.65098039215686276" blue="0.65490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="wDg-zI-mNF"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="评分" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYL-YU-UYV">
+                                        <rect key="frame" x="8" y="27.5" width="34" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="BYL-YU-UYV" secondAttribute="centerY" id="FVh-63-s8L"/>
+                                    <constraint firstItem="BYL-YU-UYV" firstAttribute="leading" secondItem="w3x-ZB-iDi" secondAttribute="leading" constant="8" id="Lw5-c0-zjt"/>
+                                    <constraint firstAttribute="height" constant="75" id="PVv-ld-uRb"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZKd-sp-XbD" secondAttribute="trailing" constant="2" id="Xcr-zz-8MP"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZKd-sp-XbD" secondAttribute="bottom" constant="6" id="bKN-tp-MeI"/>
+                                    <constraint firstItem="ZKd-sp-XbD" firstAttribute="leading" secondItem="w3x-ZB-iDi" secondAttribute="leading" constant="2" id="idg-lM-XOT"/>
+                                </constraints>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="你真实的评论对老师和其他会员很重要" translatesAutoresizingMaskIntoConstraints="NO" id="7F9-tg-gaC">
+                                <rect key="frame" x="0.0" y="184" width="600" height="416"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Zbd-AC-2dL" secondAttribute="trailing" id="3ev-OJ-mR8"/>
+                            <constraint firstItem="w3x-ZB-iDi" firstAttribute="leading" secondItem="MpA-iG-KU4" secondAttribute="leading" id="6oq-7f-cbK"/>
+                            <constraint firstItem="Opx-FN-4kh" firstAttribute="top" secondItem="7F9-tg-gaC" secondAttribute="bottom" id="A74-Bu-wxS"/>
+                            <constraint firstItem="Zbd-AC-2dL" firstAttribute="top" secondItem="Qlh-o5-78c" secondAttribute="bottom" id="BGv-Wz-Vdg"/>
+                            <constraint firstItem="7F9-tg-gaC" firstAttribute="top" secondItem="w3x-ZB-iDi" secondAttribute="bottom" constant="8" id="EiP-ab-iVK"/>
+                            <constraint firstItem="Zbd-AC-2dL" firstAttribute="leading" secondItem="MpA-iG-KU4" secondAttribute="leading" id="bBj-jD-NgH"/>
+                            <constraint firstItem="7F9-tg-gaC" firstAttribute="leading" secondItem="MpA-iG-KU4" secondAttribute="leading" id="d7c-x1-Zjx"/>
+                            <constraint firstAttribute="trailing" secondItem="7F9-tg-gaC" secondAttribute="trailing" id="khe-GK-p0z"/>
+                            <constraint firstItem="w3x-ZB-iDi" firstAttribute="top" secondItem="Zbd-AC-2dL" secondAttribute="bottom" id="lgs-07-vvR"/>
+                            <constraint firstAttribute="trailing" secondItem="w3x-ZB-iDi" secondAttribute="trailing" id="rxd-yi-3pb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="写评论" id="zkk-8w-3wB">
+                        <barButtonItem key="leftBarButtonItem" title="取消" id="2Sx-CG-TQF"/>
+                        <barButtonItem key="rightBarButtonItem" title="发表" id="aEY-9x-ElK"/>
+                    </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nzh-EH-f2A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3019" y="754"/>
+        </scene>
         <!--预约信息-->
         <scene sceneID="tUh-x5-cte">
             <objects>
@@ -2936,7 +3025,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3084" y="776"/>
+            <point key="canvasLocation" x="3727" y="708"/>
         </scene>
         <!--My Classes View Controller-->
         <scene sceneID="2ST-wp-k3Q">
@@ -3586,7 +3675,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ax5-xh-mis" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3084" y="1581"/>
+            <point key="canvasLocation" x="3727" y="1589"/>
         </scene>
         <!--分馆课程-->
         <scene sceneID="Z7A-9K-Llg">
@@ -3886,7 +3975,7 @@
         <image name="id_certified" width="25" height="25"/>
         <image name="left_direction" width="32" height="32"/>
         <image name="likes" width="29" height="25"/>
-        <image name="locating" width="13" height="20"/>
+        <image name="locating" width="22" height="29"/>
         <image name="logo" width="100" height="100"/>
         <image name="payment-alipay" width="29" height="29"/>
         <image name="payment-selected" width="22" height="22"/>

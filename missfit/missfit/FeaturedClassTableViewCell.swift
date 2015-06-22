@@ -18,8 +18,6 @@ class FeaturedClassTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        locatingImage.image = UIImage(named: "locating")?.imageWithRenderingMode(.AlwaysTemplate)
-        locatingImage.tintColor = UIColor.whiteColor()
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
