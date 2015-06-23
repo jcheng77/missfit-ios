@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CommentComposeViewControllerDelegate {
     var teacherInfo: MissFitTeacher?
     var kTeacherImageCellIndex = 0
     var kTeacherInfoCellIndex = 1
@@ -116,6 +116,7 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
         if MissFitUser.user.isLogin {
             let composeController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("CommentComposeViewController") as! CommentComposeViewController
             composeController.teacher = teacherInfo
+            composeController.delegate = self
             self.presentViewController(UINavigationController(rootViewController: composeController), animated: true, completion: nil)
         } else {
             let alert: UIAlertController = UIAlertController(title: "温馨提示", message: "请先登录再点评论", preferredStyle: .Alert)
@@ -140,7 +141,7 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
             if key == "data" {
                 for (index: String, thirdJson: JSON) in subJson {
                     let comment: MissFitComment = MissFitComment(json: thirdJson)
-                    comments.append(comment)
+                    self.comments.append(comment)
                 }
             }
         }
@@ -160,14 +161,13 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func fetchComments() {
-        comments.removeAll(keepCapacity: false)
+        comments = []
         var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
         var endpoint: String = MissFitBaseURL + MissFitTeachersURI + "/" + teacherInfo!.teacherId + "/" + MissFitCommentsURI
         
         manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
             // Parse data
             self.commentsLoadedSucceeded = true
-            println("comments:\(responseObject)")
             self.parseCommentsResponseObject(responseObject as! NSDictionary)
             self.tableView.reloadData()
             }) { (operation, error) -> Void in
@@ -190,7 +190,6 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
         
         manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
             // Parse data
-            println("praises:\(responseObject)")
             self.parsePraisesResponseObject(responseObject as! NSDictionary)
             }) { (operation, error) -> Void in
                 if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
@@ -206,6 +205,7 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.comments.append(MissFitComment())
         if WXApi.isWXAppInstalled() && WXApi.isWXAppSupportApi() {
             // do nothing
         } else {
@@ -219,8 +219,8 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
             kTeacherCommentSectionCellIndex = 3
         }
         
-        fetchComments()
         fetchLikes()
+        fetchComments()
     }
 
     override func didReceiveMemoryWarning() {
@@ -229,38 +229,38 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (teacherInfo!.teacherCertification!.isCertified ? 5 : 4) + comments.count
+        return (self.teacherInfo!.teacherCertification!.isCertified ? 5 : 4) + self.comments.count
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row == kTeacherImageCellIndex {
             let cell = tableView.dequeueReusableCellWithIdentifier("TeacherImageTableViewCell", forIndexPath: indexPath) as! TeacherImageTableViewCell
-            if let picUrls = teacherInfo?.pics {
+            if let picUrls = self.teacherInfo?.pics {
                 cell.setData(picUrls)
             }
             return cell
         } else if indexPath.row == kTeacherInfoCellIndex {
             let cell = tableView.dequeueReusableCellWithIdentifier("TeacherInfoTableViewCell", forIndexPath: indexPath) as! TeacherInfoTableViewCell
-            cell.name.text = teacherInfo?.name
-            cell.verifiedIcon.hidden = !teacherInfo!.idVerified
-            cell.teachScopes.text = teacherInfo?.classScopesString()
-            if let areas = teacherInfo?.teachAreas {
+            cell.name.text = self.teacherInfo?.name
+            cell.verifiedIcon.hidden = !self.teacherInfo!.idVerified
+            cell.teachScopes.text = self.teacherInfo?.classScopesString()
+            if let areas = self.teacherInfo?.teachAreas {
                 cell.district.text = areas
             }
-            cell.teachModes.text = teacherInfo?.teachModesString()
-            cell.price.text = teacherInfo?.price
+            cell.teachModes.text = self.teacherInfo?.teachModesString()
+            cell.price.text = self.teacherInfo?.price
             return cell
         } else if indexPath.row == kTeacherManifestoCellIndex {
             let cell = tableView.dequeueReusableCellWithIdentifier("TeacherManifestoTableViewCell", forIndexPath: indexPath) as! TeacherManifestoTableViewCell
-            cell.manifesto.text = teacherInfo?.manifesto
+            cell.manifesto.text = self.teacherInfo?.manifesto
             return cell
         } else if indexPath.row == kTeacherCertificationsCellIndex {
             let cell = tableView.dequeueReusableCellWithIdentifier("TeacherCertificationsTableViewCell", forIndexPath: indexPath) as! TeacherCertificationsTableViewCell
-            if teacherInfo!.teacherCertification!.isIdCertified {
+            if self.teacherInfo!.teacherCertification!.isIdCertified {
                 cell.certifiedType1.text = "身份验证"
                 cell.certifiedTypeIcon1.image = UIImage(named: "credit-card-certified")
-                if teacherInfo!.teacherCertification!.isPhoneCertified {
+                if self.teacherInfo!.teacherCertification!.isPhoneCertified {
                     cell.certifiedType2.text = "手机验证"
                     cell.certifiedTypeIcon2.image = UIImage(named: "phone-certified")
                 } else {
@@ -276,15 +276,15 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
             return cell
         } else if indexPath.row == kTeacherCommentSectionCellIndex {
             let cell = tableView.dequeueReusableCellWithIdentifier("CommentSectionTableViewCell", forIndexPath: indexPath) as! CommentSectionTableViewCell
-            if commentsLoadedSucceeded == nil {
+            if self.commentsLoadedSucceeded == nil {
                 cell.activityView.startAnimating()
                 cell.errorMessage.hidden = true
                 cell.noComments.hidden = true
             } else {
-                if commentsLoadedSucceeded! {
+                if self.commentsLoadedSucceeded! {
                     cell.activityView.stopAnimating()
                     cell.errorMessage.hidden = true
-                    if comments.count > 0 {
+                    if self.comments.count > 0 {
                         cell.noComments.hidden = true
                     } else {
                         cell.noComments.hidden = false
@@ -298,8 +298,15 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("CommentTableViewCell", forIndexPath: indexPath) as! CommentTableViewCell
-            cell.setData(comments[indexPath.row - kTeacherCommentSectionCellIndex])
+            cell.setData(self.comments[indexPath.row - kTeacherCommentSectionCellIndex - 1])
             return cell
         }
+    }
+    
+    // MARK: - CommentComposeViewControllerDelegate
+    func commentPostSucceeded() {
+        self.commentsLoadedSucceeded = nil
+        self.fetchComments()
+        self.tableView.reloadData()
     }
 }

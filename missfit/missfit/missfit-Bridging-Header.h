@@ -9,3 +9,4 @@
 #import <AlipaySDK/AlipaySDK.h>
 #import "DataSigner.h"
 #import "UmengHelper.h"
+#import "DYRateView.h"

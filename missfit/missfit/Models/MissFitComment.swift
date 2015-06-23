@@ -12,6 +12,9 @@ class MissFitComment {
     var userName: String?
     var date: String?
     var userIcon: String?
+    var score: Int?
+    
+    init() {}
     
     init(json: JSON) {
         userName = json["userName"].string
@@ -20,5 +23,6 @@ class MissFitComment {
             date = MissFitUtils.formatDate(MissFitUtils.dateFromServer(date!))
         }
         userIcon = json["pic"].string
+        score = json["score"].int
     }
 }

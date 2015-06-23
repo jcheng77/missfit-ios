@@ -40,6 +40,7 @@
 		C33CF10A1AE78AB900B35BF8 /* MissFitClassSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33CF1091AE78AB900B35BF8 /* MissFitClassSchedule.swift */; };
 		C33CF10C1AE78C8100B35BF8 /* ClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33CF10B1AE78C8100B35BF8 /* ClassTableViewCell.swift */; };
 		C34429021B39582000FBDA7A /* CommentComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34429011B39582000FBDA7A /* CommentComposeViewController.swift */; };
+		C34429081B39ADD900FBDA7A /* DYRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = C34429071B39ADD900FBDA7A /* DYRateView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C344E9B81B08D62600468301 /* TeacherClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C344E9B71B08D62600468301 /* TeacherClassesViewController.swift */; };
 		C3476D9B1B144E990049E84A /* LocationClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3476D9A1B144E990049E84A /* LocationClassesViewController.swift */; };
 		C34B9F631ADFE8A900911821 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B9F621ADFE8A900911821 /* LoginViewController.swift */; };
@@ -148,6 +149,8 @@
 		C33CF1091AE78AB900B35BF8 /* MissFitClassSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitClassSchedule.swift; sourceTree = "<group>"; };
 		C33CF10B1AE78C8100B35BF8 /* ClassTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTableViewCell.swift; sourceTree = "<group>"; };
 		C34429011B39582000FBDA7A /* CommentComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentComposeViewController.swift; sourceTree = "<group>"; };
+		C34429061B39ADD900FBDA7A /* DYRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYRateView.h; sourceTree = "<group>"; };
+		C34429071B39ADD900FBDA7A /* DYRateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYRateView.m; sourceTree = "<group>"; };
 		C344E9B71B08D62600468301 /* TeacherClassesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherClassesViewController.swift; sourceTree = "<group>"; };
 		C3476D9A1B144E990049E84A /* LocationClassesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationClassesViewController.swift; sourceTree = "<group>"; };
 		C34B9F621ADFE8A900911821 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -456,6 +459,15 @@
 			path = Refresher;
 			sourceTree = "<group>";
 		};
+		C34429051B39ADD900FBDA7A /* DYRateView */ = {
+			isa = PBXGroup;
+			children = (
+				C34429061B39ADD900FBDA7A /* DYRateView.h */,
+				C34429071B39ADD900FBDA7A /* DYRateView.m */,
+			);
+			path = DYRateView;
+			sourceTree = "<group>";
+		};
 		C351CC551B02423F00B61900 /* WeChatSDK_1.5 */ = {
 			isa = PBXGroup;
 			children = (
@@ -608,6 +620,7 @@
 		C3C7BD691ADFAB1300755CE3 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				C34429051B39ADD900FBDA7A /* DYRateView */,
 				C3F5BE231B18C076009B21AB /* UMAnalytics_Sdk_3.5.9 */,
 				C317100E1B10FA0D0080D294 /* Refresher */,
 				C35FB5A31B0B086C00B82954 /* AliPay */,
@@ -841,6 +854,7 @@
 				C35FB6131B0B08F200B82954 /* AliPayUtils.swift in Sources */,
 				C35FB60D1B0B086C00B82954 /* MD5DataSigner.m in Sources */,
 				C310D5C51ADD670E00A70054 /* AllClassesViewController.swift in Sources */,
+				C34429081B39ADD900FBDA7A /* DYRateView.m in Sources */,
 				C38FACCC1B1399730034CF2D /* LocationDetailImageTableViewCell.swift in Sources */,
 				C33CF10A1AE78AB900B35BF8 /* MissFitClassSchedule.swift in Sources */,
 				C34429021B39582000FBDA7A /* CommentComposeViewController.swift in Sources */,
