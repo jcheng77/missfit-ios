@@ -12,12 +12,18 @@ class CommentSectionTableViewCell: UITableViewCell {
     @IBOutlet weak var line: UIView!
     @IBOutlet weak var lineHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
-    
+    @IBOutlet weak var errorMessage: UILabel!
+    @IBOutlet weak var noComments: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         line.backgroundColor = MissFitTheme.theme.colorSeperator
         lineHeightConstraint.constant = 1.0 / UIScreen.mainScreen().scale
+        activityView.hidesWhenStopped = true
+        activityView.startAnimating()
+        errorMessage.hidden = true
+        noComments.hidden = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -25,5 +31,4 @@ class CommentSectionTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

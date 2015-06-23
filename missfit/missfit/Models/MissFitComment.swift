@@ -9,5 +9,16 @@
 import Foundation
 
 class MissFitComment {
+    var userName: String?
+    var date: String?
+    var userIcon: String?
     
+    init(json: JSON) {
+        userName = json["userName"].string
+        date = json["date"].string
+        if date != nil {
+            date = MissFitUtils.formatDate(MissFitUtils.dateFromServer(date!))
+        }
+        userIcon = json["pic"].string
+    }
 }

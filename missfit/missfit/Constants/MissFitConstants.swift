@@ -22,6 +22,10 @@ let MissFitLogoutURI: String = "logout"
 
 let MissFitTeachersURI: String = "teachers"
 
+let MissFitCommentsURI: String = "comments"
+
+let MissFitLikesURI: String = "praises"
+
 let MissFitClassesURI: String = "classes"
 
 let MissFitFeaturedClasses: String = "?featured=true"

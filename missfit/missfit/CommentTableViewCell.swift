@@ -9,6 +9,10 @@
 import UIKit
 
 class CommentTableViewCell: UITableViewCell {
+    @IBOutlet weak var commentIcon: UIImageView!
+    @IBOutlet weak var commentName: UILabel!
+    @IBOutlet weak var commentDate: UILabel!
+    @IBOutlet weak var commentContent: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,5 +24,13 @@ class CommentTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func setData(missfitComment: MissFitComment) {
+        self.commentName.text = missfitComment.userName
+        self.commentDate.text = missfitComment.date
+        self.commentIcon.image = nil
+        if let urlString = missfitComment.userIcon {
+            self.commentIcon.setImageWithURL(NSURL(string: urlString))
+        }
+    }
 }

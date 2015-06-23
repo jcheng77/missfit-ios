@@ -19,7 +19,8 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
     var scene: WXScene = WXSceneSession
     @IBOutlet weak var likes: UILabel!
     var comments = [MissFitComment]()
-    
+    var likesNumber: Int = 0
+    var commentsLoadedSucceeded: Bool?
     
     @IBAction func backButtonClicked(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
@@ -77,22 +78,131 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @IBAction func thumbupButtonClicked(sender: AnyObject) {
+        if MissFitUser.user.isLogin {
+            var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+            var endpoint: String = MissFitBaseURL + MissFitTeachersURI + "/" + teacherInfo!.teacherId + "/" + MissFitLikesURI
+            
+            KVNProgress.show()
+            manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
+            manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
+            manager.POST(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
+                self.likesNumber += 1
+                self.updateLikes()
+                KVNProgress.dismiss()
+                }) { (operation, error) -> Void in
+                    if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
+                        // Need to get the status and message
+                        let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as! NSData)
+                        let message: String? = json["message"].string
+                        KVNProgress.showErrorWithStatus(message)
+                    } else {
+                        KVNProgress.showErrorWithStatus("点赞失败")
+                    }
+            }
+        } else {
+            let alert: UIAlertController = UIAlertController(title: "温馨提示", message: "请先登录再点赞", preferredStyle: .Alert)
+            let cancelAction = UIAlertAction(title: "确定", style: .Cancel) { (action: UIAlertAction!) -> Void in
+                // Do nothing
+                let loginController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as! UIViewController
+                self.presentViewController(UINavigationController(rootViewController: loginController), animated: true, completion: nil)
+            }
+            
+            alert.addAction(cancelAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction func composeButtonClicked(sender: AnyObject) {
+        if MissFitUser.user.isLogin {
+            let composeController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("CommentComposeViewController") as! CommentComposeViewController
+            composeController.teacher = teacherInfo
+            self.presentViewController(UINavigationController(rootViewController: composeController), animated: true, completion: nil)
+        } else {
+            let alert: UIAlertController = UIAlertController(title: "温馨提示", message: "请先登录再点评论", preferredStyle: .Alert)
+            let cancelAction = UIAlertAction(title: "确定", style: .Cancel) { (action: UIAlertAction!) -> Void in
+                // Do nothing
+                let loginController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as! UIViewController
+                self.presentViewController(UINavigationController(rootViewController: loginController), animated: true, completion: nil)
+            }
+            
+            alert.addAction(cancelAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
-//    @IBAction func orderButtonClicked(sender: AnyObject) {
-//        UmengHelper.event(AnalyticsClickBookingTeacher)
-//        if MissFitUser.user.isLogin {
-//            let teacherBookingController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TeacherBookingViewController") as! TeacherBookingViewController
-//            teacherBookingController.teacherInfo = teacherInfo
-//            navigationController?.pushViewController(teacherBookingController, animated: true)
-//        } else {
-//            let loginController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as! UIViewController
-//            self.presentViewController(UINavigationController(rootViewController: loginController), animated: true, completion: nil)
-//        }
-//    }
+    func updateLikes() {
+        likes.text = String(likesNumber)
+    }
+    
+    func parseCommentsResponseObject(responseObject: NSDictionary) {
+        let json = JSON(responseObject)
+        for (key: String, subJson: JSON) in json {
+            if key == "data" {
+                for (index: String, thirdJson: JSON) in subJson {
+                    let comment: MissFitComment = MissFitComment(json: thirdJson)
+                    comments.append(comment)
+                }
+            }
+        }
+    }
+    
+    func parsePraisesResponseObject(responseObject: NSDictionary) {
+        let json = JSON(responseObject)
+        for (key: String, subJson: JSON) in json {
+            if key == "data" {
+                if let number = subJson["count"].number {
+                    self.likesNumber = number.integerValue
+                    self.updateLikes()
+                    break
+                }
+            }
+        }
+    }
+    
+    func fetchComments() {
+        comments.removeAll(keepCapacity: false)
+        var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+        var endpoint: String = MissFitBaseURL + MissFitTeachersURI + "/" + teacherInfo!.teacherId + "/" + MissFitCommentsURI
+        
+        manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
+            // Parse data
+            self.commentsLoadedSucceeded = true
+            println("comments:\(responseObject)")
+            self.parseCommentsResponseObject(responseObject as! NSDictionary)
+            self.tableView.reloadData()
+            }) { (operation, error) -> Void in
+                if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
+                    // Need to get the status and message
+                    let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as! NSData)
+                    let message: String? = json["message"].string
+                    println("error:\(message)")
+                } else {
+                    println("error:获取评论失败")
+                }
+                self.commentsLoadedSucceeded = false
+                self.tableView.reloadData()
+        }
+    }
+    
+    func fetchLikes() {
+        var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+        var endpoint: String = MissFitBaseURL + MissFitTeachersURI + "/" + teacherInfo!.teacherId + "/" + MissFitLikesURI
+        
+        manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
+            // Parse data
+            println("praises:\(responseObject)")
+            self.parsePraisesResponseObject(responseObject as! NSDictionary)
+            }) { (operation, error) -> Void in
+                if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
+                    // Need to get the status and message
+                    let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as! NSData)
+                    let message: String? = json["message"].string
+                    println("error:\(message)")
+                } else {
+                    println("error:获取赞数失败")
+                }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,12 +211,16 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
         } else {
             navigationItem.rightBarButtonItem = nil
         }
+        updateLikes()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
         if !teacherInfo!.teacherCertification!.isCertified {
             kTeacherCertificationsCellIndex = -1
             kTeacherCommentSectionCellIndex = 3
         }
+        
+        fetchComments()
+        fetchLikes()
     }
 
     override func didReceiveMemoryWarning() {
@@ -162,9 +276,29 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
             return cell
         } else if indexPath.row == kTeacherCommentSectionCellIndex {
             let cell = tableView.dequeueReusableCellWithIdentifier("CommentSectionTableViewCell", forIndexPath: indexPath) as! CommentSectionTableViewCell
+            if commentsLoadedSucceeded == nil {
+                cell.activityView.startAnimating()
+                cell.errorMessage.hidden = true
+                cell.noComments.hidden = true
+            } else {
+                if commentsLoadedSucceeded! {
+                    cell.activityView.stopAnimating()
+                    cell.errorMessage.hidden = true
+                    if comments.count > 0 {
+                        cell.noComments.hidden = true
+                    } else {
+                        cell.noComments.hidden = false
+                    }
+                } else {
+                    cell.activityView.stopAnimating()
+                    cell.errorMessage.hidden = false
+                    cell.noComments.hidden = true
+                }
+            }
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("CommentTableViewCell", forIndexPath: indexPath) as! CommentTableViewCell
+            cell.setData(comments[indexPath.row - kTeacherCommentSectionCellIndex])
             return cell
         }
     }
