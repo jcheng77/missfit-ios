@@ -38,7 +38,7 @@ let MissFitMyClassesURI: String = "bookings/class"
 
 let MissFitMyTeachersURI: String = "bookings/teacher"
 
-let MissFitTeachersLocationURI: String = "?location="
+let MissFitLocationQueryURI: String = "location="
 
 let MissFitSharingClassURI: String = "http://missfit.boluo.me/classes/"
 
@@ -90,6 +90,8 @@ let MissFitLoadMembershipSucceededCallback: String = "MissFitLoadMembershipSucce
 let MissFitLoadMembershipFailureCallback: String = "MissFitLoadMembershipFailureCallback"
 
 let MissFitLoadWeeklyClasses: String = "MissFitLoadWeeklyClasses"
+
+let MissFitGetLocationSucceeded: String = "MissFitGetLocationSucceeded"
 
 // MARK: - Analytics
 let AnalyticsBookClassButNotLogin: String = "book_class_but_not_login" // 点了预约课程但是没登录

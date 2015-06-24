@@ -32,14 +32,29 @@ class FeaturedClassesViewController: UIViewController, UITableViewDataSource, UI
         }
     }
     
+    func fetchDataWithHUD() {
+        if KVNProgress.isVisible() {
+            KVNProgress.dismissWithCompletion({ () -> Void in
+                self.fetchData()
+            })
+        } else {
+            self.fetchData()
+        }
+    }
+    
     func fetchData() {
         classes.removeAll(keepCapacity: false)
         var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
         var endpoint: String = MissFitBaseURL + MissFitClassesURI + MissFitFeaturedClasses
+        if LocationManager.sharedInstance.allowUseLocation && LocationManager.sharedInstance.currentLocation != nil {
+            endpoint = endpoint + "&" + MissFitLocationQueryURI + "\(LocationManager.sharedInstance.currentLocation!.coordinate.longitude),\(LocationManager.sharedInstance.currentLocation!.coordinate.latitude)"
+        }
+        
         if MissFitUser.user.isLogin {
             manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
             manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
         }
+
         KVNProgress.show()
         manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
             //            KVNProgress.showSuccessWithStatus("获取课程列表成功！")
@@ -63,11 +78,12 @@ class FeaturedClassesViewController: UIViewController, UITableViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("getLocationSucceeded"), name: MissFitGetLocationSucceeded, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("loadMembershipSucceededCallback"), name: MissFitLoadMembershipSucceededCallback, object: nil)
         initSegments()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
-        fetchData()
+        fetchDataWithHUD()
     }
     
     deinit {
@@ -78,7 +94,7 @@ class FeaturedClassesViewController: UIViewController, UITableViewDataSource, UI
         super.viewDidAppear(animated)
         if tableView.pullToRefreshView == nil {
             tableView.addPullToRefreshWithAction({ () -> () in
-                self.fetchData()
+                self.fetchDataWithHUD()
                 }, withAnimator: BeatAnimator())
         }
     }
@@ -86,6 +102,10 @@ class FeaturedClassesViewController: UIViewController, UITableViewDataSource, UI
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func getLocationSucceeded() {
+        fetchDataWithHUD()
     }
     
     func loadMembershipSucceededCallback() {

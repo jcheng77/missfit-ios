@@ -46,5 +46,7 @@ class CommentTableViewCell: UITableViewCell {
             rateView.tag = kRateViewTag
             self.commentIcon.superview?.addSubview(rateView)
         }
+        
+        self.commentContent.text = missfitComment.content
     }
 }

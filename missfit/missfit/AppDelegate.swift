@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         self.initializeThemeSettings()
+        LocationManager.sharedInstance
         UmengHelper.initializeUmeng()
         WXApi.registerApp("wxedf7d40749c4a907")
         MissFitUser.user.checkTokenExpired()

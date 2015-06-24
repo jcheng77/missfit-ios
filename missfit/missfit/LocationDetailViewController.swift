@@ -30,11 +30,7 @@ class LocationDetailViewController: UIViewController, UITableViewDataSource, UIT
         super.viewDidLoad()
         initSegments()
         
-        if WXApi.isWXAppInstalled() && WXApi.isWXAppSupportApi() {
-            // do nothing
-        } else {
-            navigationItem.rightBarButtonItem = nil
-        }
+        navigationItem.rightBarButtonItem = nil
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
     }

@@ -167,6 +167,7 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
         
         manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
             // Parse data
+            println("responseObject:\(responseObject)")
             self.commentsLoadedSucceeded = true
             self.parseCommentsResponseObject(responseObject as! NSDictionary)
             self.tableView.reloadData()

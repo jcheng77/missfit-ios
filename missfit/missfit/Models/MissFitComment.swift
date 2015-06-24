@@ -13,6 +13,7 @@ class MissFitComment {
     var date: String?
     var userIcon: String?
     var score: Int?
+    var content: String?
     
     init() {}
     
@@ -24,5 +25,6 @@ class MissFitComment {
         }
         userIcon = json["pic"].string
         score = json["score"].int
+        content = json["content"].string
     }
 }

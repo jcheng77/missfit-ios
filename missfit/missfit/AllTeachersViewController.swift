@@ -9,11 +9,8 @@
 import UIKit
 import CoreLocation
 
-class AllTeachersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
+class AllTeachersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     let teacherCoverImageAspectRatio: CGFloat = 426.0 / 640.0
-    let locationManager = CLLocationManager()
-    var allowUseLocation = false
-    var currentLocation: CLLocation?
     
     @IBOutlet weak var tableView: UITableView!
     var teachers = [MissFitTeacher]()
@@ -24,20 +21,16 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("getLocationSucceeded"), name: MissFitGetLocationSucceeded, object: nil)
+        self.fetchDataWithHUD()
         
-        NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("locationNotFound"), userInfo: nil, repeats: false)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if tableView.pullToRefreshView == nil {
             self.tableView.addPullToRefreshWithAction({ () -> () in
-                self.currentLocation = nil
-                self.locationManager.startUpdatingLocation()
+                self.fetchDataWithHUD()
                 }, withAnimator: BeatAnimator())
         }
     }
@@ -47,13 +40,13 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
         // Dispose of any resources that can be recreated.
     }
     
-    func locationNotFound() {
-        // 暂时没获取到位置信息
-        if currentLocation == nil && allowUseLocation {
-            self.refreshData()
-        }
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
-
+    
+    func getLocationSucceeded() {
+        self.fetchDataWithHUD()
+    }
     
     func parseResponseObject(responseObject: NSDictionary) {
         let json = JSON(responseObject)
@@ -67,13 +60,23 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
-    func refreshData() {
+    func fetchDataWithHUD() {
+        if KVNProgress.isVisible() {
+            KVNProgress.dismissWithCompletion({ () -> Void in
+                self.fetchData()
+            })
+        } else {
+            self.fetchData()
+        }
+    }
+    
+    func fetchData() {
         teachers = []
         var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
         var endpoint: String = MissFitBaseURL + MissFitTeachersURI
         
-        if allowUseLocation && currentLocation != nil {
-            endpoint = endpoint + MissFitTeachersLocationURI + "\(currentLocation!.coordinate.longitude),\(currentLocation!.coordinate.latitude)"
+        if LocationManager.sharedInstance.allowUseLocation && LocationManager.sharedInstance.currentLocation != nil {
+            endpoint = endpoint + "?" + MissFitLocationQueryURI + "\(LocationManager.sharedInstance.currentLocation!.coordinate.longitude),\(LocationManager.sharedInstance.currentLocation!.coordinate.latitude)"
         }
         
         KVNProgress.dismiss()
@@ -124,27 +127,4 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
         UmengHelper.event(AnalyticsClickTeacherDetail, label: teacherInfo.name)
         navigationController?.pushViewController(teacherDetailController, animated: true)
     }
-    
-    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == CLAuthorizationStatus.AuthorizedWhenInUse || status == CLAuthorizationStatus.AuthorizedAlways {
-            allowUseLocation = true
-        } else {
-            // TODO: ask the user to allow the permission
-            refreshData()
-        }
-    }
-    
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println("didFailWithError:\(error)")
-    }
-    
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        if currentLocation == nil {
-            currentLocation = locations.last as? CLLocation
-            locationManager.stopUpdatingLocation()
-            allowUseLocation = true
-            refreshData()
-        }
-    }
-
 }

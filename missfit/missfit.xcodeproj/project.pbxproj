@@ -78,6 +78,7 @@
 		C38FACCC1B1399730034CF2D /* LocationDetailImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38FACCB1B1399730034CF2D /* LocationDetailImageTableViewCell.swift */; };
 		C38FACCE1B13F28B0034CF2D /* LocationDetailInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38FACCD1B13F28B0034CF2D /* LocationDetailInfoTableViewCell.swift */; };
 		C39DB0CA1AEBC9F000C91E5A /* MissFitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39DB0C91AEBC9F000C91E5A /* MissFitUser.swift */; };
+		C39E867E1B39DAA10055B2DF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39E867D1B39DAA10055B2DF /* LocationManager.swift */; };
 		C3BA87EF1AE29EF4009D7A56 /* AllTeachersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BA87EE1AE29EF4009D7A56 /* AllTeachersViewController.swift */; };
 		C3C2025E1AEC92CF00F3E30C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C2025D1AEC92CF00F3E30C /* SettingsViewController.swift */; };
 		C3C202601AEC941600F3E30C /* SettingsNormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C2025F1AEC941600F3E30C /* SettingsNormalTableViewCell.swift */; };
@@ -274,6 +275,7 @@
 		C38FACCB1B1399730034CF2D /* LocationDetailImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailImageTableViewCell.swift; sourceTree = "<group>"; };
 		C38FACCD1B13F28B0034CF2D /* LocationDetailInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailInfoTableViewCell.swift; sourceTree = "<group>"; };
 		C39DB0C91AEBC9F000C91E5A /* MissFitUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitUser.swift; sourceTree = "<group>"; };
+		C39E867D1B39DAA10055B2DF /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		C3BA87EE1AE29EF4009D7A56 /* AllTeachersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTeachersViewController.swift; sourceTree = "<group>"; };
 		C3C2025D1AEC92CF00F3E30C /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C3C2025F1AEC941600F3E30C /* SettingsNormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsNormalTableViewCell.swift; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 				C3F6F2E31AE4E7DB00BAD118 /* MissFitUtils.swift */,
 				C3F5BE281B18C24F009B21AB /* UmengHelper.h */,
 				C3F5BE291B18C24F009B21AB /* UmengHelper.m */,
+				C39E867D1B39DAA10055B2DF /* LocationManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -839,6 +842,7 @@
 				C35FB6101B0B086C00B82954 /* RSADataSigner.m in Sources */,
 				C3F6F2EB1AE54DF300BAD118 /* LocationDetailViewController.swift in Sources */,
 				C35FB60F1B0B086C00B82954 /* openssl_wrapper.m in Sources */,
+				C39E867E1B39DAA10055B2DF /* LocationManager.swift in Sources */,
 				C3F6F2E91AE54DA700BAD118 /* TeacherDetailViewController.swift in Sources */,
 				C31710151B10FA0D0080D294 /* PacmanAnimator.swift in Sources */,
 				C31710171B10FA0D0080D294 /* PullToRefreshView.swift in Sources */,

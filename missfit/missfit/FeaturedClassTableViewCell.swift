@@ -29,7 +29,7 @@ class FeaturedClassTableViewCell: UITableViewCell {
         date.text = missfitClass.schedule.date
         price.text = missfitClass.price?.stringValue
         if let distanceString = missfitClass.distance {
-            distance.text = distanceString
+            distance.text = distanceString + " km"
             locatingImage.hidden = false
         } else {
             distance.text = nil
