@@ -39,8 +39,12 @@ class FeaturedClassTableViewCell: UITableViewCell {
             price.text = missfitClass.memberPrice?.stringValue
         }
         classImage.image = nil
-        if let classImageUrl = missfitClass.location.picUrl {
+        if let classImageUrl = missfitClass.pic {
             classImage.setImageWithURL(NSURL(string: classImageUrl))
+        } else {
+            if let locationImageUrl = missfitClass.location.picUrl {
+                classImage.setImageWithURL(NSURL(string: locationImageUrl))
+            }
         }
     }
 }

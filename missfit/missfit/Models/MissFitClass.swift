@@ -21,6 +21,7 @@ class MissFitClass {
     var price: NSNumber?
     var memberPrice: NSNumber?
     var distance: String?
+    var pic: String?
     
     init(json: JSON) {
         classId = json["_id"].stringValue
@@ -31,6 +32,7 @@ class MissFitClass {
         price = json["price"].number
         memberPrice = json["memberPrice"].number
         distance = json["distance"].string
+        pic = json["pic"].string
         schedule = MissFitClassSchedule(json: json["schedule"])
         location = MissFitLocation(json: json["location"])
         teacher = MissFitTeacher(json: json["teacher"])

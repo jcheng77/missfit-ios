@@ -34,9 +34,14 @@ class ClassDetailImageTableViewCell: UITableViewCell {
         classTime.text = missfitClass.schedule.startTime
         locationName.text = missfitClass.location.name
         address.text = missfitClass.location.address
-        if let classImageUrl = missfitClass.location.picUrl {
+        if let classImageUrl = missfitClass.pic {
             classImage.setImageWithURL(NSURL(string: classImageUrl))
+        } else {
+            if let locationImageUrl = missfitClass.location.picUrl {
+                classImage.setImageWithURL(NSURL(string: locationImageUrl))
+            }
         }
+
         
         if MissFitUser.user.isLogin && MissFitUser.user.hasMonthlyCard {
             actualPrice.text = "¥ " + missfitClass.memberPrice!.stringValue
