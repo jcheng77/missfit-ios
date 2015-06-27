@@ -11,12 +11,9 @@ import UIKit
 class ClassDetailImageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var classImage: UIImageView!
-    @IBOutlet weak var locationName: UILabel!
     @IBOutlet weak var className: UILabel!
-    @IBOutlet weak var address: UILabel!
     @IBOutlet weak var classDate: UILabel!
     @IBOutlet weak var classTime: UILabel!
-    @IBOutlet weak var actualPrice: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,21 +29,12 @@ class ClassDetailImageTableViewCell: UITableViewCell {
         className.text = missfitClass.name
         classDate.text = missfitClass.schedule.date
         classTime.text = missfitClass.schedule.startTime
-        locationName.text = missfitClass.location.name
-        address.text = missfitClass.location.address
         if let classImageUrl = missfitClass.pic {
             classImage.setImageWithURL(NSURL(string: classImageUrl))
         } else {
             if let locationImageUrl = missfitClass.location.picUrl {
                 classImage.setImageWithURL(NSURL(string: locationImageUrl))
             }
-        }
-
-        
-        if MissFitUser.user.isLogin && MissFitUser.user.hasMonthlyCard {
-            actualPrice.text = "¥ " + missfitClass.memberPrice!.stringValue
-        } else {
-            actualPrice.text = "¥ " + missfitClass.price!.stringValue
         }
     }
 

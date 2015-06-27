@@ -8,12 +8,16 @@
 
 import UIKit
 
-enum ClassDetailCellIndex: Int {
-    case ClassDetailImageCell = 0, ClassDetailBookCell, ClassDetailInfoCell, ClassDetailLocationCell
-}
-
 class ClassDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    let kRowNumber = 4
+    var kClassDetailImageCellIndex = 0
+    var kClassDetailBookCellIndex = 1
+    var kClassDetailPriceCellIndex = 2
+    var kClassDetailTeacherCellIndex = 3
+    var kClassDetailInfoCellIndex = 4
+    var kClassDetailTargetUsersCellIndex = 5
+    var kClassDetailNotesCellIndex = 6
+    var kClassDetailLocationCellIndex = 7
+    var kRowNumber = 8
     let classCoverImageAspectRatio: CGFloat = 488.0 / 640.0
     var missfitClass: MissFitClass?
     var scene: WXScene = WXSceneSession
@@ -22,6 +26,20 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if missfitClass?.teacher.teacherId == "" {
+            kClassDetailTeacherCellIndex = -1
+            kClassDetailInfoCellIndex--
+            kClassDetailTargetUsersCellIndex--
+            kClassDetailNotesCellIndex--
+            kClassDetailLocationCellIndex--
+            kRowNumber--
+        }
+        
+        if missfitClass?.notes == nil {
+            kClassDetailNotesCellIndex = -1
+            kClassDetailLocationCellIndex--
+            kRowNumber--
+        }
         if WXApi.isWXAppInstalled() && WXApi.isWXAppSupportApi() {
             // do nothing
         } else {
@@ -212,11 +230,11 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.row {
-        case ClassDetailCellIndex.ClassDetailImageCell.rawValue:
+        case kClassDetailImageCellIndex:
             let cell = tableView.dequeueReusableCellWithIdentifier("ClassDetailImageTableViewCell", forIndexPath: indexPath) as! ClassDetailImageTableViewCell
             cell.setData(missfitClass!)
             return cell
-        case ClassDetailCellIndex.ClassDetailBookCell.rawValue:
+        case kClassDetailBookCellIndex:
             let cell = tableView.dequeueReusableCellWithIdentifier("ClassDetailBookTableViewCell", forIndexPath: indexPath) as! ClassDetailBookTableViewCell
             if missfitClass!.isBooked {
                 cell.bookButton.setTitle("取消预约", forState: .Normal)
@@ -224,15 +242,32 @@ class ClassDetailViewController: UIViewController, UITableViewDataSource, UITabl
                 cell.bookButton.setTitle("我要预约", forState: .Normal)
             }
             return cell
-        case ClassDetailCellIndex.ClassDetailInfoCell.rawValue:
+        case kClassDetailPriceCellIndex:
+            let cell = tableView.dequeueReusableCellWithIdentifier("ClassDetailPriceTableViewCell", forIndexPath: indexPath) as! ClassDetailPriceTableViewCell
+            cell.setData(missfitClass!)
+            return cell
+        case kClassDetailTeacherCellIndex:
+            let cell = tableView.dequeueReusableCellWithIdentifier("ClassDetailTeacherTableViewCell", forIndexPath: indexPath) as! ClassDetailTeacherTableViewCell
+            cell.setData(missfitClass!)
+            return cell
+        case kClassDetailTargetUsersCellIndex:
+            let cell = tableView.dequeueReusableCellWithIdentifier("ClassDetailTargetUsersTableViewCell", forIndexPath: indexPath) as! ClassDetailTargetUsersTableViewCell
+            cell.setData(missfitClass!)
+            return cell
+        case kClassDetailInfoCellIndex:
             let cell = tableView.dequeueReusableCellWithIdentifier("ClassDetailInfoTableViewCell", forIndexPath: indexPath) as! ClassDetailInfoTableViewCell
             cell.setData(missfitClass!)
             return cell
-        case ClassDetailCellIndex.ClassDetailLocationCell.rawValue:
+        case kClassDetailNotesCellIndex:
+            let cell = tableView.dequeueReusableCellWithIdentifier("ClassDetailNotesTableViewCell", forIndexPath: indexPath) as! ClassDetailNotesTableViewCell
+            cell.setData(missfitClass!)
+            return cell
+        case kClassDetailLocationCellIndex:
             let cell = tableView.dequeueReusableCellWithIdentifier("ClassDetailLocationTableViewCell", forIndexPath: indexPath) as! ClassDetailLocationTableViewCell
             cell.setData(missfitClass!.location)
             return cell
         default:
+            println("******************************")
             return UITableViewCell()
         }
     }

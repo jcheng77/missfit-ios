@@ -1,16 +1,16 @@
 //
-//  ClassDetailInfoTableViewCell.swift
+//  ClassDetailNotesTableViewCell.swift
 //  missfit
 //
-//  Created by Hank Liang on 4/22/15.
+//  Created by Hank Liang on 6/27/15.
 //  Copyright (c) 2015 Hank Liang. All rights reserved.
 //
 
 import UIKit
 
-class ClassDetailInfoTableViewCell: UITableViewCell {
+class ClassDetailNotesTableViewCell: UITableViewCell {
+    @IBOutlet weak var notes: UILabel!
 
-    @IBOutlet weak var classInstrucationContent: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,8 +21,9 @@ class ClassDetailInfoTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
     func setData(missfitClass: MissFitClass) {
-        classInstrucationContent.text = missfitClass.desc
+        notes.text = missfitClass.notes
     }
+
 }

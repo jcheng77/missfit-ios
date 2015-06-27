@@ -167,7 +167,6 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
         
         manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
             // Parse data
-            println("responseObject:\(responseObject)")
             self.commentsLoadedSucceeded = true
             self.parseCommentsResponseObject(responseObject as! NSDictionary)
             self.tableView.reloadData()
@@ -176,9 +175,9 @@ class TeacherDetailViewController: UIViewController, UITableViewDataSource, UITa
                     // Need to get the status and message
                     let json = JSON(data: error.userInfo![AFNetworkingOperationFailingURLResponseDataErrorKey] as! NSData)
                     let message: String? = json["message"].string
-                    println("error:\(message)")
+                    KVNProgress.showErrorWithStatus(message)
                 } else {
-                    println("error:获取评论失败")
+                    KVNProgress.showErrorWithStatus("获取评论失败")
                 }
                 self.commentsLoadedSucceeded = false
                 self.tableView.reloadData()

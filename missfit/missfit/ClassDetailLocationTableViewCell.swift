@@ -11,8 +11,7 @@ import MapKit
 import CoreLocation
 
 class ClassDetailLocationTableViewCell: UITableViewCell, MKMapViewDelegate {
-    @IBOutlet weak var line: UIView!
-    @IBOutlet weak var lineHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var locationName: UILabel!
     @IBOutlet weak var locationInfo: UILabel!
     @IBOutlet weak var phone: UIButton!
     @IBOutlet weak var mapView: MKMapView!
@@ -40,6 +39,7 @@ class ClassDetailLocationTableViewCell: UITableViewCell, MKMapViewDelegate {
     
     func setData(missfitLocation: MissFitLocation) {
         self.missfitLocation = missfitLocation
+        locationName.text = missfitLocation.name
         locationInfo.text = missfitLocation.address
         let initialLocation = CLLocation(latitude: missfitLocation.locationCoordinate.latitude, longitude: missfitLocation.locationCoordinate.longtitude)
         centerMapOnLocation(initialLocation)
@@ -49,8 +49,6 @@ class ClassDetailLocationTableViewCell: UITableViewCell, MKMapViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        line.backgroundColor = MissFitTheme.theme.colorSeperator
-        lineHeightConstraint.constant = 1.0 / UIScreen.mainScreen().scale
         phone.layer.borderWidth = 1.0
         phone.layer.borderColor = MissFitTheme.theme.colorPink.CGColor
         phone.layer.cornerRadius = 5.0
