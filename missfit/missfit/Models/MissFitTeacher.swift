@@ -24,6 +24,8 @@ class MissFitTeacher {
     var teacherCertification: MissFitTeacherCertification?
     var distance: String?
     var teachAreas: String?
+    var likesCount: Int = 0
+    var commentsCount: Int = 0
     
     init(json: JSON) {
         teacherId = json["_id"].stringValue
@@ -55,6 +57,14 @@ class MissFitTeacher {
         self.teacherCertification = MissFitTeacherCertification(json: json["certified"])
         if json["distance"] != nil {
             self.distance = json["distance"].stringValue
+        }
+        
+        if let number = json["likesCount"].number {
+            self.likesCount = number.integerValue
+        }
+        
+        if let number = json["commentsCount"].number {
+            self.commentsCount = number.integerValue
         }
     }
     

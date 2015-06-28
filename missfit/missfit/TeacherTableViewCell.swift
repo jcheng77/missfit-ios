@@ -28,10 +28,8 @@ class TeacherTableViewCell: UITableViewCell {
         teacherAvatar.layer.cornerRadius = teacherAvatar.bounds.size.width / 2
         chartsIcon.hidden = true
         charts.hidden = true
-        commentsIcon.hidden = true
-        comments.hidden = true
-        likesIcon.hidden = true
-        likes.hidden = true
+        likesIcon.image = UIImage(named: "likes")?.imageWithRenderingMode(.AlwaysTemplate)
+        likesIcon.tintColor = MissFitTheme.theme.colorSeperator
     }
     
     func setData(teacher: MissFitTeacher) {
@@ -55,5 +53,8 @@ class TeacherTableViewCell: UITableViewCell {
         } else {
             distance.hidden = true
         }
+        
+        likes.text = String(teacher.likesCount)
+        comments.text = String(teacher.commentsCount)
     }
 }
