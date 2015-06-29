@@ -105,7 +105,9 @@ class FeaturedClassesViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func getLocationSucceeded() {
-        fetchDataWithHUD()
+        if currentCategory == .Featured {
+            fetchDataWithHUD()
+        }
     }
     
     func loadMembershipSucceededCallback() {
