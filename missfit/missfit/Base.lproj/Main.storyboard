@@ -1329,8 +1329,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="loq-lp-Izn">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VGj-qT-LnL">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.8205217118" blue="0.90706863599999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="j3c-Gu-Bva"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="loq-lp-Izn">
+                                <rect key="frame" x="0.0" y="108" width="600" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n8f-e5-dUC">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="44"/>
@@ -1399,7 +1406,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4d9-mw-IqB">
-                                <rect key="frame" x="0.0" y="108" width="600" height="428"/>
+                                <rect key="frame" x="0.0" y="152" width="600" height="384"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClassTableViewCell" rowHeight="94" id="Pm7-6R-B8a" customClass="ClassTableViewCell" customModule="missfit" customModuleProvider="target">
@@ -1537,7 +1544,8 @@
                                     <outlet property="delegate" destination="hRg-CX-ILF" id="1JF-0z-lDh"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mdl-7H-bvQ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdl-7H-bvQ">
+                                <rect key="frame" x="0.0" y="152" width="600" height="0.0"/>
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.8205217118" blue="0.90706863599999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="1NS-VP-jaW"/>
@@ -1545,12 +1553,15 @@
                             </view>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="loq-lp-Izn" firstAttribute="top" secondItem="2OB-Dr-voX" secondAttribute="bottom" id="Csi-Kh-mSb"/>
                             <constraint firstItem="4Nx-ex-mga" firstAttribute="top" secondItem="4d9-mw-IqB" secondAttribute="bottom" id="FRk-Kh-pa8"/>
+                            <constraint firstItem="VGj-qT-LnL" firstAttribute="leading" secondItem="vg2-Ia-yyK" secondAttribute="leading" id="G1N-Pu-ihV"/>
                             <constraint firstItem="loq-lp-Izn" firstAttribute="trailing" secondItem="vg2-Ia-yyK" secondAttribute="trailing" id="Gem-Ox-PSc"/>
+                            <constraint firstItem="VGj-qT-LnL" firstAttribute="top" secondItem="2OB-Dr-voX" secondAttribute="bottom" id="Hl4-kw-GUb"/>
                             <constraint firstItem="mdl-7H-bvQ" firstAttribute="top" secondItem="loq-lp-Izn" secondAttribute="bottom" id="JhX-RG-azs"/>
                             <constraint firstItem="loq-lp-Izn" firstAttribute="leading" secondItem="vg2-Ia-yyK" secondAttribute="leading" id="LVC-kv-Jmk"/>
+                            <constraint firstAttribute="trailing" secondItem="VGj-qT-LnL" secondAttribute="trailing" id="M0Z-gN-gnt"/>
                             <constraint firstItem="4d9-mw-IqB" firstAttribute="top" secondItem="mdl-7H-bvQ" secondAttribute="bottom" id="Qa5-gM-Ur5"/>
+                            <constraint firstItem="loq-lp-Izn" firstAttribute="top" secondItem="VGj-qT-LnL" secondAttribute="bottom" id="bZ9-XY-hmh"/>
                             <constraint firstItem="mdl-7H-bvQ" firstAttribute="leading" secondItem="vg2-Ia-yyK" secondAttribute="leading" id="cL6-fD-aHY"/>
                             <constraint firstItem="4d9-mw-IqB" firstAttribute="leading" secondItem="vg2-Ia-yyK" secondAttribute="leading" id="eJf-SF-0La"/>
                             <constraint firstAttribute="trailing" secondItem="mdl-7H-bvQ" secondAttribute="trailing" id="vPC-xL-Rjj"/>
@@ -1568,6 +1579,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="currentWeekView" destination="VyP-T0-qAG" id="TC1-Si-XGZ"/>
+                        <outlet property="filterView" destination="VGj-qT-LnL" id="8xk-TT-7fk"/>
                         <outlet property="leftButton" destination="n8f-e5-dUC" id="dVi-SQ-7sG"/>
                         <outlet property="nextWeekView" destination="S31-ss-UIG" id="ghc-DR-9yq"/>
                         <outlet property="rightButton" destination="niG-kW-E6q" id="nTJ-ou-owi"/>

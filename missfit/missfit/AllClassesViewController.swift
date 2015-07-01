@@ -8,12 +8,13 @@
 
 import UIKit
 
-class AllClassesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AllClassesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DOPDropDownMenuDelegate, DOPDropDownMenuDataSource {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var currentWeekView: UIView!
     @IBOutlet weak var nextWeekView: UIView!
+    @IBOutlet weak var filterView: UIView!
     
     var classes = [MissFitClass]()
     var datesPageIndex = 0
@@ -29,6 +30,14 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
     let kDateBackgroundViewTag = 100
     let kWeekDayLabelTag = 101
     let kDayLabelTag = 102
+    
+    var businessDistrictArray = [["全城热门商区": ["全部商区"]], ["浦东新区": ["联洋", "金桥"]], ["静安区": ["静安寺", "大华"]]]
+    var sportCategoryArray = ["所有运动", "瑜伽", "舞蹈"]
+    var smartSortingArray = ["时间优先", "距离优先"]
+    let kFilterColumn = 3
+    let kBusinessDistrictIndex = 0
+    let kSportCategoryIndex = 1
+    let kSmartSortingIndex = 2
     
     @IBAction func backButtonClicked(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
@@ -58,7 +67,15 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("startLoadData"), name: MissFitLoadWeeklyClasses, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("loadMembershipSucceededCallback"), name: MissFitLoadMembershipSucceededCallback, object: nil)
-//        fetchData(NSDate())
+        // Add the filter menu
+        let menu = DOPDropDownMenu(origin: self.view.frame.origin, andHeight: self.filterView.frame.height)
+        menu.delegate = self
+        menu.dataSource = self
+        menu.indicatorColor = MissFitTheme.theme.colorPink
+        menu.textSelectedColor = MissFitTheme.theme.colorPink
+        self.view.addSubview(menu)
+        self.view.bringSubviewToFront(menu)
+        menu.selectDefalutIndexPath()
     }
     
     deinit {
@@ -329,6 +346,7 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
+    //MARK: - Table view delegate and datasource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return classes.count
     }
@@ -350,5 +368,54 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
         let classDetailController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ClassDetailViewController") as! ClassDetailViewController
         classDetailController.missfitClass = classes[indexPath.row]
         navigationController?.pushViewController(classDetailController, animated: true)
+    }
+    
+    //MARK: - Filter Menu delegate and datasource
+    func numberOfColumnsInMenu(menu: DOPDropDownMenu!) -> Int {
+        return kFilterColumn
+    }
+    
+    func menu(menu: DOPDropDownMenu!, numberOfRowsInColumn column: Int) -> Int {
+        if column == kBusinessDistrictIndex {
+            return self.businessDistrictArray.count
+        } else if column == kSportCategoryIndex {
+            return self.sportCategoryArray.count
+        } else if column == kSmartSortingIndex {
+            return self.smartSortingArray.count
+        } else {
+            return 0
+        }
+    }
+    
+    func menu(menu: DOPDropDownMenu!, titleForRowAtIndexPath indexPath: DOPIndexPath!) -> String! {
+        if indexPath.column == kBusinessDistrictIndex {
+            return self.businessDistrictArray[indexPath.row].keys.first
+        } else if indexPath.column == kSportCategoryIndex {
+            return self.sportCategoryArray[indexPath.row]
+        } else if indexPath.column == kSmartSortingIndex {
+            return self.smartSortingArray[indexPath.row]
+        } else {
+            return nil
+        }
+    }
+    
+    func menu(menu: DOPDropDownMenu!, numberOfItemsInRow row: Int, column: Int) -> Int {
+        if column == kBusinessDistrictIndex {
+            let key = self.businessDistrictArray[row].keys.first!
+            return self.businessDistrictArray[row][key]!.count
+        } else {
+            return 0
+        }
+    }
+    
+    func menu(menu: DOPDropDownMenu!, titleForItemsInRowAtIndexPath indexPath: DOPIndexPath!) -> String! {
+        if indexPath.column == 0 {
+            return self.businessDistrictArray[indexPath.row].values.first![indexPath.item]
+        }
+        return nil
+    }
+    
+    func menu(menu: DOPDropDownMenu!, didSelectRowAtIndexPath indexPath: DOPIndexPath!) {
+        
     }
 }
