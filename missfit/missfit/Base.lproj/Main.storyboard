@@ -3324,10 +3324,10 @@
             </objects>
             <point key="canvasLocation" x="3727" y="708"/>
         </scene>
-        <!--My Classes View Controller-->
+        <!--我的课程-->
         <scene sceneID="2ST-wp-k3Q">
             <objects>
-                <viewController storyboardIdentifier="MyClassesViewController" id="th0-Fh-1vw" customClass="MyClassesViewController" customModule="missfit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyClassesViewController" title="我的课程" id="th0-Fh-1vw" customClass="MyClassesViewController" customModule="missfit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IDB-9P-MsI"/>
                         <viewControllerLayoutGuide type="bottom" id="cZR-BJ-cG2"/>
@@ -3566,8 +3566,7 @@
                             <constraint firstItem="cZR-BJ-cG2" firstAttribute="top" secondItem="FhY-K8-sxv" secondAttribute="bottom" id="vqD-Uj-kw2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="KbL-dr-Ryj">
-                        <nil key="title"/>
+                    <navigationItem key="navigationItem" title="我的课程" id="KbL-dr-Ryj">
                         <barButtonItem key="leftBarButtonItem" image="back_narrow" id="c14-dX-EGo">
                             <connections>
                                 <action selector="backButtonClicked:" destination="th0-Fh-1vw" id="FOZ-O8-E16"/>

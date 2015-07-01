@@ -134,7 +134,7 @@ class MyClassesViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initSegments()
+//        initSegments()
         fetchData(currentCategory)
     }
     
