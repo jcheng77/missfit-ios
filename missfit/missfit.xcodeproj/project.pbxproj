@@ -94,6 +94,7 @@
 		C3D9566A1B43ADA900B74A4F /* icon_chose_arrow_nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3D956661B43ADA900B74A4F /* icon_chose_arrow_nor@2x.png */; };
 		C3D9566B1B43ADA900B74A4F /* icon_chose_arrow_sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3D956671B43ADA900B74A4F /* icon_chose_arrow_sel@2x.png */; };
 		C3D9566C1B43ADA900B74A4F /* icon_chose_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3D956681B43ADA900B74A4F /* icon_chose_bottom@2x.png */; };
+		C3D9566E1B442C7100B74A4F /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9566D1B442C7100B74A4F /* SettingsManager.swift */; };
 		C3E48FBC1B09D5CE0070C1E7 /* MissFitLocationCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E48FBB1B09D5CE0070C1E7 /* MissFitLocationCoordinate.swift */; };
 		C3F5BE221B18B0B7009B21AB /* MemberCardInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F5BE211B18B0B7009B21AB /* MemberCardInfoViewController.swift */; };
 		C3F5BE271B18C076009B21AB /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F5BE241B18C076009B21AB /* libMobClickLibrary.a */; };
@@ -301,6 +302,7 @@
 		C3D956661B43ADA900B74A4F /* icon_chose_arrow_nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_chose_arrow_nor@2x.png"; sourceTree = "<group>"; };
 		C3D956671B43ADA900B74A4F /* icon_chose_arrow_sel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_chose_arrow_sel@2x.png"; sourceTree = "<group>"; };
 		C3D956681B43ADA900B74A4F /* icon_chose_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_chose_bottom@2x.png"; sourceTree = "<group>"; };
+		C3D9566D1B442C7100B74A4F /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		C3E48FBB1B09D5CE0070C1E7 /* MissFitLocationCoordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitLocationCoordinate.swift; sourceTree = "<group>"; };
 		C3F5BE211B18B0B7009B21AB /* MemberCardInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberCardInfoViewController.swift; sourceTree = "<group>"; };
 		C3F5BE241B18C076009B21AB /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
@@ -510,6 +512,7 @@
 				C3F5BE281B18C24F009B21AB /* UmengHelper.h */,
 				C3F5BE291B18C24F009B21AB /* UmengHelper.m */,
 				C39E867D1B39DAA10055B2DF /* LocationManager.swift */,
+				C3D9566D1B442C7100B74A4F /* SettingsManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -887,6 +890,7 @@
 				C31710171B10FA0D0080D294 /* PullToRefreshView.swift in Sources */,
 				C31AF9B01B3E9E8B00E27057 /* ClassDetailTargetUsersTableViewCell.swift in Sources */,
 				C31152111B027EFC00FBF0CD /* MyTeacherTableViewCell.swift in Sources */,
+				C3D9566E1B442C7100B74A4F /* SettingsManager.swift in Sources */,
 				C310D5921ADC0E2800A70054 /* missfit.xcdatamodeld in Sources */,
 				C34B9F631ADFE8A900911821 /* LoginViewController.swift in Sources */,
 				C3F5BE221B18B0B7009B21AB /* MemberCardInfoViewController.swift in Sources */,

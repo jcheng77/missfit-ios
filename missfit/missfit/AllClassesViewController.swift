@@ -8,13 +8,15 @@
 
 import UIKit
 
-class AllClassesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DOPDropDownMenuDelegate, DOPDropDownMenuDataSource {
+class AllClassesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DOPDropDownMenuDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var currentWeekView: UIView!
     @IBOutlet weak var nextWeekView: UIView!
     @IBOutlet weak var filterView: UIView!
+    @IBOutlet weak var filterViewConstraintHeight: NSLayoutConstraint!
+    
     
     var classes = [MissFitClass]()
     var datesPageIndex = 0
@@ -30,14 +32,7 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
     let kDateBackgroundViewTag = 100
     let kWeekDayLabelTag = 101
     let kDayLabelTag = 102
-    
-    var businessDistrictArray = [["全城热门商区": ["全部商区"]], ["浦东新区": ["联洋", "金桥"]], ["静安区": ["静安寺", "大华"]]]
-    var sportCategoryArray = ["所有运动", "瑜伽", "舞蹈"]
-    var smartSortingArray = ["时间优先", "距离优先"]
-    let kFilterColumn = 3
-    let kBusinessDistrictIndex = 0
-    let kSportCategoryIndex = 1
-    let kSmartSortingIndex = 2
+    var currentFilterIndice: (category: Int, smartSorting: Int) = (0, 0)
     
     @IBAction func backButtonClicked(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
@@ -65,17 +60,21 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.filterViewConstraintHeight.constant = 44.0
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("startLoadData"), name: MissFitLoadWeeklyClasses, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("loadMembershipSucceededCallback"), name: MissFitLoadMembershipSucceededCallback, object: nil)
         // Add the filter menu
+        self.addFilter()
+    }
+    
+    func addFilter() {
         let menu = DOPDropDownMenu(origin: self.view.frame.origin, andHeight: self.filterView.frame.height)
         menu.delegate = self
-        menu.dataSource = self
+        menu.dataSource = SettingsManager.sharedInstance
         menu.indicatorColor = MissFitTheme.theme.colorPink
         menu.textSelectedColor = MissFitTheme.theme.colorPink
         self.view.addSubview(menu)
         self.view.bringSubviewToFront(menu)
-        menu.selectDefalutIndexPath()
     }
     
     deinit {
@@ -317,6 +316,19 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
         var manager: AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
         let dateString = MissFitUtils.formatDate(date)
         var endpoint: String = getClassEndPoint() + dateString
+        
+        if currentFilterIndice.category != 0 {
+            endpoint += "&" + MissFitCategory + SettingsManager.sharedInstance.sportCategoryArray[currentFilterIndice.category]
+        }
+        
+        if currentFilterIndice.smartSorting != 0 {
+            if LocationManager.sharedInstance.allowUseLocation && LocationManager.sharedInstance.currentLocation != nil {
+                endpoint += "&" + MissFitLocationQueryURI + "\(LocationManager.sharedInstance.currentLocation!.coordinate.longitude),\(LocationManager.sharedInstance.currentLocation!.coordinate.latitude)"
+            }
+        }
+        
+        endpoint = endpoint.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+
         if MissFitUser.user.isLogin {
             manager.requestSerializer.setValue(MissFitUser.user.userId, forHTTPHeaderField: "X-User-Id")
             manager.requestSerializer.setValue(MissFitUser.user.token, forHTTPHeaderField: "X-Auth-Token")
@@ -370,52 +382,20 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
         navigationController?.pushViewController(classDetailController, animated: true)
     }
     
-    //MARK: - Filter Menu delegate and datasource
-    func numberOfColumnsInMenu(menu: DOPDropDownMenu!) -> Int {
-        return kFilterColumn
-    }
-    
-    func menu(menu: DOPDropDownMenu!, numberOfRowsInColumn column: Int) -> Int {
-        if column == kBusinessDistrictIndex {
-            return self.businessDistrictArray.count
-        } else if column == kSportCategoryIndex {
-            return self.sportCategoryArray.count
-        } else if column == kSmartSortingIndex {
-            return self.smartSortingArray.count
-        } else {
-            return 0
-        }
-    }
-    
-    func menu(menu: DOPDropDownMenu!, titleForRowAtIndexPath indexPath: DOPIndexPath!) -> String! {
-        if indexPath.column == kBusinessDistrictIndex {
-            return self.businessDistrictArray[indexPath.row].keys.first
-        } else if indexPath.column == kSportCategoryIndex {
-            return self.sportCategoryArray[indexPath.row]
-        } else if indexPath.column == kSmartSortingIndex {
-            return self.smartSortingArray[indexPath.row]
-        } else {
-            return nil
-        }
-    }
-    
-    func menu(menu: DOPDropDownMenu!, numberOfItemsInRow row: Int, column: Int) -> Int {
-        if column == kBusinessDistrictIndex {
-            let key = self.businessDistrictArray[row].keys.first!
-            return self.businessDistrictArray[row][key]!.count
-        } else {
-            return 0
-        }
-    }
-    
-    func menu(menu: DOPDropDownMenu!, titleForItemsInRowAtIndexPath indexPath: DOPIndexPath!) -> String! {
-        if indexPath.column == 0 {
-            return self.businessDistrictArray[indexPath.row].values.first![indexPath.item]
-        }
-        return nil
-    }
+    //MARK: - Filter Menu delegate
+
     
     func menu(menu: DOPDropDownMenu!, didSelectRowAtIndexPath indexPath: DOPIndexPath!) {
-        
+        if indexPath.column == SettingsManager.sharedInstance.kSportCategoryIndex {
+            if indexPath.row != currentFilterIndice.category {
+                currentFilterIndice.category = indexPath.row
+                self.refreshData()
+            }
+        } else if indexPath.column == SettingsManager.sharedInstance.kSmartSortingIndex {
+            if indexPath.row != currentFilterIndice.smartSorting {
+                currentFilterIndice.smartSorting = indexPath.row
+                self.refreshData()
+            }
+        }
     }
 }

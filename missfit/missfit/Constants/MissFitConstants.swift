@@ -58,6 +58,8 @@ let MissFitSettings: String = "settings"
 
 let MissFitLocations: String = "locations"
 
+let MissFitCategory: String = "category="
+
 
 
 // MissFit user related:
@@ -81,6 +83,10 @@ let MissFitUserHasMonthlyCard: String = "MissFitUserHasMonthlyCard"
 let MissFitUserMonthlyCardValidThrough: String = "MissFitUserMonthlyCardValidThrough"
 
 let MissFitUserLoginDate: String = "MissFitUserLoginDate"
+
+// MissFit settings related:
+let MissFitBusinessDistrict: String = "MissFitBusinessDistrict"
+let MissFitSportCategory: String = "MissFitSportCategory"
 
 // Notifications 
 let MissFitAlipaySucceededCallback: String = "MissFitAlipaySucceededCallback"

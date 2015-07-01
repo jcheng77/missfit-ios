@@ -13,7 +13,7 @@ class TeacherClassesViewController: AllClassesViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.filterViewConstraintHeight.constant = 0.0
         // Do any additional setup after loading the view.
         super.fetchData(NSDate())
     }
@@ -29,5 +29,8 @@ class TeacherClassesViewController: AllClassesViewController {
     
     override func backButtonClicked(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
+    }
+    
+    override func addFilter() {
     }
 }

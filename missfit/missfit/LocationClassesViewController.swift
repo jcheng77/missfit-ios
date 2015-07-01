@@ -12,6 +12,7 @@ class LocationClassesViewController: AllClassesViewController {
     var missfitLocation: MissFitLocation?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.filterViewConstraintHeight.constant = 0.0
         // Do any additional setup after loading the view.
         super.fetchData(NSDate())
     }
@@ -28,5 +29,8 @@ class LocationClassesViewController: AllClassesViewController {
     
     override func backButtonClicked(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
+    }
+    
+    override func addFilter() {
     }
 }

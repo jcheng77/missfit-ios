@@ -1580,6 +1580,7 @@
                     <connections>
                         <outlet property="currentWeekView" destination="VyP-T0-qAG" id="TC1-Si-XGZ"/>
                         <outlet property="filterView" destination="VGj-qT-LnL" id="8xk-TT-7fk"/>
+                        <outlet property="filterViewConstraintHeight" destination="j3c-Gu-Bva" id="Mzc-hl-KLq"/>
                         <outlet property="leftButton" destination="n8f-e5-dUC" id="dVi-SQ-7sG"/>
                         <outlet property="nextWeekView" destination="S31-ss-UIG" id="ghc-DR-9yq"/>
                         <outlet property="rightButton" destination="niG-kW-E6q" id="nTJ-ou-owi"/>
@@ -2754,7 +2755,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="h82-iW-HwZ"/>
                                         </constraints>
-                                        <state key="normal" title="她的课表">
+                                        <state key="normal" title="老师课表">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -3726,7 +3727,7 @@
             </objects>
             <point key="canvasLocation" x="1623" y="1729"/>
         </scene>
-        <!--她的课程-->
+        <!--老师课程-->
         <scene sceneID="eGt-U3-rKl">
             <objects>
                 <viewController storyboardIdentifier="TeacherClassesViewController" id="nrE-1P-5tb" customClass="TeacherClassesViewController" customModule="missfit" customModuleProvider="target" sceneMemberID="viewController">
@@ -3738,8 +3739,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8hQ-e7-H4q">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WkM-a9-6vK">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.8205217118" blue="0.90706863599999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="0eO-BT-0mj"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8hQ-e7-H4q">
+                                <rect key="frame" x="0.0" y="108" width="600" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nx2-6F-xLX">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="44"/>
@@ -3808,7 +3816,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="WGe-pC-9Fr">
-                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <rect key="frame" x="0.0" y="152" width="600" height="448"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClassTableViewCell" rowHeight="94" id="OUH-5X-xPQ" customClass="ClassTableViewCell" customModule="missfit" customModuleProvider="target">
@@ -3887,7 +3895,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOg-uX-Dwb">
-                                                    <rect key="frame" x="28" y="60" width="37" height="17"/>
+                                                    <rect key="frame" x="28" y="60" width="36.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                                     <color key="textColor" red="0.96862745100000003" green="0.4941176471" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -3943,16 +3951,19 @@
                             </tableView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="WkM-a9-6vK" firstAttribute="top" secondItem="aTs-l5-c3I" secondAttribute="bottom" id="9H4-Le-xSy"/>
                             <constraint firstItem="8hQ-e7-H4q" firstAttribute="leading" secondItem="FxV-lk-bBY" secondAttribute="leading" id="9s5-FX-h9b"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WkM-a9-6vK" secondAttribute="trailing" constant="-16" id="CAb-4u-HJp"/>
                             <constraint firstItem="WGe-pC-9Fr" firstAttribute="trailing" secondItem="FxV-lk-bBY" secondAttribute="trailing" id="Ipv-kv-2nT"/>
+                            <constraint firstItem="8hQ-e7-H4q" firstAttribute="top" secondItem="WkM-a9-6vK" secondAttribute="bottom" id="NAK-HL-OAC"/>
                             <constraint firstItem="WGe-pC-9Fr" firstAttribute="top" secondItem="8hQ-e7-H4q" secondAttribute="bottom" id="Ndq-ZV-dBT"/>
-                            <constraint firstItem="8hQ-e7-H4q" firstAttribute="top" secondItem="aTs-l5-c3I" secondAttribute="bottom" id="PWE-aD-Jin"/>
+                            <constraint firstItem="WkM-a9-6vK" firstAttribute="leading" secondItem="FxV-lk-bBY" secondAttribute="leadingMargin" constant="-16" id="YKF-WX-f6M"/>
                             <constraint firstItem="8hQ-e7-H4q" firstAttribute="trailing" secondItem="FxV-lk-bBY" secondAttribute="trailing" id="bFl-58-Wy5"/>
                             <constraint firstItem="WGe-pC-9Fr" firstAttribute="leading" secondItem="FxV-lk-bBY" secondAttribute="leading" id="lFm-GJ-qZO"/>
                             <constraint firstItem="ltQ-4X-h2T" firstAttribute="top" secondItem="WGe-pC-9Fr" secondAttribute="bottom" id="ook-Kx-CxS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="她的课程" id="AUe-M0-bjF">
+                    <navigationItem key="navigationItem" title="老师课程" id="AUe-M0-bjF">
                         <barButtonItem key="leftBarButtonItem" image="backBarBtnBg" id="Js0-UY-l1W">
                             <connections>
                                 <action selector="backButtonClicked:" destination="nrE-1P-5tb" id="RTy-pu-lsK"/>
@@ -3963,6 +3974,8 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="currentWeekView" destination="WCv-zr-Nfk" id="e9g-Q9-X05"/>
+                        <outlet property="filterView" destination="WkM-a9-6vK" id="thz-gX-AQj"/>
+                        <outlet property="filterViewConstraintHeight" destination="0eO-BT-0mj" id="esb-rY-xHo"/>
                         <outlet property="leftButton" destination="nx2-6F-xLX" id="FxR-RQ-5vH"/>
                         <outlet property="nextWeekView" destination="uRe-mx-JML" id="Ve6-Up-pbV"/>
                         <outlet property="rightButton" destination="d59-O3-xxq" id="hGa-Br-UOx"/>
@@ -3985,8 +3998,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tzK-hz-vvt">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNg-uN-QVf">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.8205217118" blue="0.90706863599999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="J1D-dW-SIh"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tzK-hz-vvt">
+                                <rect key="frame" x="0.0" y="108" width="600" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6X5-im-Xbk">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="44"/>
@@ -4055,7 +4075,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Eln-fV-C2e">
-                                <rect key="frame" x="0.0" y="108" width="600" height="892"/>
+                                <rect key="frame" x="0.0" y="152" width="600" height="848"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClassTableViewCell" rowHeight="94" id="vrB-m5-2T1" customClass="ClassTableViewCell" customModule="missfit" customModuleProvider="target">
@@ -4134,7 +4154,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BvZ-aw-1fD">
-                                                    <rect key="frame" x="28" y="59" width="37" height="17"/>
+                                                    <rect key="frame" x="28" y="59" width="36.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                                     <color key="textColor" red="0.96862745100000003" green="0.4941176471" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -4191,12 +4211,21 @@
                         <constraints>
                             <constraint firstItem="Eln-fV-C2e" firstAttribute="leading" secondItem="zbR-1U-dZb" secondAttribute="leading" id="4IM-In-QtB"/>
                             <constraint firstItem="XOy-3a-ay1" firstAttribute="top" secondItem="Eln-fV-C2e" secondAttribute="bottom" id="Gto-JR-tHf"/>
+                            <constraint firstItem="tzK-hz-vvt" firstAttribute="top" secondItem="TNg-uN-QVf" secondAttribute="bottom" id="JH9-cz-JY1"/>
                             <constraint firstItem="Eln-fV-C2e" firstAttribute="trailing" secondItem="zbR-1U-dZb" secondAttribute="trailing" id="KOe-LW-6Ta"/>
                             <constraint firstItem="tzK-hz-vvt" firstAttribute="top" secondItem="f2f-pj-Yx2" secondAttribute="bottom" id="W2v-8R-K8M"/>
+                            <constraint firstItem="TNg-uN-QVf" firstAttribute="leading" secondItem="zbR-1U-dZb" secondAttribute="leadingMargin" constant="-16" id="WwO-rh-VGw"/>
+                            <constraint firstItem="TNg-uN-QVf" firstAttribute="top" secondItem="f2f-pj-Yx2" secondAttribute="bottom" id="Xfr-QQ-aF8"/>
                             <constraint firstItem="tzK-hz-vvt" firstAttribute="trailing" secondItem="zbR-1U-dZb" secondAttribute="trailing" id="aYG-4y-jTe"/>
                             <constraint firstItem="tzK-hz-vvt" firstAttribute="leading" secondItem="zbR-1U-dZb" secondAttribute="leading" id="dPX-cY-aJh"/>
                             <constraint firstItem="Eln-fV-C2e" firstAttribute="top" secondItem="tzK-hz-vvt" secondAttribute="bottom" id="lp5-tW-ne3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TNg-uN-QVf" secondAttribute="trailing" constant="-16" id="yw6-UL-dW1"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="W2v-8R-K8M"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="分馆课程" id="P5s-cQ-khv">
                         <barButtonItem key="leftBarButtonItem" image="backBarBtnBg" id="NLG-FB-FX8">
@@ -4209,6 +4238,8 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="currentWeekView" destination="oWA-mL-Un3" id="kIZ-qf-knx"/>
+                        <outlet property="filterView" destination="TNg-uN-QVf" id="489-5x-Vpf"/>
+                        <outlet property="filterViewConstraintHeight" destination="J1D-dW-SIh" id="Pgh-je-CR3"/>
                         <outlet property="leftButton" destination="6X5-im-Xbk" id="UNf-WK-4LV"/>
                         <outlet property="nextWeekView" destination="ATF-rT-zk8" id="m3L-cU-6fY"/>
                         <outlet property="rightButton" destination="ZH5-s5-OlM" id="dlZ-K2-rPn"/>
