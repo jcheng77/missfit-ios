@@ -40,10 +40,10 @@ class FeaturedClassTableViewCell: UITableViewCell {
         }
         classImage.image = nil
         if let classImageUrl = missfitClass.pic {
-            classImage.setImageWithURL(NSURL(string: classImageUrl))
+            classImage.setImageWithURL(NSURL(string: classImageUrl), placeholderImage: UIImage(named: "default-pic"))
         } else {
             if let locationImageUrl = missfitClass.location.picUrl {
-                classImage.setImageWithURL(NSURL(string: locationImageUrl))
+                classImage.setImageWithURL(NSURL(string: locationImageUrl), placeholderImage: UIImage(named: "default-pic"))
             }
         }
     }

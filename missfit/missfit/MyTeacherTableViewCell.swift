@@ -40,7 +40,7 @@ class MyTeacherTableViewCell: UITableViewCell {
         address.text = bookingTeacher.detail.address
         teacherAvatar.image = nil
         if let avatarUrl = bookingTeacher.teacherAvatar {
-            teacherAvatar.setImageWithURL(NSURL(string: avatarUrl))
+            teacherAvatar.setImageWithURL(NSURL(string: avatarUrl), placeholderImage: UIImage(named: "default-teacher-avatar"))
         }
         teacherName.text = bookingTeacher.teacherName
     }

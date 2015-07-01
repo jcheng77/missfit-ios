@@ -37,7 +37,7 @@ class TeacherImageTableViewCell: UITableViewCell, UIScrollViewDelegate {
             let subView: UIImageView = UIImageView(frame: CGRectMake(width * CGFloat(i), 0, width, height))
             subView.contentMode = .ScaleAspectFill
             subView.clipsToBounds = true
-            subView.setImageWithURL(NSURL(string: self.imageArray![i]))
+            subView.setImageWithURL(NSURL(string: self.imageArray![i]), placeholderImage: UIImage(named: "default-pic"))
             self.scrollView.addSubview(subView)
         }
         

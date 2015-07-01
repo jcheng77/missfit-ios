@@ -22,7 +22,7 @@ class MyClassTableViewCell: ClassTableViewCell {
         area.text = missfitClass.location.area
         teacherAvatar.image = nil
         if let avatarUrl = missfitClass.teacher.avatarUrl {
-            teacherAvatar.setImageWithURL(NSURL(string: avatarUrl))
+            teacherAvatar.setImageWithURL(NSURL(string: avatarUrl), placeholderImage: UIImage(named: "default-teacher-avatar"))
             teacherAvatar.hidden = false
         } else {
             teacherAvatar.hidden = true

@@ -35,12 +35,12 @@ class TeacherTableViewCell: UITableViewCell {
     func setData(teacher: MissFitTeacher) {
         teacherImage.image = nil
         if let coverPicUrl = teacher.coverPicUrl {
-            teacherImage.setImageWithURL(NSURL(string: coverPicUrl))
+            teacherImage.setImageWithURL(NSURL(string: coverPicUrl), placeholderImage: UIImage(named: "default-pic"))
         }
         
         teacherAvatar.image = nil
         if let avatarUrl = teacher.avatarUrl {
-            teacherAvatar.setImageWithURL(NSURL(string: avatarUrl))
+            teacherAvatar.setImageWithURL(NSURL(string: avatarUrl), placeholderImage: UIImage(named: "default-teacher-avatar"))
         }
         
         verifiedIcon.hidden = !teacher.idVerified

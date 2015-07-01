@@ -30,7 +30,7 @@ class ClassDetailTeacherTableViewCell: UITableViewCell {
         name.text = missfitClass.teacher.name
         certificationIcon.hidden = !missfitClass.teacher.idVerified
         if let avatarUrl = missfitClass.teacher.avatarUrl {
-            teacherAvatar.setImageWithURL(NSURL(string: avatarUrl))
+            teacherAvatar.setImageWithURL(NSURL(string: avatarUrl), placeholderImage: UIImage(named: "default-teacher-avatar"))
         }
     }
 

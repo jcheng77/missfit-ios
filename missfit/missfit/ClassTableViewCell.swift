@@ -49,7 +49,7 @@ class ClassTableViewCell: UITableViewCell {
         if let avatarUrl = missfitClass.teacher.avatarUrl {
             imageWidthConstraint.constant = 50.0
             addressImageHorizontalSpaceConstraint.constant = 8.0
-            teacherAvatar.setImageWithURL(NSURL(string: avatarUrl))
+            teacherAvatar.setImageWithURL(NSURL(string: avatarUrl), placeholderImage: UIImage(named: "default-teacher-avatar"))
         } else {
             imageWidthConstraint.constant = 0.0
             addressImageHorizontalSpaceConstraint.constant = 0.0

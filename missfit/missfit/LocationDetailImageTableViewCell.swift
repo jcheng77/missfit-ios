@@ -30,7 +30,7 @@ class LocationDetailImageTableViewCell: UITableViewCell {
         address.text = missfitLocation.address
         certificationImage.hidden = !missfitLocation.isVerified
         if let locationImageUrl = missfitLocation.picUrl {
-            locationImage.setImageWithURL(NSURL(string: locationImageUrl))
+            locationImage.setImageWithURL(NSURL(string: locationImageUrl), placeholderImage: UIImage(named: "default-pic"))
         }
     }
 
