@@ -11,7 +11,7 @@
 
 @implementation UmengHelper
 + (void)initializeUmeng {
-//    [MobClick startWithAppkey:@"5563581367e58e01e4003e98" reportPolicy:BATCH channelId:nil];
+    [MobClick startWithAppkey:@"5563581367e58e01e4003e98" reportPolicy:BATCH channelId:nil];
 }
 
 + (void)event:(NSString *)eventId {
