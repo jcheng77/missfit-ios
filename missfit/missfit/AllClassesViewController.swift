@@ -107,8 +107,8 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidAppear(animated)
         createDatesButtons()
         if tableView.pullToRefreshView == nil {
-            tableView.addPullToRefreshWithAction({ () -> () in
-                self.refreshData()
+            tableView.addPullToRefreshWithAction({ [weak self] in
+                self!.refreshData()
                 }, withAnimator: BeatAnimator())
         }
     }

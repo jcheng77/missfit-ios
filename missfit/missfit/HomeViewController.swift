@@ -52,11 +52,11 @@ class HomeViewController: UIViewController {
     @IBAction func settingsButtonClicked(sender: AnyObject) {
         UmengHelper.event(AnalyticsClickSettings)
         if MissFitUser.user.isLogin {
-            let settingsController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SettingsViewController") as! UIViewController
+            let settingsController: SettingsViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SettingsViewController") as! SettingsViewController
             presentViewController(UINavigationController(rootViewController: settingsController), animated: true, completion: nil)
         } else {
             UmengHelper.event(AnalyticsClickSettingsButNotLogin)
-            let loginController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as! UIViewController
+            let loginController: LoginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
             presentViewController(UINavigationController(rootViewController: loginController), animated: true, completion: nil)
         }
     }

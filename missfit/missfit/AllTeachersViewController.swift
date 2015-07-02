@@ -29,8 +29,8 @@ class AllTeachersViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if tableView.pullToRefreshView == nil {
-            self.tableView.addPullToRefreshWithAction({ () -> () in
-                self.fetchDataWithHUD()
+            self.tableView.addPullToRefreshWithAction({ [weak self] in
+                self!.fetchDataWithHUD()
                 }, withAnimator: BeatAnimator())
         }
     }

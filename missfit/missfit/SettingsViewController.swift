@@ -83,10 +83,9 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         isMembershipLoaded = false
         self.loadSettings()
 
-        
         if tableView.pullToRefreshView == nil {
-            tableView.addPullToRefreshWithAction({ () -> () in
-                self.loadSettings()
+            tableView.addPullToRefreshWithAction({ [weak self] in
+                self!.loadSettings()
                 }, withAnimator: BeatAnimator())
         }
     }

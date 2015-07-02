@@ -93,8 +93,8 @@ class FeaturedClassesViewController: UIViewController, UITableViewDataSource, UI
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if tableView.pullToRefreshView == nil {
-            tableView.addPullToRefreshWithAction({ () -> () in
-                self.fetchDataWithHUD()
+            tableView.addPullToRefreshWithAction({ [weak self] in
+                self!.fetchDataWithHUD()
                 }, withAnimator: BeatAnimator())
         }
     }

@@ -142,8 +142,8 @@ class MyClassesViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidAppear(animated)
         
         if tableView.pullToRefreshView == nil {
-            tableView.addPullToRefreshWithAction({ () -> () in
-                self.fetchData(self.currentCategory)
+            tableView.addPullToRefreshWithAction({ [weak self] in
+                self!.fetchData(self!.currentCategory)
                 }, withAnimator: BeatAnimator())
         }
     }
