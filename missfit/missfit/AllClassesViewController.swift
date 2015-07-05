@@ -108,7 +108,7 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
         createDatesButtons()
         if tableView.pullToRefreshView == nil {
             tableView.addPullToRefreshWithAction({ [weak self] in
-                self!.refreshData()
+                self?.refreshData()
                 }, withAnimator: BeatAnimator())
         }
     }
@@ -337,10 +337,10 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
         manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
 //            KVNProgress.showSuccessWithStatus("获取课程列表成功！")
             KVNProgress.dismiss()
-            self.tableView.stopPullToRefresh()
             // Parse data
             self.parseResponseObject(responseObject as! NSDictionary)
             self.tableView.reloadData()
+            self.tableView.stopPullToRefresh()
             }) { (operation, error) -> Void in
                 if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
                     // Need to get the status and message
@@ -365,8 +365,7 @@ class AllClassesViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ClassTableViewCell", forIndexPath: indexPath) as! ClassTableViewCell
-        
-        cell.setData(classes[indexPath.row])
+        cell.setData(self.classes[indexPath.row])
         return cell
     }
     

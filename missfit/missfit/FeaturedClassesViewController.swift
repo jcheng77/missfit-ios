@@ -59,10 +59,10 @@ class FeaturedClassesViewController: UIViewController, UITableViewDataSource, UI
         manager.GET(endpoint, parameters: nil, success: { (operation, responseObject) -> Void in
             //            KVNProgress.showSuccessWithStatus("获取课程列表成功！")
             KVNProgress.dismiss()
-            self.tableView.stopPullToRefresh()
             // Parse data
             self.parseResponseObject(responseObject as! NSDictionary)
             self.tableView.reloadData()
+            self.tableView.stopPullToRefresh()
             }) { (operation, error) -> Void in
                 if error.userInfo?[AFNetworkingOperationFailingURLResponseDataErrorKey] != nil {
                     // Need to get the status and message
