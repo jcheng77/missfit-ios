@@ -7,19 +7,26 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ShakeViewController: UIViewController {
-    @IBOutlet weak var otherTextView: UITextView!
     @IBOutlet weak var categoryLineHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var sexLineHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var areaLineHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var headCountLineHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var learningPhaseLineHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var sexLabel: UILabel!
+    @IBOutlet weak var areaLabel: UILabel!
+    @IBOutlet weak var headCountLabel: UILabel!
+    @IBOutlet weak var learningPhaseLabel: UILabel!
+    
+    var isRequesting = false
+    var player: AVAudioPlayer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        otherTextView.layer.borderWidth = 1.0 / UIScreen.mainScreen().scale
-        otherTextView.layer.borderColor = MissFitTheme.theme.colorTextFieldBorder.CGColor
         categoryLineHeightConstraint.constant = 1.0 / UIScreen.mainScreen().scale
         sexLineHeightConstraint.constant = 1.0 / UIScreen.mainScreen().scale
         areaLineHeightConstraint.constant = 1.0 / UIScreen.mainScreen().scale
@@ -45,6 +52,46 @@ class ShakeViewController: UIViewController {
     }
     
     @IBAction func learningPhaseClicked(sender: AnyObject) {
+    }
+    
+    override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent) {
+        if motion != UIEventSubtype.MotionShake {
+            return
+        }
+    }
+    
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
+        if motion != UIEventSubtype.MotionShake {
+            return
+        }
+        
+        
+        if !isRequesting {
+            if player == nil {
+                let url = NSBundle.mainBundle().URLForResource("shake", withExtension: "mp3")
+                if url == nil {
+                    return
+                }
+                
+                player = AVAudioPlayer(contentsOfURL: url, error: nil)
+            }
+            
+            if !player!.prepareToPlay() {
+                return
+            }
+            
+            if !player!.playing {
+                println("player.play()")
+                player!.play()
+            }
+        }
+    }
+    
+    override func motionCancelled(motion: UIEventSubtype, withEvent event: UIEvent) {
+        if motion != UIEventSubtype.MotionShake {
+            return
+        }
+        println("motionCancelled")
     }
     
 }

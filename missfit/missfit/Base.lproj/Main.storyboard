@@ -836,26 +836,11 @@
                                     <outletCollection property="gestureRecognizers" destination="eZ1-SH-WvO" appends="YES" id="sj7-1j-r5U"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="其它要求" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYT-ZF-Bwt">
-                                <rect key="frame" x="20" y="292" width="56" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.65490196079999996" green="0.65098039220000004" blue="0.65490196079999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHN-Ie-ugK">
-                                <rect key="frame" x="112" y="292" width="472" height="59"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="59" id="b8w-63-N9C"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shake" translatesAutoresizingMaskIntoConstraints="NO" id="4EM-BX-HSo">
-                                <rect key="frame" x="140" y="359" width="319" height="145"/>
+                                <rect key="frame" x="140" y="292" width="319" height="145"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="摇一摇 查看附近可组团的小伙伴" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWE-1a-kHL">
-                                <rect key="frame" x="199.5" y="512" width="200.5" height="17"/>
+                                <rect key="frame" x="199.5" y="445" width="200.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.96862745100000003" green="0.4941176471" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -866,14 +851,9 @@
                             <constraint firstItem="DQd-Xi-BIk" firstAttribute="leading" secondItem="Dbl-Vh-Iia" secondAttribute="leading" id="16B-ut-AkD"/>
                             <constraint firstItem="1nL-fq-G1N" firstAttribute="top" secondItem="u4G-lW-5xa" secondAttribute="bottom" id="1xi-3X-VgP"/>
                             <constraint firstItem="zWE-1a-kHL" firstAttribute="top" secondItem="4EM-BX-HSo" secondAttribute="bottom" constant="8" id="2lw-8u-Pra"/>
-                            <constraint firstItem="uYT-ZF-Bwt" firstAttribute="leading" secondItem="Dbl-Vh-Iia" secondAttribute="leading" constant="20" id="2qg-Ro-6NE"/>
                             <constraint firstAttribute="trailing" secondItem="DQd-Xi-BIk" secondAttribute="trailing" id="8Gc-Tx-1ft"/>
-                            <constraint firstItem="fHN-Ie-ugK" firstAttribute="leading" secondItem="uYT-ZF-Bwt" secondAttribute="trailing" constant="36" id="Dvp-n8-06J"/>
                             <constraint firstItem="u4G-lW-5xa" firstAttribute="leading" secondItem="Dbl-Vh-Iia" secondAttribute="leading" id="Juf-kj-w8s"/>
-                            <constraint firstAttribute="trailing" secondItem="fHN-Ie-ugK" secondAttribute="trailing" constant="16" id="KWD-H6-O3b"/>
                             <constraint firstItem="cPW-R9-P3W" firstAttribute="top" secondItem="DQd-Xi-BIk" secondAttribute="bottom" id="Kw3-s4-Lg8"/>
-                            <constraint firstItem="fHN-Ie-ugK" firstAttribute="top" secondItem="cPW-R9-P3W" secondAttribute="bottom" constant="8" id="KxE-d4-lPY"/>
-                            <constraint firstItem="4EM-BX-HSo" firstAttribute="top" secondItem="fHN-Ie-ugK" secondAttribute="bottom" constant="8" id="O1V-RX-MBO"/>
                             <constraint firstItem="uFZ-5N-hyi" firstAttribute="top" secondItem="1nL-fq-G1N" secondAttribute="bottom" id="OWr-gf-UIX"/>
                             <constraint firstAttribute="trailing" secondItem="u4G-lW-5xa" secondAttribute="trailing" id="POv-Sz-J5y"/>
                             <constraint firstItem="uFZ-5N-hyi" firstAttribute="leading" secondItem="Dbl-Vh-Iia" secondAttribute="leading" id="PkO-qW-KQW"/>
@@ -882,10 +862,10 @@
                             <constraint firstItem="cPW-R9-P3W" firstAttribute="leading" secondItem="Dbl-Vh-Iia" secondAttribute="leading" id="ZNf-Wy-BZv"/>
                             <constraint firstItem="u4G-lW-5xa" firstAttribute="top" secondItem="3Kp-SD-WuU" secondAttribute="bottom" id="jsT-IV-3jY"/>
                             <constraint firstAttribute="trailing" secondItem="cPW-R9-P3W" secondAttribute="trailing" id="kWS-mu-l6s"/>
+                            <constraint firstItem="4EM-BX-HSo" firstAttribute="top" secondItem="cPW-R9-P3W" secondAttribute="bottom" constant="8" id="kxb-vf-q6o"/>
                             <constraint firstAttribute="trailing" secondItem="1nL-fq-G1N" secondAttribute="trailing" id="nM2-Tq-YmZ"/>
                             <constraint firstAttribute="centerX" secondItem="4EM-BX-HSo" secondAttribute="centerX" id="njH-CM-ELA"/>
                             <constraint firstItem="1nL-fq-G1N" firstAttribute="leading" secondItem="Dbl-Vh-Iia" secondAttribute="leading" id="o07-tz-a2Z"/>
-                            <constraint firstItem="uYT-ZF-Bwt" firstAttribute="top" secondItem="cPW-R9-P3W" secondAttribute="bottom" constant="8.5" id="tNk-LX-3BF"/>
                             <constraint firstAttribute="trailing" secondItem="uFZ-5N-hyi" secondAttribute="trailing" id="w8b-Hx-rfp"/>
                         </constraints>
                     </view>
@@ -900,11 +880,15 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="areaLabel" destination="Mjd-LX-8PO" id="nrX-Bt-lE1"/>
                         <outlet property="areaLineHeightConstraint" destination="GUd-zj-al9" id="nR5-s7-oai"/>
+                        <outlet property="categoryLabel" destination="1R2-f2-ADd" id="0ns-6i-jfZ"/>
                         <outlet property="categoryLineHeightConstraint" destination="xGq-gf-p1e" id="VxV-2y-FCx"/>
+                        <outlet property="headCountLabel" destination="kS4-W8-ILB" id="pcR-Td-iSQ"/>
                         <outlet property="headCountLineHeightConstraint" destination="WFd-C1-8BY" id="CN2-gO-7I0"/>
+                        <outlet property="learningPhaseLabel" destination="cqc-rg-M7b" id="fhg-1z-5Fb"/>
                         <outlet property="learningPhaseLineHeightConstraint" destination="Vhz-iA-F6N" id="KYR-XX-d7G"/>
-                        <outlet property="otherTextView" destination="fHN-Ie-ugK" id="A6z-et-FA3"/>
+                        <outlet property="sexLabel" destination="zo6-7r-1kN" id="eH0-nY-SZV"/>
                         <outlet property="sexLineHeightConstraint" destination="STg-ob-PBq" id="eq6-bs-lxW"/>
                     </connections>
                 </viewController>
