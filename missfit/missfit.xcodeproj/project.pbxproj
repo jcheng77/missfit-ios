@@ -101,6 +101,7 @@
 		C3D9566C1B43ADA900B74A4F /* icon_chose_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3D956681B43ADA900B74A4F /* icon_chose_bottom@2x.png */; };
 		C3D9566E1B442C7100B74A4F /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D9566D1B442C7100B74A4F /* SettingsManager.swift */; };
 		C3E48FBC1B09D5CE0070C1E7 /* MissFitLocationCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E48FBB1B09D5CE0070C1E7 /* MissFitLocationCoordinate.swift */; };
+		C3E665C51B808BA4005FF527 /* TeacherInfoCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E665C41B808BA4005FF527 /* TeacherInfoCreationViewController.swift */; };
 		C3F5BE221B18B0B7009B21AB /* MemberCardInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F5BE211B18B0B7009B21AB /* MemberCardInfoViewController.swift */; };
 		C3F5BE271B18C076009B21AB /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F5BE241B18C076009B21AB /* libMobClickLibrary.a */; };
 		C3F5BE2A1B18C24F009B21AB /* UmengHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F5BE291B18C24F009B21AB /* UmengHelper.m */; };
@@ -314,6 +315,7 @@
 		C3D956681B43ADA900B74A4F /* icon_chose_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_chose_bottom@2x.png"; sourceTree = "<group>"; };
 		C3D9566D1B442C7100B74A4F /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		C3E48FBB1B09D5CE0070C1E7 /* MissFitLocationCoordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissFitLocationCoordinate.swift; sourceTree = "<group>"; };
+		C3E665C41B808BA4005FF527 /* TeacherInfoCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherInfoCreationViewController.swift; sourceTree = "<group>"; };
 		C3F5BE211B18B0B7009B21AB /* MemberCardInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberCardInfoViewController.swift; sourceTree = "<group>"; };
 		C3F5BE241B18C076009B21AB /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		C3F5BE251B18C076009B21AB /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 				C3A5A7FB1B6CD4F2004E136B /* GroupViewController.swift */,
 				C3A5A7FD1B6CEA3E004E136B /* MultiSelectionViewController.swift */,
 				C3A5A7FF1B6CEA58004E136B /* MultiSelectionTableViewCell.swift */,
+				C3E665C41B808BA4005FF527 /* TeacherInfoCreationViewController.swift */,
 				C310D5951ADC0E2800A70054 /* Main.storyboard */,
 				C310D5981ADC0E2800A70054 /* Images.xcassets */,
 				C310D59A1ADC0E2800A70054 /* LaunchScreen.xib */,
@@ -926,6 +929,7 @@
 				C38FACCC1B1399730034CF2D /* LocationDetailImageTableViewCell.swift in Sources */,
 				C33CF10A1AE78AB900B35BF8 /* MissFitClassSchedule.swift in Sources */,
 				C34429021B39582000FBDA7A /* CommentComposeViewController.swift in Sources */,
+				C3E665C51B808BA4005FF527 /* TeacherInfoCreationViewController.swift in Sources */,
 				C39DB0CA1AEBC9F000C91E5A /* MissFitUser.swift in Sources */,
 				C35FB60C1B0B086C00B82954 /* DataVerifier.m in Sources */,
 				C37B8C031B0B75BD00BDB3F0 /* PaymentContentTableViewCell.swift in Sources */,

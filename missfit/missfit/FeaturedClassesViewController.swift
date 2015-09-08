@@ -79,7 +79,7 @@ class FeaturedClassesViewController: UIViewController, UITableViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("getLocationSucceeded"), name: MissFitGetLocationSucceeded, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("loadMembershipSucceededCallback"), name: MissFitLoadMembershipSucceededCallback, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("loadMembershipSucceededCallback"), name: MissFitLoadMembershipSucceededCallback, object: nil)
         initSegments()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
@@ -117,11 +117,12 @@ class FeaturedClassesViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func initSegments() {
-        let optionsArray = ["特色课程", "每周课程"]
-        let optionsToggle = UISegmentedControl(items: optionsArray)
-        optionsToggle.addTarget(self, action: Selector("toggleSelection:"), forControlEvents: UIControlEvents.ValueChanged)
-        optionsToggle.selectedSegmentIndex = 0
-        self.navigationItem.titleView = optionsToggle
+//        let optionsArray = ["特色课程", "每周课程"]
+//        let optionsToggle = UISegmentedControl(items: optionsArray)
+//        optionsToggle.addTarget(self, action: Selector("toggleSelection:"), forControlEvents: UIControlEvents.ValueChanged)
+//        optionsToggle.selectedSegmentIndex = 0
+//        self.navigationItem.titleView = optionsToggle
+        self.title = "特色课程"
         containerView.hidden = true
     }
     

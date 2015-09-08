@@ -73,8 +73,11 @@ class MissFitTeacher {
         for scope in classScopes {
             scopesString += "、\(scope)"
         }
-        let startIndex = advance(scopesString.startIndex, 1)
-        scopesString = scopesString.substringFromIndex(startIndex)
+        if count(scopesString) > 0 {
+            let startIndex = advance(scopesString.startIndex, 1)
+            scopesString = scopesString.substringFromIndex(startIndex)
+        }
+
         return scopesString
     }
     
@@ -83,8 +86,10 @@ class MissFitTeacher {
         for mode in teachModes {
             modesString += "、\(mode)"
         }
-        let startIndex = advance(modesString.startIndex, 1)
-        modesString = modesString.substringFromIndex(startIndex)
+        if count(modesString) > 0 {
+            let startIndex = advance(modesString.startIndex, 1)
+            modesString = modesString.substringFromIndex(startIndex)
+        }
         return modesString
     }
 }

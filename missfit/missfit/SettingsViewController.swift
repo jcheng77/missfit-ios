@@ -12,7 +12,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var tableView: UITableView!
     var memberFee: Float = 0.0
     var isMembershipLoaded = false
-    let sectionsInfo = [["key": "个人信息", "value": ["姓名", "电话"]], ["key": "会员卡", "value": ["月卡", "月卡使用规则"]], ["key": "关于我们", "value": ["服务条款"]], ]
+    let sectionsInfo = [["key": "个人信息", "value": ["姓名", "电话"]], /*["key": "会员卡", "value": ["月卡", "月卡使用规则"]], */["key": "关于我们", "value": ["服务条款"]], ]
 
     @IBAction func backButtonClicked(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
@@ -72,6 +72,9 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.estimatedRowHeight = 44.0
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("loadMembershipSucceeded"), name: MissFitLoadMembershipSucceededCallback, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("loadMembershipFailed"), name: MissFitLoadMembershipFailureCallback, object: nil)
+        
+        isMembershipLoaded = false
+        self.loadSettings()
     }
     
     deinit {
@@ -80,8 +83,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        isMembershipLoaded = false
-        self.loadSettings()
 
         if tableView.pullToRefreshView == nil {
             tableView.addPullToRefreshWithAction({ [weak self] in
